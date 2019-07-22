@@ -9,7 +9,13 @@
 #include <QPushButton>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QVector>
+#include <QCheckBox>
+#include "dist\json\json.h"
 
+ extern QString filename;
 namespace Ui {
 class Read;
 }
@@ -20,13 +26,22 @@ class Read : public QDialog
 
 public:
     explicit Read(QWidget *parent = 0);
-     QGridLayout *canLayout    = new QGridLayout(this);
+     QGridLayout *layout    = new QGridLayout(this);
+     QGridLayout *layoutUsart    = new QGridLayout(this);
      QString filename;
+     QVector <std::string> name;
+     QVector <QLineEdit *> value;
+     QVector <QLineEdit *> valueUsart;
+
+     Json::Value JSON;
+     Json::Value::Members member;
+     QLineEdit *lineEdit;
+     int s;
     ~Read();
 
 private slots:
      void onBrowseButton();
-     void onGenerateButton();
+     void onSaveChanegeButton();
 
 private:
     Ui::Read *ui;
