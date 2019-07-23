@@ -699,7 +699,7 @@ Dialog::Dialog(QWidget *parent) :
 
                          // QCheckBox *
 
-                         /* QLabel *UsartStatic001 = new QLabel("Req001",this);
+                     /*     QLabel *UsartStatic001 = new QLabel("Req001",this);
                           QLabel *UsartStatic002 = new QLabel("Req001",this);
                           QLabel *UsartStatic003 = new QLabel("Req001",this);
                           QLabel *UsartStatic004 = new QLabel("Req000",this);
@@ -758,7 +758,7 @@ Dialog::Dialog(QWidget *parent) :
                           QLabel *UsartStatic052 = new QLabel("Req023",this);
                           QLabel *UsartStatic053 = new QLabel("Req024",this);
                           QLabel *UsartStatic054 = new QLabel("Req024",this);
-                          QLabel *UsartStatic055 = new QLabel("Req024",this); */
+                          QLabel *UsartStatic055 = new QLabel("Req024",this);*/
 
 
                           //Add to widget
@@ -860,66 +860,66 @@ Dialog::Dialog(QWidget *parent) :
 
 
 
-                /*  usartLayout->addWidget( UsartStatic001 , 8, 1);
-                  usartLayout->addWidget( UsartStatic002 , 9, 1);
-                  usartLayout->addWidget( UsartStatic003 ,10, 1);
-                  usartLayout->addWidget( UsartStatic004 ,11, 1);
-                  usartLayout->addWidget( UsartStatic005 ,12, 1);
-                  usartLayout->addWidget( UsartStatic006 ,13, 1);
-                  usartLayout->addWidget( UsartStatic007 ,14, 1);
-                  usartLayout->addWidget( UsartStatic008 ,15, 1);
-                  usartLayout->addWidget( UsartStatic009 ,16, 1);
+             /*    usartLayout->addWidget( UsartStatic001 , 8,  3);
+                  usartLayout->addWidget( UsartStatic002 , 9, 3);
+                  usartLayout->addWidget( UsartStatic003 ,10, 3);
+                  usartLayout->addWidget( UsartStatic004 ,11, 3);
+                  usartLayout->addWidget( UsartStatic005 ,12, 3);
+                  usartLayout->addWidget( UsartStatic006 ,13, 3);
+                  usartLayout->addWidget( UsartStatic007 ,14, 3);
+                  usartLayout->addWidget( UsartStatic008 ,15, 3);
+                  usartLayout->addWidget( UsartStatic009 ,16, 3);
 
-                  usartLayout->addWidget( UsartStatic010 ,17, 1);
-                  usartLayout->addWidget( UsartStatic011 ,18, 1);
-                  usartLayout->addWidget( UsartStatic012 ,19, 1);
-                  usartLayout->addWidget( UsartStatic013 ,20, 1);
-                  usartLayout->addWidget( UsartStatic014 ,21, 1);
-                  usartLayout->addWidget( UsartStatic015 ,22, 1);
-                  usartLayout->addWidget( UsartStatic016 ,23, 1);
-                  usartLayout->addWidget( UsartStatic017 ,24, 1);
-                  usartLayout->addWidget( UsartStatic018 ,25, 1);
-                  usartLayout->addWidget( UsartStatic019 ,26, 1);
+                  usartLayout->addWidget( UsartStatic010 ,17, 2);
+                  usartLayout->addWidget( UsartStatic011 ,18, 2);
+                  usartLayout->addWidget( UsartStatic012 ,19, 2);
+                  usartLayout->addWidget( UsartStatic013 ,20, 2);
+                  usartLayout->addWidget( UsartStatic014 ,21, 2);
+                  usartLayout->addWidget( UsartStatic015 ,22, 2);
+                  usartLayout->addWidget( UsartStatic016 ,23, 2);
+                  usartLayout->addWidget( UsartStatic017 ,24, 2);
+                  usartLayout->addWidget( UsartStatic018 ,25, 2);
+                  usartLayout->addWidget( UsartStatic019 ,26, 2);
 
-                  usartLayout->addWidget( UsartStatic020 ,27, 1);
-                  usartLayout->addWidget( UsartStatic021 ,28, 1);
-                  usartLayout->addWidget( UsartStatic022 ,29, 1);
-                  usartLayout->addWidget( UsartStatic023 ,30, 1);
-                  usartLayout->addWidget( UsartStatic024 ,31, 1);
-                  usartLayout->addWidget( UsartStatic025 ,32, 1);
-                  usartLayout->addWidget( UsartStatic026 ,33, 1);
-                  usartLayout->addWidget( UsartStatic027 ,34, 1);
-                  usartLayout->addWidget( UsartStatic028 ,35, 1);
-                  usartLayout->addWidget( UsartStatic029 ,36, 1);
+                  usartLayout->addWidget( UsartStatic020 ,27, 2);
+                  usartLayout->addWidget( UsartStatic021 ,28, 2);
+                  usartLayout->addWidget( UsartStatic022 ,29, 2);
+                  usartLayout->addWidget( UsartStatic023 ,30, 2);
+                  usartLayout->addWidget( UsartStatic024 ,31, 2);
+                  usartLayout->addWidget( UsartStatic025 ,32, 2);
+                  usartLayout->addWidget( UsartStatic026 ,33, 2);
+                  usartLayout->addWidget( UsartStatic027 ,34, 2);
+                  usartLayout->addWidget( UsartStatic028 ,35, 2);
+                  usartLayout->addWidget( UsartStatic029 ,36, 2);
 
-                  usartLayout->addWidget( UsartStatic030 ,37, 1);
-                  usartLayout->addWidget( UsartStatic031 ,38, 1);
-                  usartLayout->addWidget( UsartStatic032 ,39, 1);
-                  usartLayout->addWidget( UsartStatic033 ,40, 1);
-                  usartLayout->addWidget( UsartStatic034 ,41, 1);
-                  usartLayout->addWidget( UsartStatic035 ,42, 1);
-                  usartLayout->addWidget( UsartStatic036 ,43, 1);
-                  usartLayout->addWidget( UsartStatic037 ,44, 1);
-                  usartLayout->addWidget( UsartStatic038 ,45, 1);
-                  usartLayout->addWidget( UsartStatic039 ,46, 1);
+                  usartLayout->addWidget( UsartStatic030 ,37, 2);
+                  usartLayout->addWidget( UsartStatic031 ,38, 2);
+                  usartLayout->addWidget( UsartStatic032 ,39, 2);
+                  usartLayout->addWidget( UsartStatic033 ,40, 2);
+                  usartLayout->addWidget( UsartStatic034 ,41, 2);
+                  usartLayout->addWidget( UsartStatic035 ,42, 2);
+                  usartLayout->addWidget( UsartStatic036 ,43, 2);
+                  usartLayout->addWidget( UsartStatic037 ,44, 2);
+                  usartLayout->addWidget( UsartStatic038 ,45, 2);
+                  usartLayout->addWidget( UsartStatic039 ,46, 2);
 
-                  usartLayout->addWidget( UsartStatic040 ,47, 1);
-                  usartLayout->addWidget( UsartStatic041 ,48, 1);
-                  usartLayout->addWidget( UsartStatic042 ,49, 1);
-                  usartLayout->addWidget( UsartStatic043 ,50, 1);
-                  usartLayout->addWidget( UsartStatic044 ,51, 1);
-                  usartLayout->addWidget( UsartStatic045 ,52, 1);
-                  usartLayout->addWidget( UsartStatic046 ,53, 1);
-                  usartLayout->addWidget( UsartStatic047 ,54, 1);
-                  usartLayout->addWidget( UsartStatic048 ,55, 1);
-                  usartLayout->addWidget( UsartStatic049 ,56, 1);
+                  usartLayout->addWidget( UsartStatic040 ,47, 2);
+                  usartLayout->addWidget( UsartStatic041 ,48, 2);
+                  usartLayout->addWidget( UsartStatic042 ,49, 2);
+                  usartLayout->addWidget( UsartStatic043 ,50, 2);
+                  usartLayout->addWidget( UsartStatic044 ,51, 2);
+                  usartLayout->addWidget( UsartStatic045 ,52, 2);
+                  usartLayout->addWidget( UsartStatic046 ,53, 2);
+                  usartLayout->addWidget( UsartStatic047 ,54, 2);
+                  usartLayout->addWidget( UsartStatic048 ,55, 2);
+                  usartLayout->addWidget( UsartStatic049 ,56, 2);
 
-                  usartLayout->addWidget( UsartStatic050 ,57, 1);
-                  usartLayout->addWidget( UsartStatic051 ,58, 1);
-                  usartLayout->addWidget( UsartStatic052 ,59, 1);
-                  usartLayout->addWidget( UsartStatic053 ,60, 1);
-                  usartLayout->addWidget( UsartStatic054 ,61, 1);
-                  usartLayout->addWidget( UsartStatic055 ,62, 1);*/
+                  usartLayout->addWidget( UsartStatic050 ,57, 2);
+                  usartLayout->addWidget( UsartStatic051 ,58, 2);
+                  usartLayout->addWidget( UsartStatic052 ,59, 2);
+                  usartLayout->addWidget( UsartStatic053 ,60, 2);
+                  usartLayout->addWidget( UsartStatic054 ,61, 2);
+                  usartLayout->addWidget( UsartStatic055 ,62, 2);*/
 
 
 

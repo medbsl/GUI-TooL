@@ -83,6 +83,64 @@ Read::Read(QWidget *parent) :
     connect(m_button,SIGNAL (clicked()), this, SLOT(onSaveChanegeButton()));
 
 }
+void Read::Test(QGridLayout *layout, int s){
+
+    QString add;
+    QString add2;
+    QString add3;
+    add3 = "USART_Req000";
+         QCheckBox *checktestRequirement0 =new QCheckBox(add3,this);
+         layout->addWidget(checktestRequirement0,s,2);
+
+
+    for(int i=1; i<63;i++){
+
+            if (i<10)
+            {
+                add  = "USART_S_00" + QString::number(i);
+                add2 = "USART_D_00" + QString::number(i);
+                add3 = "USART_Req00" + QString::number(i);
+            }
+            if (i<100 && i>=10)
+            {
+                add ="USART_S_0" + QString::number(i);
+                add2 = "USART_D_0" + QString::number(i);
+                add3 = "USART_Req0" + QString::number(i);
+            }
+
+        QCheckBox *checktest =new QCheckBox(add,this);
+        QCheckBox *checktestDynamic =new QCheckBox(add2,this);
+        QCheckBox *checktestRequirement =new QCheckBox(add3,this);
+        if (i<26){// req
+            Requirement.push_back(checktestRequirement);
+            DynamicTest.push_back(checktestDynamic);
+            staticTest.push_back(checktest);
+            layout->addWidget(checktest,s,0);
+            layout->addWidget(checktestDynamic,s,1);
+            s++;
+            layout->addWidget(checktestRequirement,s,2);
+    }
+        if (i>25 && i<35){// Dynamic
+
+            DynamicTest.push_back(checktestDynamic);
+            staticTest.push_back(checktest);
+            layout->addWidget(checktest,s++,0);
+            layout->addWidget(checktestDynamic,s,1);
+
+
+        }
+        if (i>35){// Static
+
+
+            staticTest.push_back(checktest);
+            layout->addWidget(checktest,s++,0);
+
+
+        }
+
+    }
+
+}
 
 Read::~Read()
 {
@@ -105,6 +163,7 @@ member= JSON.getMemberNames();
 
 
  for (int i = 0; i < member.size(); i++) {
+
      if (member[i] !="USART_static_tests" && member[i] !="USART_dynamic_tests"&& member[i] !="interfaces"){
 
         //std::cout << member[i] <<" *** "<< member[i]<<endl<<endl;
@@ -128,17 +187,8 @@ member= JSON.getMemberNames();
           for (int k = 0; k < JSON[member[i]][j].getMemberNames().size(); k++){
 
 
-              if(JSON[member[i]][j][JSON[member[i]][j].getMemberNames()[k]].type()==6)// array type "tableau"
-              {
-                   for (int l= 0; l < JSON[member[i]][j][JSON[member[i]][j].getMemberNames()[k]].size(); l++){
 
 
-
-                   }
-
-              }
-              else  //n'est pas un tableau
-              {
                   // Label
                       QLabel *Label = new QLabel(this);
                       Label->setGeometry(QRect(QPoint(50, 138),QSize(176, 25)));
@@ -163,7 +213,7 @@ member= JSON.getMemberNames();
                       name.push_back(JSON[member[i]][j].getMemberNames()[k]);
                       value.push_back(lineEdit);
 
-              }
+
 
 
 
@@ -174,7 +224,7 @@ member= JSON.getMemberNames();
 } //end if
 
 
-     else if(member[i] == "interfaces" && JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[4] ].asString() == "USART"){
+      if(member[i] == "interfaces" && JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[4] ].asString() == "USART"){
 
                      for (int j = 0; j < JSON[member[i]].size() ; j++){
                           for (int k = 0; k < JSON[member[i]][j].getMemberNames().size(); k++){
@@ -215,7 +265,7 @@ member= JSON.getMemberNames();
 
                        }
              }
-                     if(JSON["USART_static_tests"]){
+                    if(JSON["USART_static_tests"] != 0){
 
                              QLabel *labelBlData = new QLabel(this);
                              labelBlData->setGeometry(QRect(QPoint(20, 136),QSize(121, 100)));
@@ -260,17 +310,29 @@ member= JSON.getMemberNames();
 
                                      layoutUsart->addWidget(labelRequirement,s,2);
 
+                                     Read::Test(layoutUsart, ++s);
 
-                         for (int j = 0; j < JSON["USART_static_tests"].size() ; j++){
-                              for (int k = 0; k < JSON["USART_static_tests"][j].getMemberNames().size(); k++){
+                            //
+                         for (int j = 0; j < JSON["USART_static_tests"].size() - 1 ; j++){
 
-                         QCheckBox *StaticTestUsart =new QCheckBox(QString::fromStdString(
+                                if(JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[1] ] )
+                                    staticTest[ j ]->setChecked(1);
 
-                            JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[1] ].asString()),this);
-                         StaticTestUsart->setChecked(1);
+                    }
 
-                         layoutUsart->addWidget(StaticTestUsart, ++s,0);
-                     }}}
+                         for (int j = 0; j < JSON["USART_dynamic_tests"].size() - 1 ; j++){
+
+                                if(JSON["USART_dynamic_tests"][j][ JSON["USART_dynamic_tests"][j].getMemberNames()[1] ] )
+                                    DynamicTest[ j ]->setChecked(1);
+
+                    }
+
+
+
+
+
+
+                    }
 
 
 
@@ -297,43 +359,53 @@ member= JSON.getMemberNames();
 
 
 
- }
+}
 
 
 }
+
 void Read::onSaveChanegeButton(){
 
 int f=0;
+int U=0;
     for (int i = 0; i < member.size(); i++) {
+
+
         if (member[i] !="USART_static_tests" && member[i] !="USART_dynamic_tests"&& member[i] !="interfaces"){
-        for (int j = 0; j < JSON[member[i]].size() ; j++){
-             for (int k = 0; k < JSON[member[i]][j].getMemberNames().size(); k++){
+                for (int j = 0; j < JSON[member[i]].size() ; j++){
+                     for (int k = 0; k < JSON[member[i]][j].getMemberNames().size(); k++){
 
-    if(JSON[member[i]][j][JSON[member[i]][j].getMemberNames()[k]].type()==6)// array type "tableau"
-    {
-
-    }
-    else //n'est pas un tableau
-    {
-        JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] =value[f++]->text().toLocal8Bit().constData();
-
-    }
-
+            if(JSON[member[i]][j][JSON[member[i]][j].getMemberNames()[k]].type()==6)// array type "tableau"
+            {
 
             }
+            else //n'est pas un tableau
+            {
+                JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] =value[f++]->text().toLocal8Bit().constData();
+
+            }
+
+
+                    }
+                }
         }
-     }
-    }
-
-
- //***************Save***************//
- std::ofstream JSONFILE;
-  JSONFILE.open(filename.toLocal8Bit().constData());
- Json::StyledWriter styledWriter;
- JSONFILE << styledWriter.write(JSON);
- JSONFILE.close();
- QMessageBox::information(this,"done","File successful edited");
 
 
 
+
+}
+
+
+        for (int k = 0; k < JSON["interfaces"][0].getMemberNames().size(); k++){
+
+            JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k] ] =valueUsart[U++]->text().toLocal8Bit().constData();
+         }
+
+    //***************Save***************//
+    std::ofstream JSONFILE;
+     JSONFILE.open(filename.toLocal8Bit().constData());
+    Json::StyledWriter styledWriter;
+    JSONFILE << styledWriter.write(JSON);
+    JSONFILE.close();
+    QMessageBox::information(this,"done","File successful edited");
 }

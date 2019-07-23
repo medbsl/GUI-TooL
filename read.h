@@ -9,6 +9,7 @@
 #include <QPushButton>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QVector>
@@ -16,6 +17,9 @@
 #include "dist\json\json.h"
 
  extern QString filename;
+ extern QVector <QCheckBox*> staticTest ;
+ extern QVector <QCheckBox*> DynamicTest ;
+ extern QVector <QCheckBox*> Requirement ;
 namespace Ui {
 class Read;
 }
@@ -32,16 +36,22 @@ public:
      QVector <std::string> name;
      QVector <QLineEdit *> value;
      QVector <QLineEdit *> valueUsart;
+     QVector <QCheckBox*> staticTest ;
+     QVector <QCheckBox*> DynamicTest ;
+     QVector <QCheckBox*> Requirement ;
 
      Json::Value JSON;
      Json::Value::Members member;
      QLineEdit *lineEdit;
+          void Test(QGridLayout *laYout, int x);
+
      int s;
     ~Read();
 
 private slots:
      void onBrowseButton();
      void onSaveChanegeButton();
+
 
 private:
     Ui::Read *ui;
