@@ -20,6 +20,8 @@
  extern QVector <QCheckBox*> staticTest ;
  extern QVector <QCheckBox*> DynamicTest ;
  extern QVector <QCheckBox*> Requirement ;
+
+
 namespace Ui {
 class Read;
 }
@@ -40,10 +42,12 @@ public:
      QVector <QCheckBox*> DynamicTest ;
      QVector <QCheckBox*> Requirement ;
 
+
+
      Json::Value JSON;
      Json::Value::Members member;
      QLineEdit *lineEdit;
-          void Test(QGridLayout *laYout, int x);
+     void Test(QGridLayout *laYout, int x);
 
      int s;
     ~Read();
