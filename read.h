@@ -13,13 +13,14 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QVector>
+#include <vector>
 #include <QCheckBox>
 #include "dist\json\json.h"
 
  extern QString filename;
- extern QVector <QCheckBox*> staticTest ;
- extern QVector <QCheckBox*> DynamicTest ;
- extern QVector <QCheckBox*> Requirement ;
+ extern std::vector <QCheckBox*> staticTest ;
+ extern std::vector <QCheckBox*> DynamicTest ;
+ extern std::vector <QCheckBox*> Requirement ;
 
 
 namespace Ui {
@@ -38,9 +39,10 @@ public:
      QVector <std::string> name;
      QVector <QLineEdit *> value;
      QVector <QLineEdit *> valueUsart;
-     QVector <QCheckBox*> staticTest ;
-     QVector <QCheckBox*> DynamicTest ;
-     QVector <QCheckBox*> Requirement ;
+
+     std::vector <QCheckBox*> staticTest ;
+     std::vector <QCheckBox*> DynamicTest ;
+     std::vector <QCheckBox*> Requirement ;
 
 
 
@@ -49,12 +51,19 @@ public:
      QLineEdit *lineEdit;
      void Test(QGridLayout *laYout, int x);
 
+
      int s;
     ~Read();
 
 private slots:
      void onBrowseButton();
      void onSaveChanegeButton();
+     void onCheckAllTestReq();
+     void onCheckAllTestDynamic();
+     void onCheckAllTestStatic();
+     void requirement();
+
+
 
 
 private:
