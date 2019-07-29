@@ -167,38 +167,32 @@ void Read::Test(QGridLayout *layout, int s){
 
 
     }
-    for (int k=0; k< Requirement.size();k++){
 
-        switch (k) {
-
-        case 0:  connect(Requirement[k], SIGNAL(stateChanged(int)), staticTest[1], SLOT(checktest->setChecked(1)));
-            break;
-        case 1 :
-            break;
-        default:
-            break;
-            //warning
-
-        }
-
-    }
 
 
     for (int i=0;i< Requirement.size();i++ )
-    connect(Requirement[i],SIGNAL(toggled ( bool checked )),this,SLOT(requirement()));
+        connect(Requirement[i],SIGNAL (clicked() ), this, SLOT( requirement()));
+
 
 }
 
 Read::~Read()
 {
     delete ui;
+    staticTest.clear();
+    DynamicTest.clear();
+    Requirement.clear();
 }
 void Read::onBrowseButton(){
 
 
     int s=0;
-    filename=QFileDialog::getOpenFileName(
-                this,tr("browse"), (" C:\ "), "json File(*.json)");
+    do{
+        filename=QFileDialog::getOpenFileName(
+                    this,tr("browse"), (" C:\ "), "json File(*.json)");
+    }while( filename.isNull()  );
+
+
     QMessageBox::information(this,tr("File Name"), filename);
 
 
@@ -1024,9 +1018,18 @@ void Read::onCheckAllTestReq(){
 
     for (int i=0; i< Requirement.size();i++){
         if (counterRequirement==0)
-        Requirement[i]->setCheckState(Qt::Checked);
-        else
+        {
+            Requirement[i]->setCheckState(Qt::Checked);
+            Requirement[i]->clicked(true);
+        }
+
+
+        else{
+
             Requirement[i]->setCheckState(Qt::Unchecked);
+           Requirement[i]->clicked(true);
+        }
+
          }
 
     counterRequirement= 1- counterRequirement;
@@ -1064,6 +1067,708 @@ void Read::onCheckAllTestStatic(){
 
 
 void Read::requirement(){
+//toujour i-1
 
-    qDebug()<< "tested validate";
+
+    if (Requirement[0]->checkState() == Qt::Checked)
+    {
+            staticTest[4 -1]->setChecked(1);
+            staticTest[5 -1]->setChecked(1);
+            DynamicTest[1 -1]->setChecked(1);
+    }
+    if (Requirement[0]->checkState() == Qt::Unchecked)
+    {
+            staticTest[4 -1]->setChecked(0);
+            staticTest[5 -1]->setChecked(0);
+            DynamicTest[1 -1]->setChecked(0);
+    }
+
+    if (Requirement[1]->checkState() == Qt::Checked)
+    {
+            staticTest[1 -1]->setChecked(1);
+            staticTest[2 -1]->setChecked(1);
+            staticTest[3 -1]->setChecked(1);
+    }
+    if (Requirement[1]->checkState() == Qt::Unchecked)
+    {
+            staticTest[1 -1]->setChecked(0);
+            staticTest[2 -1]->setChecked(0);
+            staticTest[3 -1]->setChecked(0);
+    }
+
+    if (Requirement[2]->checkState() == Qt::Checked)
+    {
+
+            DynamicTest[2 -1]->setChecked(1);
+
+    }
+    if (Requirement[2]->checkState() == Qt::Unchecked)
+    {
+            DynamicTest[2 -1]->setChecked(0);
+    }
+
+    if (Requirement[3]->checkState() == Qt::Checked)
+    {
+            staticTest[6 -1]->setChecked(1);
+            staticTest[7 -1]->setChecked(1);
+            DynamicTest[3 -1]->setChecked(1);
+    }
+    if (Requirement[3]->checkState() == Qt::Unchecked)
+    {
+         staticTest[6 -1]->setChecked(0);
+         staticTest[7 -1]->setChecked(0);
+        DynamicTest[3 -1]->setChecked(0);
+    }
+
+    if (Requirement[4]->checkState() == Qt::Checked)
+    {
+             staticTest[21 -1]->setChecked(1);
+             staticTest[22 -1]->setChecked(1);
+             staticTest[23 -1]->setChecked(1);
+             staticTest[24 -1]->setChecked(1);
+             staticTest[25 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[27 -1]->setChecked(1);
+             staticTest[28 -1]->setChecked(1);
+            DynamicTest[16 -1]->setChecked(1);
+            DynamicTest[17 -1]->setChecked(1);
+    }
+    if (Requirement[4]->checkState() == Qt::Unchecked)
+    {
+        staticTest[21 -1]->setChecked(0);
+        staticTest[22 -1]->setChecked(0);
+        staticTest[23 -1]->setChecked(0);
+        staticTest[24 -1]->setChecked(0);
+        staticTest[25 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[27 -1]->setChecked(0);
+        staticTest[28 -1]->setChecked(0);
+       DynamicTest[16 -1]->setChecked(0);
+       DynamicTest[17 -1]->setChecked(0);
+    }
+    if (Requirement[5]->checkState() == Qt::Checked)
+    {
+             staticTest[21 -1]->setChecked(1);
+             staticTest[22 -1]->setChecked(1);
+             staticTest[23 -1]->setChecked(1);
+             staticTest[24 -1]->setChecked(1);
+             staticTest[25 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[27 -1]->setChecked(1);
+             staticTest[28 -1]->setChecked(1);
+            DynamicTest[18 -1]->setChecked(1);
+
+    }
+    if (Requirement[5]->checkState() == Qt::Unchecked)
+    {
+        staticTest[21 -1]->setChecked(0);
+        staticTest[22 -1]->setChecked(0);
+        staticTest[23 -1]->setChecked(0);
+        staticTest[24 -1]->setChecked(0);
+        staticTest[25 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[27 -1]->setChecked(0);
+        staticTest[28 -1]->setChecked(0);
+       DynamicTest[18 -1]->setChecked(0);
+
+    }
+
+    if (Requirement[6]->checkState() == Qt::Checked)
+    {
+             staticTest[21 -1]->setChecked(1);
+             staticTest[22 -1]->setChecked(1);
+             staticTest[23 -1]->setChecked(1);
+             staticTest[24 -1]->setChecked(1);
+             staticTest[25 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[27 -1]->setChecked(1);
+             staticTest[28 -1]->setChecked(1);
+
+
+    }
+    if (Requirement[6]->checkState() == Qt::Unchecked)
+    {
+        staticTest[21 -1]->setChecked(0);
+        staticTest[22 -1]->setChecked(0);
+        staticTest[23 -1]->setChecked(0);
+        staticTest[24 -1]->setChecked(0);
+        staticTest[25 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[27 -1]->setChecked(0);
+        staticTest[28 -1]->setChecked(0);
+
+
+    }
+
+    if (Requirement[7]->checkState() == Qt::Checked)
+    {
+             staticTest[21 -1]->setChecked(1);
+             staticTest[22 -1]->setChecked(1);
+             staticTest[23 -1]->setChecked(1);
+             staticTest[24 -1]->setChecked(1);
+             staticTest[25 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[27 -1]->setChecked(1);
+             staticTest[28 -1]->setChecked(1);
+
+
+    }
+    if (Requirement[7]->checkState() == Qt::Unchecked)
+    {
+        staticTest[21 -1]->setChecked(0);
+        staticTest[22 -1]->setChecked(0);
+        staticTest[23 -1]->setChecked(0);
+        staticTest[24 -1]->setChecked(0);
+        staticTest[25 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[27 -1]->setChecked(0);
+        staticTest[28 -1]->setChecked(0);
+
+
+    }
+    if (Requirement[8]->checkState() == Qt::Checked)
+    {
+             staticTest[21 -1]->setChecked(1);
+             staticTest[22 -1]->setChecked(1);
+             staticTest[23 -1]->setChecked(1);
+             staticTest[24 -1]->setChecked(1);
+             staticTest[25 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[27 -1]->setChecked(1);
+             staticTest[28 -1]->setChecked(1);
+
+
+    }
+    if (Requirement[8]->checkState() == Qt::Unchecked)
+    {
+        staticTest[21 -1]->setChecked(0);
+        staticTest[22 -1]->setChecked(0);
+        staticTest[23 -1]->setChecked(0);
+        staticTest[24 -1]->setChecked(0);
+        staticTest[25 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[27 -1]->setChecked(0);
+        staticTest[28 -1]->setChecked(0);
+
+
+    }
+    if (Requirement[9]->checkState() == Qt::Checked)
+    {
+             staticTest[21 -1]->setChecked(1);
+             staticTest[22 -1]->setChecked(1);
+             staticTest[23 -1]->setChecked(1);
+             staticTest[24 -1]->setChecked(1);
+             staticTest[25 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[26 -1]->setChecked(1);
+             staticTest[27 -1]->setChecked(1);
+             staticTest[28 -1]->setChecked(1);
+             DynamicTest[28 -1]->setChecked(1);
+
+
+    }
+    if (Requirement[9]->checkState() == Qt::Unchecked)
+    {
+        staticTest[21 -1]->setChecked(0);
+        staticTest[22 -1]->setChecked(0);
+        staticTest[23 -1]->setChecked(0);
+        staticTest[24 -1]->setChecked(0);
+        staticTest[25 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[26 -1]->setChecked(0);
+        staticTest[27 -1]->setChecked(0);
+        staticTest[28 -1]->setChecked(0);
+        DynamicTest[28 -1]->setChecked(0);
+
+
+    }
+
+    if (Requirement[10]->checkState() == Qt::Checked)
+    {
+             staticTest[8 -1]->setChecked(1);
+             staticTest[9 -1]->setChecked(1);
+             staticTest[10 -1]->setChecked(1);
+             staticTest[11 -1]->setChecked(1);
+             staticTest[12 -1]->setChecked(1);
+             staticTest[13 -1]->setChecked(1);
+             staticTest[14 -1]->setChecked(1);
+             staticTest[15 -1]->setChecked(1);
+             DynamicTest[16 -1]->setChecked(1);
+             DynamicTest[17 -1]->setChecked(1);
+
+
+    }
+    if (Requirement[10]->checkState() == Qt::Unchecked)
+    {
+         staticTest[8 -1]->setChecked(0);
+         staticTest[9 -1]->setChecked(0);
+        staticTest[10 -1]->setChecked(0);
+        staticTest[11 -1]->setChecked(0);
+        staticTest[12 -1]->setChecked(0);
+        staticTest[13 -1]->setChecked(0);
+        staticTest[14 -1]->setChecked(0);
+        staticTest[15 -1]->setChecked(0);
+       DynamicTest[16 -1]->setChecked(0);
+       DynamicTest[17 -1]->setChecked(0);
+
+
+    }
+
+    if (Requirement[11]->checkState() == Qt::Checked)
+    {
+             staticTest[8 -1]->setChecked(1);
+             staticTest[9 -1]->setChecked(1);
+             staticTest[10 -1]->setChecked(1);
+             staticTest[11 -1]->setChecked(1);
+             staticTest[12 -1]->setChecked(1);
+             staticTest[13 -1]->setChecked(1);
+             staticTest[14 -1]->setChecked(1);
+             staticTest[15 -1]->setChecked(1);
+             DynamicTest[18 -1]->setChecked(1);
+
+
+
+    }
+    if (Requirement[11]->checkState() == Qt::Unchecked)
+    {
+         staticTest[8 -1]->setChecked(0);
+         staticTest[9 -1]->setChecked(0);
+        staticTest[10 -1]->setChecked(0);
+        staticTest[11 -1]->setChecked(0);
+        staticTest[12 -1]->setChecked(0);
+        staticTest[13 -1]->setChecked(0);
+        staticTest[14 -1]->setChecked(0);
+        staticTest[15 -1]->setChecked(0);
+       DynamicTest[18 -1]->setChecked(0);
+
+
+
+    }
+
+    if (Requirement[12]->checkState() == Qt::Checked)
+    {
+             staticTest[8 -1]->setChecked(1);
+             staticTest[9 -1]->setChecked(1);
+             staticTest[10 -1]->setChecked(1);
+             staticTest[11 -1]->setChecked(1);
+             staticTest[12 -1]->setChecked(1);
+             staticTest[13 -1]->setChecked(1);
+             staticTest[14 -1]->setChecked(1);
+             staticTest[15 -1]->setChecked(1);
+
+
+
+
+    }
+    if (Requirement[12]->checkState() == Qt::Unchecked)
+    {
+         staticTest[8 -1]->setChecked(0);
+         staticTest[9 -1]->setChecked(0);
+        staticTest[10 -1]->setChecked(0);
+        staticTest[11 -1]->setChecked(0);
+        staticTest[12 -1]->setChecked(0);
+        staticTest[13 -1]->setChecked(0);
+        staticTest[14 -1]->setChecked(0);
+        staticTest[15 -1]->setChecked(0);
+
+
+
+
+    }
+
+    if (Requirement[13]->checkState() == Qt::Checked)
+    {
+             staticTest[8 -1]->setChecked(1);
+             staticTest[9 -1]->setChecked(1);
+             staticTest[10 -1]->setChecked(1);
+             staticTest[11 -1]->setChecked(1);
+             staticTest[12 -1]->setChecked(1);
+             staticTest[13 -1]->setChecked(1);
+             staticTest[14 -1]->setChecked(1);
+             staticTest[15 -1]->setChecked(1);
+             DynamicTest[27 -1]->setChecked(1);
+
+
+
+
+    }
+    if (Requirement[13]->checkState() == Qt::Unchecked)
+    {
+         staticTest[8 -1]->setChecked(0);
+         staticTest[9 -1]->setChecked(0);
+        staticTest[10 -1]->setChecked(0);
+        staticTest[11 -1]->setChecked(0);
+        staticTest[12 -1]->setChecked(0);
+        staticTest[13 -1]->setChecked(0);
+        staticTest[14 -1]->setChecked(0);
+        staticTest[15 -1]->setChecked(0);
+        DynamicTest[27 -1]->setChecked(0);
+
+
+
+    }
+
+    if (Requirement[14]->checkState() == Qt::Checked)
+    {
+             staticTest[8 -1]->setChecked(1);
+             staticTest[9 -1]->setChecked(1);
+             staticTest[10 -1]->setChecked(1);
+             staticTest[11 -1]->setChecked(1);
+             staticTest[12 -1]->setChecked(1);
+             staticTest[13 -1]->setChecked(1);
+             staticTest[14 -1]->setChecked(1);
+             staticTest[15 -1]->setChecked(1);
+
+
+
+
+
+    }
+    if (Requirement[14]->checkState() == Qt::Unchecked)
+    {
+         staticTest[8 -1]->setChecked(0);
+         staticTest[9 -1]->setChecked(0);
+        staticTest[10 -1]->setChecked(0);
+        staticTest[11 -1]->setChecked(0);
+        staticTest[12 -1]->setChecked(0);
+        staticTest[13 -1]->setChecked(0);
+        staticTest[14 -1]->setChecked(0);
+        staticTest[15 -1]->setChecked(0);
+
+
+
+
+    }
+
+    if (Requirement[15]->checkState() == Qt::Checked)
+    {
+             staticTest[8 -1]->setChecked(1);
+             staticTest[9 -1]->setChecked(1);
+             staticTest[10 -1]->setChecked(1);
+             staticTest[11 -1]->setChecked(1);
+             staticTest[12 -1]->setChecked(1);
+             staticTest[13 -1]->setChecked(1);
+             staticTest[14 -1]->setChecked(1);
+             staticTest[15 -1]->setChecked(1);
+
+
+
+
+
+    }
+    if (Requirement[15]->checkState() == Qt::Unchecked)
+    {
+         staticTest[8 -1]->setChecked(0);
+         staticTest[9 -1]->setChecked(0);
+        staticTest[10 -1]->setChecked(0);
+        staticTest[11 -1]->setChecked(0);
+        staticTest[12 -1]->setChecked(0);
+        staticTest[13 -1]->setChecked(0);
+        staticTest[14 -1]->setChecked(0);
+        staticTest[15 -1]->setChecked(0);
+
+
+
+
+    }
+    if (Requirement[16]->checkState() == Qt::Checked)
+    {
+             staticTest[29 -1]->setChecked(1);
+             staticTest[30 -1]->setChecked(1);
+             staticTest[31 -1]->setChecked(1);
+             staticTest[32 -1]->setChecked(1);
+             staticTest[33 -1]->setChecked(1);
+             staticTest[34 -1]->setChecked(1);
+             staticTest[35 -1]->setChecked(1);
+             staticTest[36 -1]->setChecked(1);
+             staticTest[37 -1]->setChecked(1);
+             staticTest[38 -1]->setChecked(1);
+             staticTest[39 -1]->setChecked(1);
+             staticTest[40 -1]->setChecked(1);
+             staticTest[41 -1]->setChecked(1);
+
+             DynamicTest[19 -1]->setChecked(1);
+             DynamicTest[20 -1]->setChecked(1);
+
+
+
+    }
+    if (Requirement[16]->checkState() == Qt::Unchecked)
+    {
+        staticTest[29 -1]->setChecked(0);
+        staticTest[30 -1]->setChecked(0);
+        staticTest[31 -1]->setChecked(0);
+        staticTest[32 -1]->setChecked(0);
+        staticTest[33 -1]->setChecked(0);
+        staticTest[34 -1]->setChecked(0);
+        staticTest[35 -1]->setChecked(0);
+        staticTest[36 -1]->setChecked(0);
+        staticTest[37 -1]->setChecked(0);
+        staticTest[38 -1]->setChecked(0);
+        staticTest[39 -1]->setChecked(0);
+        staticTest[40 -1]->setChecked(0);
+        staticTest[41 -1]->setChecked(0);
+
+        DynamicTest[19 -1]->setChecked(0);
+        DynamicTest[20 -1]->setChecked(0);
+
+    }
+    if (Requirement[17]->checkState() == Qt::Checked)
+    {
+             staticTest[29 -1]->setChecked(1);
+             staticTest[30 -1]->setChecked(1);
+             staticTest[31 -1]->setChecked(1);
+             staticTest[32 -1]->setChecked(1);
+             staticTest[33 -1]->setChecked(1);
+             staticTest[34 -1]->setChecked(1);
+             staticTest[35 -1]->setChecked(1);
+             staticTest[36 -1]->setChecked(1);
+             staticTest[37 -1]->setChecked(1);
+             staticTest[38 -1]->setChecked(1);
+             staticTest[39 -1]->setChecked(1);
+             staticTest[40 -1]->setChecked(1);
+             staticTest[41 -1]->setChecked(1);
+
+
+
+
+
+    }
+    if (Requirement[17]->checkState() == Qt::Unchecked)
+    {
+        staticTest[29 -1]->setChecked(0);
+        staticTest[30 -1]->setChecked(0);
+        staticTest[31 -1]->setChecked(0);
+        staticTest[32 -1]->setChecked(0);
+        staticTest[33 -1]->setChecked(0);
+        staticTest[34 -1]->setChecked(0);
+        staticTest[35 -1]->setChecked(0);
+        staticTest[36 -1]->setChecked(0);
+        staticTest[37 -1]->setChecked(0);
+        staticTest[38 -1]->setChecked(0);
+        staticTest[39 -1]->setChecked(0);
+        staticTest[40 -1]->setChecked(0);
+        staticTest[41 -1]->setChecked(0);
+
+
+
+    }
+
+    if (Requirement[18]->checkState() == Qt::Checked)
+    {
+             staticTest[16 -1]->setChecked(1);
+             staticTest[17 -1]->setChecked(1);
+             staticTest[18 -1]->setChecked(1);
+             staticTest[19 -1]->setChecked(1);
+             staticTest[20 -1]->setChecked(1);
+
+
+             DynamicTest[24 -1]->setChecked(1);
+
+
+
+
+    }
+    if (Requirement[18]->checkState() == Qt::Unchecked)
+    {
+        staticTest[16 -1]->setChecked(1);
+        staticTest[17 -1]->setChecked(1);
+        staticTest[18 -1]->setChecked(1);
+        staticTest[19 -1]->setChecked(1);
+        staticTest[20 -1]->setChecked(1);
+
+
+        DynamicTest[24 -1]->setChecked(1);
+
+
+    }
+
+
+    if (Requirement[19]->checkState() == Qt::Checked)
+    {
+             staticTest[16 -1]->setChecked(1);
+             staticTest[17 -1]->setChecked(1);
+             staticTest[18 -1]->setChecked(1);
+             staticTest[19 -1]->setChecked(1);
+             staticTest[20 -1]->setChecked(1);
+
+
+             DynamicTest[25 -1]->setChecked(1);
+
+
+
+
+    }
+    if (Requirement[19]->checkState() == Qt::Unchecked)
+    {
+        staticTest[16 -1]->setChecked(1);
+        staticTest[17 -1]->setChecked(1);
+        staticTest[18 -1]->setChecked(1);
+        staticTest[19 -1]->setChecked(1);
+        staticTest[20 -1]->setChecked(1);
+
+
+        DynamicTest[25 -1]->setChecked(1);
+
+
+    }
+
+    if (Requirement[20]->checkState() == Qt::Checked)
+    {
+             staticTest[42 -1]->setChecked(1);
+             staticTest[43 -1]->setChecked(1);
+             staticTest[44 -1]->setChecked(1);
+             staticTest[45 -1]->setChecked(1);
+             staticTest[46 -1]->setChecked(1);
+
+
+             DynamicTest[21 -1]->setChecked(1);
+
+
+
+
+    }
+    if (Requirement[20]->checkState() == Qt::Unchecked)
+    {
+        staticTest[42 -1]->setChecked(0);
+        staticTest[43 -1]->setChecked(0);
+        staticTest[44 -1]->setChecked(0);
+        staticTest[45 -1]->setChecked(0);
+        staticTest[46 -1]->setChecked(0);
+
+
+        DynamicTest[21 -1]->setChecked(0);
+
+
+    }
+
+    if (Requirement[21]->checkState() == Qt::Checked)
+    {
+             staticTest[47 -1]->setChecked(1);
+             staticTest[48 -1]->setChecked(1);
+             staticTest[49 -1]->setChecked(1);
+
+
+
+
+
+
+
+
+    }
+    if (Requirement[21]->checkState() == Qt::Unchecked)
+    {
+        staticTest[47 -1]->setChecked(0);
+        staticTest[48 -1]->setChecked(0);
+        staticTest[49 -1]->setChecked(0);
+
+
+    }
+
+    if (Requirement[22]->checkState() == Qt::Checked)
+    {
+             DynamicTest[22 -1]->setChecked(1);
+
+
+    }
+    if (Requirement[22]->checkState() == Qt::Unchecked)
+    {
+                 DynamicTest[22 -1]->setChecked(0);
+
+
+    }
+    if (Requirement[23]->checkState() == Qt::Checked)
+    {
+             staticTest[50 -1]->setChecked(1);
+             staticTest[51 -1]->setChecked(1);
+             staticTest[52 -1]->setChecked(1);
+
+             DynamicTest[22 -1]->setChecked(1);
+             DynamicTest[23 -1]->setChecked(1);
+
+
+    }
+    if (Requirement[23]->checkState() == Qt::Unchecked)
+    {
+        staticTest[50 -1]->setChecked(0);
+        staticTest[51 -1]->setChecked(0);
+        staticTest[52 -1]->setChecked(0);
+
+        DynamicTest[22 -1]->setChecked(0);
+        DynamicTest[23 -1]->setChecked(0);
+
+
+    }
+
+    if (Requirement[24]->checkState() == Qt::Checked)
+    {
+             staticTest[53 -1]->setChecked(1);
+             staticTest[54 -1]->setChecked(1);
+             staticTest[55 -1]->setChecked(1);
+
+
+             DynamicTest[23 -1]->setChecked(1);
+
+
+    }
+    if (Requirement[24]->checkState() == Qt::Unchecked)
+    {
+        staticTest[53 -1]->setChecked(0);
+        staticTest[54 -1]->setChecked(0);
+        staticTest[55 -1]->setChecked(0);
+
+
+        DynamicTest[23 -1]->setChecked(0);
+
+
+    }
+    if (Requirement[25]->checkState() == Qt::Checked)
+    {
+             DynamicTest[4 -1]->setChecked(1);
+             DynamicTest[5 -1]->setChecked(1);
+             DynamicTest[6 -1]->setChecked(1);
+             DynamicTest[7 -1]->setChecked(1);
+             DynamicTest[8 -1]->setChecked(1);
+             DynamicTest[9 -1]->setChecked(1);
+             DynamicTest[10 -1]->setChecked(1);
+             DynamicTest[11 -1]->setChecked(1);
+             DynamicTest[12 -1]->setChecked(1);
+             DynamicTest[13 -1]->setChecked(1);
+             DynamicTest[14 -1]->setChecked(1);
+             DynamicTest[15 -1]->setChecked(1);
+
+
+
+
+
+    }
+    if (Requirement[25]->checkState() == Qt::Unchecked)
+    {
+         DynamicTest[4 -1]->setChecked(0);
+         DynamicTest[5 -1]->setChecked(0);
+         DynamicTest[6 -1]->setChecked(0);
+         DynamicTest[7 -1]->setChecked(0);
+         DynamicTest[8 -1]->setChecked(0);
+         DynamicTest[9 -1]->setChecked(0);
+        DynamicTest[10 -1]->setChecked(0);
+        DynamicTest[11 -1]->setChecked(0);
+        DynamicTest[12 -1]->setChecked(0);
+        DynamicTest[13 -1]->setChecked(0);
+        DynamicTest[14 -1]->setChecked(0);
+        DynamicTest[15 -1]->setChecked(0);
+
+
+    }
+
+
 }
