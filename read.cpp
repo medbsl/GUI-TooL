@@ -531,7 +531,6 @@ JSON["USART_dynamic_tests"].clear() ;
 
         if (member[i] == "USART_dynamic_tests" ){
             for (unsigned int j=0 ; j < DynamicTest.size();j++){
-
               if (DynamicTest[j]->checkState() == Qt::Checked){
 
                     switch (j) {
@@ -667,22 +666,11 @@ JSON["USART_dynamic_tests"].clear() ;
                     case 33 :JSON["USART_dynamic_tests"][ordreJSON  ]["test_id"] = "USART_D_034";
                             JSON["USART_dynamic_tests"][ ordreJSON++]["req_id"][0] ="none";
                             break;
-
-
-
-
-
-
-
-
-
-
-
-            }
-
-        }
-
-            }}
+                    default:
+                        break;
+}
+}
+}}
 
 
 
@@ -1124,38 +1112,48 @@ JSON["USART_dynamic_tests"].clear() ;
              JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k] ] =valueUsart[U++]->text().toLocal8Bit().constData();
 
 
-         else{
-             if(valueUsartCombo[U]->currentText() == "9600")
-             {
+         else if(valueUsartCombo[U] != NULL) {
+
+             switch (valueUsartCombo[U]->currentText().toInt()) {
+             case 9600:
                  JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
                  U++;
+                 break;
 
+
+             case 19200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                 U++;
+                 break;
+
+
+             case 38400:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="38400";
+                 U++;
+                 break;
+
+
+             case 57600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="57600";
+                 U++;
+                 break;
+
+
+             case 115200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="115200";
+                 U++;
+                 break;
+             default:
+                 break;
              }
 
-             else if(valueCombo[U]->currentText() == "19200")
-             {
-                JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="19200";
-                U++;
 
-             }
-             else if(valueCombo[U]->currentText() == "38400")
-             {
-                JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="38400";
-                U++;
 
-             }
-             else if(valueCombo[U]->currentText() == "57600")
-             {
-                JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="57600";
-                U++;
 
-             }
-             else if(valueCombo[U]->currentText() == "115200")
-             {
-                JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="115200";
-                U++;
 
-             }
+
+
+
 
 
          }
