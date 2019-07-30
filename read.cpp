@@ -3,12 +3,10 @@
 #include <fstream>
 #include <QDebug>
 
-int counterRequirement =0;
-int counterStatic =0;
-int counterDynamic =0;
-Read::Read(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::Read){    
+unsigned int counterRequirement =0;
+unsigned int counterStatic =0;
+unsigned int counterDynamic =0;
+Read::Read(QWidget *parent) : QDialog(parent), ui(new Ui::Read){
 
     ui->setupUi(this);
 
@@ -87,6 +85,15 @@ Read::Read(QWidget *parent) :
     connect(m_button,SIGNAL (clicked()), this, SLOT(onSaveChanegeButton()));
 
 }
+
+Read::~Read()
+{
+    delete ui;
+    staticTest.clear();
+    DynamicTest.clear();
+    Requirement.clear();
+}
+
 void Read::Test(QGridLayout *layout, int s){
 
 
@@ -170,26 +177,19 @@ void Read::Test(QGridLayout *layout, int s){
 
 
 
-    for (int i=0;i< Requirement.size();i++ )
+    for (unsigned int i=0;i< Requirement.size();i++ )
         connect(Requirement[i],SIGNAL (clicked() ), this, SLOT( requirement()));
 
 
 }
 
-Read::~Read()
-{
-    delete ui;
-    staticTest.clear();
-    DynamicTest.clear();
-    Requirement.clear();
-}
 void Read::onBrowseButton(){
 
 
     int s=0;
     do{
         filename=QFileDialog::getOpenFileName(
-                    this,tr("browse"), (" C:\ "), "json File(*.json)");
+                    this,tr("browse"), "C:/", "json File(*.json)");
     }while( filename.isNull()  );
 
 
@@ -205,7 +205,7 @@ JSONFILE >> JSON;
 member= JSON.getMemberNames();
 
 
- for (int i = 0; i < member.size(); i++) {
+ for (unsigned int i = 0; i < member.size(); i++) {
 
       if (member[i] !="USART_static_tests" && member[i] !="USART_dynamic_tests"&& member[i] !="interfaces"){
 
@@ -226,35 +226,102 @@ member= JSON.getMemberNames();
         layout->addWidget(label, ++s,0);
 
 
-     for (int j = 0; j < JSON[member[i]].size() ; j++){
-          for (int k = 0; k < JSON[member[i]][j].getMemberNames().size(); k++){
+     for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
+          for (unsigned int k = 0; k < JSON[member[i]][j].getMemberNames().size(); k++){
 
 
 
+              // Label
+                  QLabel *Label = new QLabel(this);
+                  Label->setGeometry(QRect(QPoint(50, 138),QSize(176, 25)));
+                  Label->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+                  Label->setText(QString::fromStdString(JSON[member[i]][j].getMemberNames()[k]));
 
-                  // Label
-                      QLabel *Label = new QLabel(this);
-                      Label->setGeometry(QRect(QPoint(50, 138),QSize(176, 25)));
-                      Label->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-                      Label->setText(QString::fromStdString(JSON[member[i]][j].getMemberNames()[k]));
 
+                  QFont fontSTLINK;
+                  fontSTLINK.setFamily("MS Shell Dlg 2");
+                  fontSTLINK.setPointSize(10);
+                  fontSTLINK.setBold(false);
+                  Label->setFont(fontSTLINK);
 
-                      QFont fontSTLINK;
-                      fontSTLINK.setFamily("MS Shell Dlg 2");
-                      fontSTLINK.setPointSize(10);
-                      fontSTLINK.setBold(false);
-                      Label->setFont(fontSTLINK);
+                 layout->addWidget(Label, ++s,0);
 
-                     layout->addWidget(Label, ++s,0);
+              if (JSON[member[i]][j].getMemberNames()[k] == "connect"){
 
+                  QComboBox *combo = new QComboBox( this );
+                  combo->setEditable( false );
+                  combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+                  combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
+                  combo->addItem(tr("true"));
+                  combo->addItem(tr("false"));
+                  layout->addWidget(combo, s,1);
+
+                  valueCombo.push_back(combo);
+                  value.push_back(NULL);
+                  break;
+              }
+
+              if (JSON[member[i]][j].getMemberNames()[k] == "supprot_ME"){
+
+                  QComboBox *combo = new QComboBox( this );
+                  combo->setEditable( false );
+                  combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+                  combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
+                  combo->addItem(tr("true"));
+                  combo->addItem(tr("false"));
+                  layout->addWidget(combo, s,1);
+
+                  valueCombo.push_back(combo);
+                  value.push_back(NULL);
+                  break;
+              }
+              if (JSON[member[i]][j].getMemberNames()[k] == "supprot_BE"){
+
+                  QComboBox *combo = new QComboBox( this );
+                  combo->setEditable( false );
+                  combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+                  combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
+                  combo->addItem(tr("true"));
+                  combo->addItem(tr("false"));
+                  layout->addWidget(combo, s,1);
+
+                  valueCombo.push_back(combo);
+                  value.push_back(NULL);
+                  break;
+              }
+              if (JSON[member[i]][j].getMemberNames()[k] == "Mode"){
+
+                  QComboBox *combo = new QComboBox( this );
+                  combo->setEditable( false );
+                  combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+                  combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
+                  combo->addItem(tr("Cli"));
+                  combo->addItem(tr("Automated"));
+                  layout->addWidget(combo, s,1);
+
+                  valueCombo.push_back(combo);
+                  value.push_back(NULL);
+                  break;
+              }
+              else {
                   // Line Edit
 
                       lineEdit = new QLineEdit(this);
                       lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
                       lineEdit->setText(QString::fromStdString(JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k] ].asString()));
                       layout->addWidget(lineEdit, s,1);
-                      name.push_back(JSON[member[i]][j].getMemberNames()[k]);
+                      valueCombo.push_back(NULL);
                       value.push_back(lineEdit);
+
+              }
+
+
+
+
+
+
+
+
 
 
 
@@ -270,45 +337,63 @@ member= JSON.getMemberNames();
 
       if (member[i] == "interfaces" && JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[4] ].asString() == "USART"){
 
-                     for (int j = 0; j < JSON[member[i]].size() ; j++){
-                          for (int k = 0; k < JSON[member[i]][j].getMemberNames().size(); k++){
 
-                          // Label
-                              QLabel *Label = new QLabel(this);
-                              Label->setGeometry(QRect(QPoint(50, 138),QSize(176, 25)));
-                              Label->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-                              Label->setText(QString::fromStdString( JSON["interfaces"][j].getMemberNames()[k]));
+                          for (unsigned int k = 0; k < JSON["interfaces"][0].getMemberNames().size(); k++){
 
-
-                              QFont fontSTLINK;
-                              fontSTLINK.setFamily("MS Shell Dlg 2");
-                              fontSTLINK.setPointSize(10);
-                              fontSTLINK.setBold(false);
-                              Label->setFont(fontSTLINK);
-
-                             layoutUsart->addWidget(Label, ++s,0);
-
-                          // Line Edit
-
-                              lineEdit = new QLineEdit(this);
-                              lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
-                              lineEdit->setText(QString::fromStdString((JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]]).asString()));
-                              layoutUsart->addWidget(lineEdit, s,1);
-
-                              valueUsart.push_back(lineEdit);
+                              // Label
+                                  QLabel *Label = new QLabel(this);
+                                  Label->setGeometry(QRect(QPoint(50, 138),QSize(176, 25)));
+                                  Label->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+                                  Label->setText(QString::fromStdString( JSON["interfaces"][0].getMemberNames()[k]));
 
 
+                                  QFont fontSTLINK;
+                                  fontSTLINK.setFamily("MS Shell Dlg 2");
+                                  fontSTLINK.setPointSize(10);
+                                  fontSTLINK.setBold(false);
+                                  Label->setFont(fontSTLINK);
+
+                                 layoutUsart->addWidget(Label, ++s,0);
+
+                              if (JSON["interfaces"][0].getMemberNames()[k] == "Baudrate"){
+
+                                  QComboBox *combo = new QComboBox( this );
+                                  combo->setEditable( false );
+                                  combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+                                  combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
+                                  combo->addItem(tr("115200"));
+                                  combo->addItem(tr("57600"));
+                                  combo->addItem(tr("38400"));
+                                  combo->addItem(tr("57600"));
+                                  combo->addItem(tr("19200"));
+                                  combo->addItem(tr("9600"));
+                                  layoutUsart->addWidget(combo, s,1);
+
+                                  valueUsartCombo.push_back(combo);
+                                  valueUsart.push_back(NULL);
+
+                              }
 
 
 
 
 
+                                else {                                  // Line Edit
+
+                                  lineEdit = new QLineEdit(this);
+                                  lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
+                                  lineEdit->setText(QString::fromStdString((JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]]).asString()));
+                                  layoutUsart->addWidget(lineEdit, s,1);
+
+                                  valueUsartCombo.push_back(NULL);
+                                  valueUsart.push_back(lineEdit);
+}
 
 
 
 
-                       }
-             }
+
+                          }
                     if(JSON["USART_static_tests"] != 0){
 
                              QLabel *labelBlData = new QLabel(this);
@@ -357,8 +442,8 @@ member= JSON.getMemberNames();
                                      Read::Test(layoutUsart, ++s);
 
                             /* ************************  Static  **********************/
-                         for (int j = 0; j < JSON["USART_static_tests"].size()  ; j++){
-                             for(int k =0 ;k< staticTest.size();k++)
+                         for (unsigned int j = 0; j < JSON["USART_static_tests"].size()  ; j++){
+                             for(unsigned int k =0 ;k< staticTest.size();k++)
 
                                 if( QString::compare(staticTest[k]->text(), QString::fromStdString(JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[1] ].asString()), Qt::CaseInsensitive) == 0)
 
@@ -368,8 +453,8 @@ member= JSON.getMemberNames();
                     }
                             /* ************************  Dynamic   **********************/
 
-                 for (int j = 0; j < JSON["USART_dynamic_tests"].size()  ; j++){
-                     for(int k =0 ;k< 11;k++){
+                 for (unsigned int j = 0; j < JSON["USART_dynamic_tests"].size()  ; j++){
+                     for(unsigned int k =0 ;k< 11;k++){
 
                         if(DynamicTest[k]->text() == QString::fromStdString(JSON["USART_dynamic_tests"][j][ JSON["USART_dynamic_tests"][j].getMemberNames()[1] ].asString()))
 
@@ -382,10 +467,10 @@ member= JSON.getMemberNames();
                          /* ************************  Requirements  ********************/
 
 
-                            for (int j = 0; j < JSON["USART_static_tests"].size()  ; j++){
-                             for(int l=0;l<JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[0] ].size();l++){
+                            for (unsigned int j = 0; j < JSON["USART_static_tests"].size()  ; j++){
+                             for(unsigned int l=0;l<JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[0] ].size();l++){
 
-                                         for(int k =0 ;k< Requirement.size();k++){
+                                         for(unsigned int k =0 ;k< Requirement.size();k++){
 
 
                                  //JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[1] ]
@@ -398,11 +483,11 @@ member= JSON.getMemberNames();
 
                             }}}
 
-                         for (int j = 0; j < JSON["USART_dynamic_tests"].size()  ; j++){
-                             for(int l=0;l<JSON["USART_dynamic_tests"][j][ JSON["USART_dynamic_tests"][j].getMemberNames()[0] ].size();l++){
+                         for (unsigned int j = 0; j < JSON["USART_dynamic_tests"].size()  ; j++){
+                             for(unsigned int l=0;l<JSON["USART_dynamic_tests"][j][ JSON["USART_dynamic_tests"][j].getMemberNames()[0] ].size();l++){
 
 
-                                for(int k =0 ;k< Requirement.size();k++){
+                                for(unsigned int k =0 ;k< Requirement.size();k++){
 
                                 if( ! Requirement[ k ]->checkState() &&
 
@@ -442,10 +527,10 @@ JSON["USART_static_tests"].clear() ;
 JSON["USART_dynamic_tests"].clear() ;
 
 
-    for (int i = 0; i < member.size(); i++) {
+    for (unsigned int i = 0; i < member.size(); i++) {
 
         if (member[i] == "USART_dynamic_tests" ){
-            for (int j=0 ; j < DynamicTest.size();j++){
+            for (unsigned int j=0 ; j < DynamicTest.size();j++){
 
               if (DynamicTest[j]->checkState() == Qt::Checked){
 
@@ -602,7 +687,7 @@ JSON["USART_dynamic_tests"].clear() ;
 
 
         if (member[i] == "USART_static_tests" ){
-            for (int j=0; j < staticTest.size() ;j++){
+            for (unsigned int j=0; j < staticTest.size() ;j++){
 
               if ( staticTest[j]->checkState() == Qt::Checked ){
 
@@ -972,13 +1057,45 @@ JSON["USART_dynamic_tests"].clear() ;
 
 
         if (member[i] !="USART_static_tests" && member[i] !="USART_dynamic_tests"&& member[i] !="interfaces"){
-                for (int j = 0; j < JSON[member[i]].size() ; j++){
-                     for (int k = 0; k < JSON[member[i]][j].getMemberNames().size(); k++){
+                for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
+                     for (unsigned int k = 0; k < JSON[member[i]][j].getMemberNames().size(); k++){
 
 
 
-
+                if (value[f] != NULL)
                 JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] =value[f++]->text().toLocal8Bit().constData();
+
+                else{
+                    if(valueCombo[f]->currentText() == "true")
+                    {
+                        JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] ="true";
+                        f++;
+                        break;
+                    }
+
+                    if(valueCombo[f]->currentText() == "false")
+                    {
+                       JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] ="false";
+                       f++;
+                       break;
+                    }
+
+                    if(valueCombo[f]->currentText() == "Cli")
+                    {
+                        JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] ="Cli";
+                        f++;
+                        break;
+                    }
+
+                    if(valueCombo[f]->currentText() == "Automated")
+                    {
+                       JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] ="Automated";
+                       f++;
+                       break;
+                    }
+                }
+
+
 
 
 
@@ -998,9 +1115,52 @@ JSON["USART_dynamic_tests"].clear() ;
 }
 
 
-     for (int k = 0; k < JSON["interfaces"][0].getMemberNames().size(); k++){
+     for (unsigned int k = 0; k < JSON["interfaces"][0].getMemberNames().size(); k++){
 
-            JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k] ] =valueUsart[U++]->text().toLocal8Bit().constData();
+
+
+
+         if (valueUsart[U] != NULL)
+             JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k] ] =valueUsart[U++]->text().toLocal8Bit().constData();
+
+
+         else{
+             if(valueUsartCombo[U]->currentText() == "9600")
+             {
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                 U++;
+
+             }
+
+             else if(valueCombo[U]->currentText() == "19200")
+             {
+                JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="19200";
+                U++;
+
+             }
+             else if(valueCombo[U]->currentText() == "38400")
+             {
+                JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="38400";
+                U++;
+
+             }
+             else if(valueCombo[U]->currentText() == "57600")
+             {
+                JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="57600";
+                U++;
+
+             }
+             else if(valueCombo[U]->currentText() == "115200")
+             {
+                JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="115200";
+                U++;
+
+             }
+
+
+         }
+
+
          }
 
     //***************Save***************//
@@ -1012,11 +1172,10 @@ JSON["USART_dynamic_tests"].clear() ;
     QMessageBox::information(this,"done","File successful edited");
 }
 
-
 void Read::onCheckAllTestReq(){
 
 
-    for (int i=0; i< Requirement.size();i++){
+    for (unsigned int i=0; i< Requirement.size();i++){
         if (counterRequirement==0)
         {
             Requirement[i]->setCheckState(Qt::Checked);
@@ -1040,7 +1199,7 @@ void Read::onCheckAllTestDynamic(){
 
 
 
-    for (int i=0; i< DynamicTest.size();i++){
+    for (unsigned int i=0; i< DynamicTest.size();i++){
         if (counterDynamic==0)
         DynamicTest[i]->setCheckState(Qt::Unchecked);
         else
@@ -1054,7 +1213,7 @@ void Read::onCheckAllTestDynamic(){
 void Read::onCheckAllTestStatic(){
 
 
-    for (int i=0; i< staticTest.size();i++){
+    for (unsigned int i=0; i< staticTest.size();i++){
         if (counterStatic==0)
         staticTest[i]->setCheckState(Qt::Unchecked);
         else
@@ -1064,7 +1223,6 @@ void Read::onCheckAllTestStatic(){
     counterStatic= 1-counterStatic;
 
 }
-
 
 void Read::requirement(){
 //toujour i-1
@@ -1581,14 +1739,14 @@ void Read::requirement(){
     }
     if (Requirement[18]->checkState() == Qt::Unchecked)
     {
-        staticTest[16 -1]->setChecked(1);
-        staticTest[17 -1]->setChecked(1);
-        staticTest[18 -1]->setChecked(1);
-        staticTest[19 -1]->setChecked(1);
-        staticTest[20 -1]->setChecked(1);
+        staticTest[16 -1]->setChecked(0);
+        staticTest[17 -1]->setChecked(0);
+        staticTest[18 -1]->setChecked(0);
+        staticTest[19 -1]->setChecked(0);
+        staticTest[20 -1]->setChecked(0);
 
 
-        DynamicTest[24 -1]->setChecked(1);
+        DynamicTest[24 -1]->setChecked(0);
 
 
     }
@@ -1611,14 +1769,14 @@ void Read::requirement(){
     }
     if (Requirement[19]->checkState() == Qt::Unchecked)
     {
-        staticTest[16 -1]->setChecked(1);
-        staticTest[17 -1]->setChecked(1);
-        staticTest[18 -1]->setChecked(1);
-        staticTest[19 -1]->setChecked(1);
-        staticTest[20 -1]->setChecked(1);
+        staticTest[16 -1]->setChecked(0);
+        staticTest[17 -1]->setChecked(0);
+        staticTest[18 -1]->setChecked(0);
+        staticTest[19 -1]->setChecked(0);
+        staticTest[20 -1]->setChecked(0);
 
 
-        DynamicTest[25 -1]->setChecked(1);
+        DynamicTest[25 -1]->setChecked(0);
 
 
     }

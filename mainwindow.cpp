@@ -27,8 +27,9 @@ void MainWindow::on_Next1_clicked()
     else if (ui->radioButton->isChecked())
     {
         hide();
-        secDialog = new SecDialog(this);
+        secDialog =new SecDialog(this);
         secDialog->show();
+
     }
     else if (ui->radioButton_2->isChecked())
     {

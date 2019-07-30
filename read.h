@@ -15,6 +15,7 @@
 #include <QVector>
 #include <vector>
 #include <QCheckBox>
+#include <QComboBox>
 #include "dist\json\json.h"
 
  extern QString filename;
@@ -36,9 +37,12 @@ public:
      QGridLayout *layout    = new QGridLayout(this);
      QGridLayout *layoutUsart    = new QGridLayout(this);
      QString filename;
-     QVector <std::string> name;
+
      QVector <QLineEdit *> value;
+     QVector <QComboBox *> valueCombo;
+
      QVector <QLineEdit *> valueUsart;
+     QVector <QComboBox *> valueUsartCombo;
 
      std::vector <QCheckBox*> staticTest ;
      std::vector <QCheckBox*> DynamicTest ;
