@@ -8,7 +8,7 @@
 unsigned int counterRequirement =0;
 unsigned int counterStatic =0;
 unsigned int counterDynamic =0;
-
+bool newfile =false;
  Read::Read(QWidget *parent, QString filename,bool newFile) : QDialog(parent), ui(new Ui::Read){
 
     newfile =getNewFile();
@@ -672,6 +672,7 @@ int ordreJSON1=0;
          }
 
     //***************Save***************//
+
      if(newfile){
 
          QString NewfileName = QFileDialog::getSaveFileName(this,tr("browse"), filename, "json File(*.json)");

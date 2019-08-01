@@ -25,7 +25,7 @@
  extern std::vector <QCheckBox*> DynamicTest ;
  extern std::vector <QCheckBox*> Requirement ;
 
-
+extern bool newfile;
 
 namespace Ui {
 class Read;
