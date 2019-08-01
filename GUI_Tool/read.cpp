@@ -4,15 +4,17 @@
 #include <QDebug>
 #include "mainwindow.h"
 
+
 unsigned int counterRequirement =0;
 unsigned int counterStatic =0;
 unsigned int counterDynamic =0;
-Read::Read(QWidget *parent) : QDialog(parent), ui(new Ui::Read){
 
+ Read::Read(QWidget *parent, QString filename,bool newFile) : QDialog(parent), ui(new Ui::Read){
 
+    newfile =getNewFile();
     ui->setupUi(this);
     
-    //onBrowseButton(filename);
+    onBrowseButton(filename, newFile);
 
 
 
@@ -81,7 +83,9 @@ Read::Read(QWidget *parent) : QDialog(parent), ui(new Ui::Read){
     m_button->setGeometry(QRect(QPoint(845, 855),QSize(150, 50)));
     connect(m_button,SIGNAL (clicked()), this, SLOT(onSaveChanegeButton()));
 
+
 }
+
 
 Read::~Read()
 {
@@ -180,18 +184,10 @@ void Read::Test(QGridLayout *layout, int s){
 
 }
 
-void Read::onBrowseButton(){
+void Read::onBrowseButton(QString filename, bool newFile){
 
 
     int s=0;
-
-        filename=QFileDialog::getOpenFileName(this,tr("browse"), "C:/", "json File(*.json)");
-
-
-
-    //QMessageBox::information(this,tr("File Name"), filename);
-
-
 
 
 std::ifstream JSONFILE(filename.toLocal8Bit().constData(), std::ifstream::binary);
@@ -256,7 +252,6 @@ member= JSON.getMemberNames();
                   value.push_back(NULL);
                   break;
               }
-
               if (JSON[member[i]][j].getMemberNames()[k] == "supprot_ME"){
 
                   QComboBox *combo = new QComboBox( this );
@@ -483,58 +478,41 @@ member= JSON.getMemberNames();
 
                     }
 
-                            /* ************************  Requirements  *******************
+                            /* ************************  Requirements  ********************/
+                                        s-= DynamicTest.size();
 
-
-                            for (unsigned int j = 0; j < JSON["USART_static_tests"].size()  ; j++){
-                             for(unsigned int l=0;l<JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[0] ].size();l++){
-
-                                         for(unsigned int k =0 ;k< Requirement.size();k++){
-
-
-                                 //JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[1] ]
-
-                                if( Requirement[k]->text() == QString::fromStdString(JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[0] ][l].asString()))
-
-                                    Requirement[ k ]->setChecked(1);
+                        /*  for (unsigned int j = 0; j < JSON["USART_static_tests"].size()  ; j++){
+             for(unsigned int l=0;l<JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[0] ].size();l++){
 
 
 
-                            }}}
+     QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[0] ][l].asString()) ,this);
+     if( JSON["USART_static_tests"][j]["testcheck"].asString() == "ON" ||JSON["USART_dynamic_tests"][j]["testcheck"].asString() == "ON" )
+            box->setChecked(1);
+     if(JSON["USART_static_tests"][j]["testcheck"].asString() == "OFF" ||JSON["USART_dynamic_tests"][j]["testcheck"].asString() == "OFF")
+            box->setChecked(0);
+      // QString k = QString::fromStdString(JSON["USART_static_tests"][j][ JSON["USART_static_tests"][j].getMemberNames()[0] ][l].asString());
 
-                         for (unsigned int j = 0; j < JSON["USART_dynamic_tests"].size()  ; j++){
-                             for(unsigned int l=0;l<JSON["USART_dynamic_tests"][j][ JSON["USART_dynamic_tests"][j].getMemberNames()[0] ].size();l++){
-
-
-                                for(unsigned int k =0 ;k< Requirement.size();k++){
-
-                                if( ! Requirement[ k ]->checkState() &&
-
-                                   Requirement[k]->text() == QString::fromStdString(JSON["USART_dynamic_tests"][j][ JSON["USART_dynamic_tests"][j].getMemberNames()[0] ][l].asString()))
-
-                                    Requirement[ k ]->setChecked(1);
+         Requirement.push_back(box);
+         layoutUsart->addWidget(box,++s,2);
 
 
-                            }}}*/
 
 
+            }}*/
 
 
                     }
 
 
-
 }
 
 
 }
-
-
-
 }
 
 void Read::onSaveChanegeButton(){
-
+newfile=getNewFile();
 
 int f=0;
 int U=0;
@@ -694,12 +672,25 @@ int ordreJSON1=0;
          }
 
     //***************Save***************//
-    std::ofstream JSONFILE;
-    JSONFILE.open(filename.toLocal8Bit().constData());
-    Json::StyledWriter styledWriter;
-    JSONFILE << styledWriter.write(JSON);
-    JSONFILE.close();
-    QMessageBox::information(this,"done","File successful edited");
+     if(newfile){
+
+         QString NewfileName = QFileDialog::getSaveFileName(this,tr("browse"), filename, "json File(*.json)");
+         std::ofstream JSONFILE;
+         JSONFILE.open(NewfileName.toLocal8Bit().constData());
+         Json::StyledWriter styledWriter;
+         JSONFILE << styledWriter.write(JSON);
+         JSONFILE.close();
+         QMessageBox::information(this,"done","New File successful created");
+     }
+     else if(!newfile){
+         std::ofstream JSONFILE;
+         JSONFILE.open(filename.toLocal8Bit().constData());
+         Json::StyledWriter styledWriter;
+         JSONFILE << styledWriter.write(JSON);
+         JSONFILE.close();
+         QMessageBox::information(this,"done","File successful edited");
+     }
+
 }
 
 void Read::onCheckAllTestReq(){
@@ -1463,4 +1454,8 @@ void Read::requirement(){
 
 void Read::setPath(QString f){
     filename=f;
+}
+
+bool Read::getNewFile(){
+    return newFile;
 }

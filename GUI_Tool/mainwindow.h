@@ -8,6 +8,8 @@
 #include "read.h"
 
 extern QString filename;
+extern bool newFile;
+
 //QString filename;
 
 namespace Ui {

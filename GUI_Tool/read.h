@@ -16,15 +16,15 @@
 #include <vector>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QSignalMapper>
 #include "dist\json\json.h"
-
 
 
 
  extern std::vector <QCheckBox*> staticTest ;
  extern std::vector <QCheckBox*> DynamicTest ;
  extern std::vector <QCheckBox*> Requirement ;
- extern bool newFile;
+
 
 
 namespace Ui {
@@ -37,39 +37,44 @@ class Read : public QDialog
 
 public:
      explicit Read(QWidget *parent = 0);
+     Read(QWidget *parent,QString filename, bool newFile);
      QGridLayout *layout    = new QGridLayout(this);
      QGridLayout *layoutUsart    = new QGridLayout(this);
-     QString filename;
+     //QString filename;
 
      QVector <QLineEdit *> value;
      QVector <QComboBox *> valueCombo;
 
      QVector <QLineEdit *> valueUsart;
      QVector <QComboBox *> valueUsartCombo;
-
+        bool newFile ,newfile;
      std::vector <QCheckBox*> staticTest ;
      std::vector <QCheckBox*> DynamicTest ;
      std::vector <QCheckBox*> Requirement ;
      void setPath(QString);
-
-
-
+     bool getNewFile();
      Json::Value JSON;
      Json::Value::Members member;
      QLineEdit *lineEdit;
      void Test(QGridLayout *laYout, int x);
 
-     void onBrowseButton();
+
+     void onBrowseButton(QString ,bool);
      int s;
     ~Read();
+public slots:
+     void onSaveChanegeButton( );
+
 
 private slots:
 
-     void onSaveChanegeButton();
+
      void onCheckAllTestReq();
      void onCheckAllTestDynamic();
      void onCheckAllTestStatic();
      void requirement();
+
+
 
 
 

@@ -3,10 +3,10 @@
 #include <QDebug>
 
 
-bool newFile =false;
+
 
 QString filename = "C:\ " ;
-//filename = "C:\ " ;
+bool newFile =false;
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWindow)
 {
@@ -23,16 +23,26 @@ MainWindow::~MainWindow()
 void MainWindow::on_Next1_clicked()
 {
 
-    //filename = QFileDialog::getOpenFileName(this,tr("browse"), "C:/", "json File(*.json)");
-    if (ui->checkBox->checkState() == Qt::Checked)
-        newFile = true;
-    else if (ui->checkBox->checkState() == Qt::Unchecked)
-        newFile = false;
-    
-       hide();
-       uiread = new Read(this);
-       uiread->show();
-       uiread->onBrowseButton();
+    newFile =false;
+
+    filename = QFileDialog::getOpenFileName(this,tr("browse"), "C:/", "json File(*.json)");
+
+
+    if(!filename.isEmpty()&& !filename.isNull())
+    {
+        if (ui->checkBox->checkState() == Qt::Checked)
+            newFile = true;
+        else if (ui->checkBox->checkState() == Qt::Unchecked)
+            newFile = false;
+
+           hide();
+           uiread = new Read(this,filename,newFile);
+           uiread->show();
+
+    }
+
+
+
 
 
 }
