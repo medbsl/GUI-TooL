@@ -11,7 +11,7 @@ unsigned int counterDynamic =0;
 bool newfile =false;
  Read::Read(QWidget *parent, QString filename,bool newFile) : QDialog(parent), ui(new Ui::Read){
 
-    newfile =getNewFile();
+    newfile =newFile;
     ui->setupUi(this);
     
     onBrowseButton(filename, newFile);
@@ -512,7 +512,7 @@ member= JSON.getMemberNames();
 }
 
 void Read::onSaveChanegeButton(){
-newfile=getNewFile();
+
 
 int f=0;
 int U=0;
