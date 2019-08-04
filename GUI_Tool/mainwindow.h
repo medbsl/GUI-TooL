@@ -10,7 +10,7 @@
 extern QString filename;
 extern bool newFile;
 
-//QString filename;
+
 
 namespace Ui {
 
@@ -23,7 +23,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    QString filename;
+    //QString filename;
     QString getFilepath();
     bool newFile;
     Read *uiread;

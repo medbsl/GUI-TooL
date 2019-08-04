@@ -9,7 +9,9 @@ unsigned int counterRequirement =0;
 unsigned int counterStatic =0;
 unsigned int counterDynamic =0;
 bool newfile =false;
- Read::Read(QWidget *parent, QString filename,bool newFile) : QDialog(parent), ui(new Ui::Read){
+
+
+Read::Read(QWidget *parent, QString filename,bool newFile) : QDialog(parent), ui(new Ui::Read){
 
     newfile =newFile;
     ui->setupUi(this);
@@ -85,7 +87,6 @@ bool newfile =false;
 
 
 }
-
 
 Read::~Read()
 {
@@ -199,23 +200,11 @@ member= JSON.getMemberNames();
 
  for (unsigned int i = 0; i < member.size(); i++) {
 
-      if (member[i] !="USART_static_tests" && member[i] !="USART_dynamic_tests"&& member[i] !="interfaces"){
+      if (member[i] !="USART_static_tests" && member[i] !="USART_dynamic_tests" && member[i] !="interfaces"){
 
-        //std::cout << member[i] <<" *** "<< member[i]<<endl<<endl;
-     QLabel *label = new QLabel(this);
-     label->setGeometry(QRect(QPoint(30, 100),QSize(121, 25)));
-     label->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-     label->setText(QString::fromStdString(member[i]));
-
-
-     QFont font;
-     font.setFamily("MS Shell Dlg 2");
-     font.setPointSize(12);
-     font.setBold(true);
-     label->setFont(font);
-
-
-        layout->addWidget(label, ++s,0);
+          //label of member
+         label = newLabel(QString::fromStdString(member[i]));
+         layout->addWidget(label, ++s,0);
 
 
      for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
@@ -224,19 +213,8 @@ member= JSON.getMemberNames();
 
 
               // Label
-                  QLabel *Label = new QLabel(this);
-                  Label->setGeometry(QRect(QPoint(50, 138),QSize(176, 25)));
-                  Label->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-                  Label->setText(QString::fromStdString(JSON[member[i]][j].getMemberNames()[k]));
-
-
-                  QFont fontSTLINK;
-                  fontSTLINK.setFamily("MS Shell Dlg 2");
-                  fontSTLINK.setPointSize(10);
-                  fontSTLINK.setBold(false);
-                  Label->setFont(fontSTLINK);
-
-                 layout->addWidget(Label, ++s,0);
+                Label = newSubLabel(QString::fromStdString(JSON[member[i]][j].getMemberNames()[k]));
+                layout->addWidget(Label, ++s,0);
 
               if (JSON[member[i]][j].getMemberNames()[k] == "connect"){
 
@@ -332,17 +310,8 @@ member= JSON.getMemberNames();
                           for (unsigned int k = 0; k < JSON["interfaces"][0].getMemberNames().size(); k++){
 
                               // Label
-                                  QLabel *Label = new QLabel(this);
-                                  Label->setGeometry(QRect(QPoint(50, 138),QSize(176, 25)));
-                                  Label->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-                                  Label->setText(QString::fromStdString( JSON["interfaces"][0].getMemberNames()[k]));
 
-
-                                  QFont fontSTLINK;
-                                  fontSTLINK.setFamily("MS Shell Dlg 2");
-                                  fontSTLINK.setPointSize(10);
-                                  fontSTLINK.setBold(false);
-                                  Label->setFont(fontSTLINK);
+                              Label = newSubLabel(QString::fromStdString( JSON["interfaces"][0].getMemberNames()[k]));
 
                                  layoutUsart->addWidget(Label, ++s,0);
 
@@ -387,48 +356,19 @@ member= JSON.getMemberNames();
                           }
                     if(JSON["USART_static_tests"] != 0){
 
-                             QLabel *labelBlData = new QLabel(this);
-                             labelBlData->setGeometry(QRect(QPoint(20, 136),QSize(121, 100)));
-                             labelBlData->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-                             labelBlData->setText("Static :");
 
 
-                             QFont fontBlData;
-                             fontBlData.setFamily("MS Shell Dlg 2");
-                             fontBlData.setPointSize(12);
-                             fontBlData.setBold(true);
-                             labelBlData->setFont(fontBlData);
+
+                             QLabel *labelBlData = newLabel("Static :");
                              layoutUsart->addWidget(labelBlData,++s,0);
 
 
+                             QLabel *labelDynamic = newLabel("Dynamic :");
+                             layoutUsart->addWidget(labelDynamic,s,1);
 
-                                 QLabel *labelDynamic = new QLabel(this);
-                                 labelDynamic->setGeometry(QRect(QPoint(20, 136),QSize(121, 100)));
-                                 labelDynamic->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-                                 labelDynamic->setText("Dynamic :");
+                             QLabel *labelRequirement = newLabel("Requirement :");
+                             layoutUsart->addWidget(labelRequirement,s,2);
 
-
-                                 QFont fontDynamic;
-                                 fontDynamic.setFamily("MS Shell Dlg 2");
-                                 fontDynamic.setPointSize(12);
-                                 fontDynamic.setBold(true);
-                                 labelDynamic->setFont(fontDynamic);
-
-                                 layoutUsart->addWidget(labelDynamic,s,1);
-
-                                     QLabel *labelRequirement = new QLabel(this);
-                                     labelRequirement->setGeometry(QRect(QPoint(20, 136),QSize(121, 100)));
-                                     labelRequirement->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-                                     labelRequirement->setText("Requirement :");
-
-
-                                     QFont fontRequirement;
-                                     fontRequirement.setFamily("MS Shell Dlg 2");
-                                     fontRequirement.setPointSize(12);
-                                     fontRequirement.setBold(true);
-                                     labelRequirement->setFont(fontRequirement);
-
-                                     layoutUsart->addWidget(labelRequirement,s,2);
 
                                      //Read::Test(layoutUsart, ++s);
                                      QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
@@ -1457,6 +1397,35 @@ void Read::setPath(QString f){
     filename=f;
 }
 
-bool Read::getNewFile(){
-    return newFile;
+QLabel* Read::newLabel(QString ch){
+
+    QLabel *label= new QLabel(this);
+    label->setGeometry(QRect(QPoint(30, 100),QSize(121, 25)));
+    label->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+    label->setText(ch);
+
+
+    QFont font;
+    font.setFamily("MS Shell Dlg 2");
+    font.setPointSize(12);
+    font.setBold(true);
+    label->setFont(font);
+    return label;
 }
+
+QLabel* Read::newSubLabel(QString ch){
+
+    QLabel *Label = new QLabel(this);
+    Label->setGeometry(QRect(QPoint(50, 138),QSize(176, 25)));
+    Label->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+    Label->setText(ch);
+
+
+    QFont fontSTLINK;
+    fontSTLINK.setFamily("MS Shell Dlg 2");
+    fontSTLINK.setPointSize(10);
+    fontSTLINK.setBold(false);
+    Label->setFont(fontSTLINK);
+    return Label;
+}
+

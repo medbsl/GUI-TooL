@@ -4,14 +4,14 @@
 
 
 
+QString filename = "C://" ;
 
-QString filename = "C:\ " ;
 bool newFile =false;
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    filename = "C:\ " ;
+
 
 }
 

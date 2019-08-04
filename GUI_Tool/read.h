@@ -24,6 +24,7 @@
  extern std::vector <QCheckBox*> staticTest ;
  extern std::vector <QCheckBox*> DynamicTest ;
  extern std::vector <QCheckBox*> Requirement ;
+ extern QString filename;
 
 extern bool newfile;
 
@@ -40,7 +41,7 @@ public:
      Read(QWidget *parent,QString filename, bool newFile);
      QGridLayout *layout    = new QGridLayout(this);
      QGridLayout *layoutUsart    = new QGridLayout(this);
-     //QString filename;
+
 
      QVector <QLineEdit *> value;
      QVector <QComboBox *> valueCombo;
@@ -58,8 +59,11 @@ public:
      QLineEdit *lineEdit;
      void Test(QGridLayout *laYout, int x);
 
-
+     QLabel *label,*Label;
      void onBrowseButton(QString ,bool);
+     QLabel* newLabel(QString);
+     QLabel* newSubLabel(QString);
+
      int s;
     ~Read();
 public slots:
