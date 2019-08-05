@@ -9,7 +9,7 @@ unsigned int counterRequirement =0;
 unsigned int counterStatic =0;
 unsigned int counterDynamic =0;
 bool newfile =false;
-
+int index =0;
 
 Read::Read(QWidget *parent, QString filename,bool newFile) : QDialog(parent), ui(new Ui::Read){
 
@@ -201,6 +201,10 @@ member= JSON.getMemberNames();
  for (unsigned int i = 0; i < member.size(); i++) {
 
       if (member[i] !="USART_static_tests" && member[i] !="USART_dynamic_tests" && member[i] !="interfaces"){
+
+
+
+
 
           //label of member
          label = newLabel(QString::fromStdString(member[i]));
@@ -446,9 +450,9 @@ member= JSON.getMemberNames();
 
 
 }
+  }
 
-
-}
+Affiche();
 }
 
 void Read::onSaveChanegeButton(){
@@ -631,6 +635,7 @@ int ordreJSON1=0;
          JSONFILE.close();
          QMessageBox::information(this,"done","File successful edited");
      }
+
 
 }
 
@@ -1429,3 +1434,84 @@ QLabel* Read::newSubLabel(QString ch){
     return Label;
 }
 
+void Read::Affiche(){
+int page=62;
+    //plateforme
+
+QString ch= QString::fromStdString(member[getIndex("Mode")[0]]);
+QLabel* f= newLabel(ch);
+layout->addWidget(f,++page,0);
+
+QString ch1 =QString::fromStdString(JSON[member[getIndex("Mode")[0]]][getIndex("Mode")[1]].getMemberNames()[getIndex("Mode")[2]]);
+QLabel* f1 =newSubLabel(ch1);
+layout->addWidget(f1,++page,0);
+
+layout->addWidget(valueCombo[getIndex("Mode")[3]],page,1);
+
+
+//memory
+for (unsigned int i =0; i< member.size();i++){
+
+    if(member[i]== "memory"){
+int indexName = getIndex("Name")[3];
+int indexStart = getIndex("Start")[3];
+int indexEnd = getIndex("End")[3];
+
+        QString ch2= QString::fromStdString(member[getIndex("End")[0]]);
+        QLabel* f2= newLabel(ch2);
+        layout->addWidget(f2,++page,0);
+
+        for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
+
+        QString ch4 =QString::fromStdString(JSON[member[getIndex("Name")[0]]][getIndex("Name")[1]].getMemberNames()[getIndex("Name")[2]]);
+        QLabel* f4 =newSubLabel(ch4);
+        layout->addWidget(f4,++page,0);
+
+        layout->addWidget(value[indexName],page,1);
+
+        QString ch5 =QString::fromStdString(JSON[member[getIndex("Start")[0]]][getIndex("Start")[1]].getMemberNames()[getIndex("Start")[2]]);
+        QLabel* f5 =newSubLabel(ch5);
+        layout->addWidget(f5,page,2);
+
+        layout->addWidget(value[indexStart],page,3);
+
+        QString ch3 =QString::fromStdString(JSON[member[getIndex("End")[0]]][getIndex("End")[1]].getMemberNames()[getIndex("End")[2]]);
+        QLabel* f3 =newSubLabel(ch3);
+        layout->addWidget(f3,page,4);
+
+        layout->addWidget(value[indexEnd],page,5);
+
+
+        indexName+=3;
+        indexStart+=3;
+        indexEnd +=3;
+}
+}
+}
+}
+
+
+
+std::vector<unsigned int> Read::getIndex( QString ch){
+
+std::vector<unsigned int> result;
+unsigned int index=0;
+    for (unsigned int i=0; i<JSON.getMemberNames().size(); i++){
+        if( !(member[i]=="interfaces") && !(member[i]=="USART_dynamic_tests")  && !(member[i]=="USART_static_tests") ){
+        for (unsigned int j=0; j<JSON[member[i]].size() ;j++){
+            for (unsigned int k =0; k<JSON[member[i]][j].getMemberNames().size() ; k++, index++){
+
+            if(ch == QString::fromStdString(JSON[member[i]][j].getMemberNames()[k])){
+                result.push_back(i);
+                result.push_back(j);
+                result.push_back(k);
+                result.push_back(index);
+
+                return (result);
+            }
+}
+
+        }}
+    }
+
+}

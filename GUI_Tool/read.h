@@ -25,6 +25,7 @@
  extern std::vector <QCheckBox*> DynamicTest ;
  extern std::vector <QCheckBox*> Requirement ;
  extern QString filename;
+ extern int index;
 
 extern bool newfile;
 
@@ -49,6 +50,7 @@ public:
      QVector <QLineEdit *> valueUsart;
      QVector <QComboBox *> valueUsartCombo;
         bool newFile ,newfile;
+        std::vector <int> index;
      std::vector <QCheckBox*> staticTest ;
      std::vector <QCheckBox*> DynamicTest ;
      std::vector <QCheckBox*> Requirement ;
@@ -63,6 +65,11 @@ public:
      void onBrowseButton(QString ,bool);
      QLabel* newLabel(QString);
      QLabel* newSubLabel(QString);
+     void Affiche();
+     struct Foo;
+
+     std::vector<unsigned int> getIndex( QString );
+
 
      int s;
     ~Read();

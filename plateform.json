@@ -536,25 +536,16 @@
       {
          "connect" : "true"
       },
-      //Connect to BL is needed when OB are programmed
+      
       {
          "supprot_ME" : "true"
       },
-      //Mass Erase is supported
+ 
       {
          "supprot_BE" : "true"
       }
    ],
-   // {"flash_start_address": "0x08000000" },
-   // {"flash_end_address"  : "0x08200000" },
-   // {"ram_start_address"  : "0x20000000" },
-   // {"ram_end_address"    : "0x24000000" },
-   // {"bif_start_adress"   : "0x1FF00000" },
-   // {"bif_end_address"    : "0x1FF08000" },
-   // {"sif_start_address"  : "0x1FFF0000" },
-   // {"sif_end_address"    : "0x4FFF0030" },
-   // {"opt_start_address"  : "0x1FF07800" },
-   // {"otp_end_address"    : "0x1FF07A0F" }
+ 
    "flash" : [
       {
          "flash_start_address" : "0x08000000A"
@@ -590,11 +581,7 @@
          "start_sector_portect" : "0A"
       }
    ],
-   //Bank Erase is supported
-   // BL interfaces configuration params, comment the interfaces to be not tested in automated mode, 
-   // Static/ Dynamic : script files names. 
-   //Mandatory in the automated mode
-   // Baudrate(Hz) Bitrate(KHz) 
+
    "interfaces" : [
       {
          "Baudrate" : "115200",
@@ -605,9 +592,7 @@
          "Static" : "Usart_Static_Tests.txt"
       }
    ],
-   //Mandatory 
-   //0670FF505252717267104640
-   //55FF72064986565727561287
+
    "memory" : [
       {
          "End" : "0x08080000A",
@@ -660,23 +645,11 @@
          "ram3_size" : "500A"
       }
    ],
-   //when commenting the last element/interface remove the comma form the previous element/interface
-   //The last element should not be followed by a comma
-   //target : board parameters 
+
    "target" : [
       {
          "STLink_SN" : "55FF72064986565727561287A"
       }
    ]
 }
-// {"test_id" : "USART_D_027", "req_id" : ["USART_Req013"]},
-// {"test_id" : "USART_D_028", "req_id" : ["USART_Req009"]},
-// {"test_id" : "USART_D_029", "req_id" : ["  none      "]},
-// {"test_id" : "USART_D_030", "req_id" : ["  none      "]},
-// {"test_id" : "USART_D_031", "req_id" : ["  none      "]},
-// {"test_id" : "USART_D_032", "req_id" : ["  none      "]},
-// {"test_id" : "USART_D_033", "req_id" : ["  none      "]},
-// {"test_id" : "USART_D_034", "req_id" : ["  none      "]}
-//when commenting the last element/testcase remove the comma form the previous element/testcase
-//the last element should not be followed by a comma
 
