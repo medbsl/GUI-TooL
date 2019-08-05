@@ -1,0 +1,455 @@
+{
+   "USART_dynamic_tests" : [
+      {
+         "req_id" : [ "USART_Req000" ],
+         "test_id" : "USART_D_001",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [ "USART_Req002" ],
+         "test_id" : "USART_D_002",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [ "USART_Req003" ],
+         "test_id" : "USART_D_003",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_004",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_007",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_008",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_011",
+         "testcheck" : "ON"
+      }
+   ],
+   "USART_static_tests" : [
+      {
+         "req_id" : [ "USART_Req001" ],
+         "test_id" : "USART_S_001",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [ "USART_Req001" ],
+         "test_id" : "USART_S_002",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [ "USART_Req001" ],
+         "test_id" : "USART_S_003",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [ "USART_Req000" ],
+         "test_id" : "USART_S_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req000" ],
+         "test_id" : "USART_S_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req003" ],
+         "test_id" : "USART_S_006",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [ "USART_Req003" ],
+         "test_id" : "USART_S_007",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_008",
+         "testcheck" : "OFF"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "test_id" : "USART_S_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "test_id" : "USART_S_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "test_id" : "USART_S_018",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "test_id" : "USART_S_019",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "test_id" : "USART_S_020",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_021",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_022",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_023",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_024",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_025",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_026",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_027",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_028",
+         "testcheck" : "ON"
+      }
+   ],
+   "bl_data" : [
+      {
+         "device_id" : "A"
+      },
+      {
+         "i2c_bl_version" : "B"
+      },
+      {
+         "spi_bl_version" : "C"
+      },
+      {
+         "usart_bl_version" : "D"
+      },
+      {
+         "fd_can_bl_version" : "E"
+      },
+      {
+         "usb_bl_version" : "F"
+      },
+      {
+         "fw_bl_version" : "G"
+      },
+      {
+         "bl_ram_size" : "H"
+      },
+      {
+         "can_bl_version" : "I"
+      }
+   ],
+   "bl_specific" : [
+      {
+         "connect" : "true"
+      },
+      {
+         "supprot_ME" : "true"
+      },
+      {
+         "supprot_BE" : "true"
+      }
+   ],
+   "flash" : [
+      {
+         "flash_start_address" : "G"
+      },
+      {
+         "flash_end_address" : "0x0802076767676"
+      },
+      {
+         "flash_size" : "65536456789"
+      },
+      {
+         "flash_sectors" : "3211"
+      },
+      {
+         "numpage_protect" : "833"
+      },
+      {
+         "numpage_protect_checksum" : "EAZA"
+      },
+      {
+         "number_page_portect" : "811"
+      },
+      {
+         "start_page_portect" : "022"
+      },
+      {
+         "end_page_portect" : "711"
+      },
+      {
+         "number_sectors_portect" : "811"
+      },
+      {
+         "start_sector_portect" : "azefzef777"
+      }
+   ],
+   "interfaces" : [
+      {
+         "Baudrate" : "115200",
+         "COM" : "3911",
+         "Driver" : "sgzz",
+         "Dynamic" : "Usart_Dynamic_Tests.txt",
+         "Name" : "USART",
+         "Static" : "zfezefz"
+      }
+   ],
+   "memory" : [
+      {
+         "End" : "78778",
+         "Name" : "FLASHv2",
+         "Start" : "0x08000000"
+      },
+      {
+         "End" : "0x24080000",
+         "Name" : "RAM",
+         "Start" : "0x20000000"
+      },
+      {
+         "End" : "0x1FF08000",
+         "Name" : "BIF",
+         "Start" : "START"
+      },
+      {
+         "End" : "0x4FFF0030",
+         "Name" : "SIF",
+         "Start" : "0x1FFF0000"
+      },
+      {
+         "End" : "0x1FF07A0F",
+         "Name" : "OTP",
+         "Start" : "0x1FF07800"
+      }
+   ],
+   "platform" : [
+      {
+         "Mode" : "Cli"
+      }
+   ],
+   "ram" : [
+      {
+         "ram_str_add" : "erg"
+      },
+      {
+         "ram_size" : "2000zr"
+      },
+      {
+         "ram_bl_size" : "0x0000400"
+      },
+      {
+         "ram1_size" : "500"
+      },
+      {
+         "ram2_size" : "500"
+      },
+      {
+         "ram3_size" : "500"
+      }
+   ],
+   "target" : [
+      {
+         "STLink_SN" : "AZERTYUI"
+      }
+   ]
+}

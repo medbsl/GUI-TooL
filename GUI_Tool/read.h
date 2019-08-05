@@ -66,7 +66,7 @@ public:
      QLabel* newLabel(QString);
      QLabel* newSubLabel(QString);
      void Affiche();
-     struct Foo;
+     bool Mandatory();
 
      std::vector<unsigned int> getIndex( QString );
 

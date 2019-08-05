@@ -208,7 +208,7 @@ member= JSON.getMemberNames();
 
           //label of member
          label = newLabel(QString::fromStdString(member[i]));
-         layout->addWidget(label, ++s,0);
+         //layout->addWidget(label, ++s,0);
 
 
      for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
@@ -218,7 +218,7 @@ member= JSON.getMemberNames();
 
               // Label
                 Label = newSubLabel(QString::fromStdString(JSON[member[i]][j].getMemberNames()[k]));
-                layout->addWidget(Label, ++s,0);
+               // layout->addWidget(Label, ++s,0);
 
               if (JSON[member[i]][j].getMemberNames()[k] == "connect"){
 
@@ -228,7 +228,7 @@ member= JSON.getMemberNames();
                   combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
                   combo->addItem(tr("true"));
                   combo->addItem(tr("false"));
-                  layout->addWidget(combo, s,1);
+                //  layout->addWidget(combo, s,1);
 
                   valueCombo.push_back(combo);
                   value.push_back(NULL);
@@ -242,7 +242,7 @@ member= JSON.getMemberNames();
                   combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
                   combo->addItem(tr("true"));
                   combo->addItem(tr("false"));
-                  layout->addWidget(combo, s,1);
+               //   layout->addWidget(combo, s,1);
 
                   valueCombo.push_back(combo);
                   value.push_back(NULL);
@@ -256,7 +256,7 @@ member= JSON.getMemberNames();
                   combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
                   combo->addItem(tr("true"));
                   combo->addItem(tr("false"));
-                  layout->addWidget(combo, s,1);
+               //   layout->addWidget(combo, s,1);
 
                   valueCombo.push_back(combo);
                   value.push_back(NULL);
@@ -270,7 +270,7 @@ member= JSON.getMemberNames();
                   combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
                   combo->addItem(tr("Cli"));
                   combo->addItem(tr("Automated"));
-                  layout->addWidget(combo, s,1);
+               //   layout->addWidget(combo, s,1);
 
                   valueCombo.push_back(combo);
                   value.push_back(NULL);
@@ -282,7 +282,7 @@ member= JSON.getMemberNames();
                       lineEdit = new QLineEdit(this);
                       lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
                       lineEdit->setText(QString::fromStdString(JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k] ].asString()));
-                      layout->addWidget(lineEdit, s,1);
+                   //   layout->addWidget(lineEdit, s,1);
                       valueCombo.push_back(NULL);
                       value.push_back(lineEdit);
 
@@ -614,27 +614,37 @@ int ordreJSON1=0;
 
 
          }
+     if(Mandatory()){
+         //***************Save***************//
+         for(unsigned int i=0; i< value.size();i++)
+             if(value[i]!= NULL && value[i]->text() != "")
+                 value[i]->setStyleSheet("");
 
-    //***************Save***************//
+          if(newfile){
 
-     if(newfile){
+              QString NewfileName = QFileDialog::getSaveFileName(this,tr("browse"), filename, "json File(*.json)");
+              std::ofstream JSONFILE;
+              JSONFILE.open(NewfileName.toLocal8Bit().constData());
+              Json::StyledWriter styledWriter;
+              JSONFILE << styledWriter.write(JSON);
+              JSONFILE.close();
+              QMessageBox::information(this,"done","New File successful created");
+          }
+          else if(!newfile){
+              std::ofstream JSONFILE;
+              JSONFILE.open(filename.toLocal8Bit().constData());
+              Json::StyledWriter styledWriter;
+              JSONFILE << styledWriter.write(JSON);
+              JSONFILE.close();
+              QMessageBox::information(this,"done","File successful edited");
+          }
 
-         QString NewfileName = QFileDialog::getSaveFileName(this,tr("browse"), filename, "json File(*.json)");
-         std::ofstream JSONFILE;
-         JSONFILE.open(NewfileName.toLocal8Bit().constData());
-         Json::StyledWriter styledWriter;
-         JSONFILE << styledWriter.write(JSON);
-         JSONFILE.close();
-         QMessageBox::information(this,"done","New File successful created");
      }
-     else if(!newfile){
-         std::ofstream JSONFILE;
-         JSONFILE.open(filename.toLocal8Bit().constData());
-         Json::StyledWriter styledWriter;
-         JSONFILE << styledWriter.write(JSON);
-         JSONFILE.close();
-         QMessageBox::information(this,"done","File successful edited");
+     else {
+         QMessageBox::warning(this,"Warning","some field are empty");
      }
+
+
 
 
 }
@@ -1436,7 +1446,7 @@ QLabel* Read::newSubLabel(QString ch){
 
 void Read::Affiche(){
 int page=62;
-    //plateforme
+    //platforme
 
 QString ch= QString::fromStdString(member[getIndex("Mode")[0]]);
 QLabel* f= newLabel(ch);
@@ -1446,11 +1456,34 @@ QString ch1 =QString::fromStdString(JSON[member[getIndex("Mode")[0]]][getIndex("
 QLabel* f1 =newSubLabel(ch1);
 layout->addWidget(f1,++page,0);
 
+
 layout->addWidget(valueCombo[getIndex("Mode")[3]],page,1);
 
 
 //memory
 for (unsigned int i =0; i< member.size();i++){
+    if(!(member[i]== "memory") && !(member[i]== "interfaces")&& !(member[i]== "USART_dynamic_tests")
+            && !(member[i]== "USART_static_tests") && !(member[i]== "platform")){
+        QString t=  QString::fromStdString( member[i] );
+        QLabel *tx= newLabel(t);
+        layout->addWidget(tx,++page,0);
+
+        for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
+             for (unsigned int k =0; k<JSON[member[i]][j].getMemberNames().size() ; k++){
+
+            QString T=QString::fromStdString(JSON[member[i]][j].getMemberNames()[k]);
+            QLabel *T1= newSubLabel(T);
+             layout->addWidget( T1,++page,0);
+
+             if(value[getIndex( QString::fromStdString(JSON[member[i]][j].getMemberNames()[k]) )[3]])
+                 layout->addWidget(value[getIndex( QString::fromStdString(JSON[member[i]][j].getMemberNames()[k]) )[3]],page,1);
+             else
+                 layout->addWidget(valueCombo[getIndex( QString::fromStdString(JSON[member[i]][j].getMemberNames()[k]) )[3]],page,1);
+
+             }
+        }
+    }
+
 
     if(member[i]== "memory"){
 int indexName = getIndex("Name")[3];
@@ -1461,36 +1494,35 @@ int indexEnd = getIndex("End")[3];
         QLabel* f2= newLabel(ch2);
         layout->addWidget(f2,++page,0);
 
-        for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
-
+        //Name
         QString ch4 =QString::fromStdString(JSON[member[getIndex("Name")[0]]][getIndex("Name")[1]].getMemberNames()[getIndex("Name")[2]]);
         QLabel* f4 =newSubLabel(ch4);
         layout->addWidget(f4,++page,0);
-
-        layout->addWidget(value[indexName],page,1);
-
+        //Start
         QString ch5 =QString::fromStdString(JSON[member[getIndex("Start")[0]]][getIndex("Start")[1]].getMemberNames()[getIndex("Start")[2]]);
         QLabel* f5 =newSubLabel(ch5);
-        layout->addWidget(f5,page,2);
-
-        layout->addWidget(value[indexStart],page,3);
-
+        layout->addWidget(f5,page,1);
+        //End
         QString ch3 =QString::fromStdString(JSON[member[getIndex("End")[0]]][getIndex("End")[1]].getMemberNames()[getIndex("End")[2]]);
         QLabel* f3 =newSubLabel(ch3);
-        layout->addWidget(f3,page,4);
-
-        layout->addWidget(value[indexEnd],page,5);
+        layout->addWidget(f3,page,2);
 
 
-        indexName+=3;
-        indexStart+=3;
-        indexEnd +=3;
+        for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
+
+
+            layout->addWidget(value[indexName],++page,0);
+            layout->addWidget(value[indexStart],page,1);
+            layout->addWidget(value[indexEnd],page,2);
+
+            indexName+=3;
+            indexStart+=3;
+            indexEnd +=3;
 }
 }
+
 }
 }
-
-
 
 std::vector<unsigned int> Read::getIndex( QString ch){
 
@@ -1514,4 +1546,16 @@ unsigned int index=0;
         }}
     }
 
+}
+
+bool Read::Mandatory(){
+    bool t =true;
+    for(unsigned int i=0; i< value.size();i++){
+        if(value[i]!= NULL && value[i]->text()== ""){
+            value[i]->setStyleSheet("border: 1.5px solid red");
+            t= false;
+
+        }
+    }
+    return t;
 }
