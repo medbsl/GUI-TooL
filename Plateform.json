@@ -534,13 +534,13 @@
    ],
    "bl_specific" : [
       {
-         "connect" : "false"
+         "connect" : "true"
       },
       {
          "supprot_ME" : "true"
       },
       {
-         "supprot_BE" : "false"
+         "supprot_BE" : "true"
       }
    ],
    "flash" : [

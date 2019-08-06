@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1244</width>
-    <height>676</height>
+    <width>479</width>
+    <height>255</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>320</y>
-      <width>361</width>
-      <height>251</height>
+      <x>190</x>
+      <y>10</y>
+      <width>281</width>
+      <height>171</height>
      </rect>
     </property>
     <property name="text">
@@ -33,8 +33,8 @@
    <widget class="QPushButton" name="Next1">
     <property name="geometry">
      <rect>
-      <x>760</x>
-      <y>440</y>
+      <x>20</x>
+      <y>110</y>
       <width>151</width>
       <height>61</height>
      </rect>
@@ -43,49 +43,22 @@
      <string>Browse</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>20</y>
-      <width>231</width>
-      <height>251</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../Stm32.png</pixmap>
-    </property>
-   </widget>
    <widget class="QCheckBox" name="checkBox">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>300</y>
-      <width>191</width>
-      <height>31</height>
+      <x>30</x>
+      <y>30</y>
+      <width>241</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>new file </string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>381</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../images.jpeg</pixmap>
     </property>
    </widget>
   </widget>
@@ -94,8 +67,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1244</width>
-     <height>21</height>
+     <width>479</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGUI_tool">

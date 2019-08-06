@@ -42,27 +42,51 @@ public:
      Read(QWidget *parent,QString filename, bool newFile);
      QGridLayout *layout    = new QGridLayout(this);
      QGridLayout *layoutUsart    = new QGridLayout(this);
-
+     QGridLayout *layoutSpi    = new QGridLayout(this);
+     QGridLayout *layoutI2C    = new QGridLayout(this);
+     QGridLayout *layoutUSB    = new QGridLayout(this);
+     QGridLayout *layoutCAN   = new QGridLayout(this);
+     QGridLayout *layoutFDCAN    = new QGridLayout(this);
+     std::vector <QCheckBox *> interfaces;
 
      QVector <QLineEdit *> value;
      QVector <QComboBox *> valueCombo;
 
      QVector <QLineEdit *> valueUsart;
      QVector <QComboBox *> valueUsartCombo;
+
+     QVector <QLineEdit *> valueSpi;
+     QVector <QComboBox *> valueSpiCombo;
+
+     QVector <QLineEdit *> valueI2C;
+     QVector <QComboBox *> valueI2CCombo;
+
+     QVector <QLineEdit *> valueCAN;
+     QVector <QComboBox *> valueCANCombo;
+
+     QVector <QLineEdit *> valueFDCAN;
+     QVector <QComboBox *> valueFDCANCombo;
+
+     QVector <QLineEdit *> valueUSB;
+     QVector <QComboBox *> valueUSBCombo;
+
+
         bool newFile ,newfile;
         std::vector <int> index;
-     std::vector <QCheckBox*> staticTest ;
-     std::vector <QCheckBox*> DynamicTest ;
-     std::vector <QCheckBox*> Requirement ;
+     std::vector <QCheckBox*> staticTest ,  staticTestSpi ,staticTestCAN , staticTestFDCAN , staticTestI2C , staticTestUSB;
+     std::vector <QCheckBox*> DynamicTest, DynamicTestSpi, DynamicTestCAN , DynamicTestFDCAN , DynamicTestI2C , DynamicTestUSB;
+     std::vector <QCheckBox*> Requirement, RequirementSpi, RequirementTestCAN , RequirementTestFDCAN , RequirementTestI2C , RequirementTestUSB;
+
+
+
      void setPath(QString);
      bool getNewFile();
      Json::Value JSON;
      Json::Value::Members member;
      QLineEdit *lineEdit;
-     void Test(QGridLayout *laYout, int x);
 
      QLabel *label,*Label;
-     void onBrowseButton(QString ,bool);
+     void onBrowseButton(QString );
      QLabel* newLabel(QString);
      QLabel* newSubLabel(QString);
      void Affiche();

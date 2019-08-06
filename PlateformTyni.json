@@ -385,16 +385,14 @@
          "start_sector_portect" : "azefzef777"
       }
    ],
-   "interfaces" : [
-      {
-         "Baudrate" : "115200",
-         "COM" : "3911",
-         "Driver" : "sgzz",
-         "Dynamic" : "Usart_Dynamic_Tests.txt",
-         "Name" : "USART",
-         "Static" : "zfezefz"
-      }
-   ],
+"interfaces": [
+  {"Name" : "USART" ,"testcheck" : "ON" , "Baudrate" : "115200", "COM" : 7, "Driver" : "FTDI", "Static" : "Usart_Static_Tests.txt" , "Dynamic" : "Usart_Dynamic_Tests.txt"},
+  {"Name" : "SPI"   ,"testcheck" : "ON" , "Bitrate" : "8", "Driver" : "aardvark", "Static" : "SPI_Static_Tests.txt" , "Dynamic" : "SPI_Dynamic_Tests.txt"},
+  {"Name" : "I2C"   ,"testcheck" : "ON" , "address" : "0x57", "Bitrate" : "400", "Driver" : "aardvark" , "Static" : "I2C_Static_Tests.txt" , "Dynamic" : "I2C_Dynamic_Tests.txt"},
+  
+  {"Name" : "USB"   ,"testcheck" : "ON" , "Static" : "USB_Static_Tests.txt" , "Dynamic" : "USB_Dynamic_Tests.txt"},
+  {"Name" : "NONE"  ,"testcheck" : "ON" , "Static" : "Usart_Static_Tests.txt" }
+],
    "memory" : [
       {
          "End" : "78778",
