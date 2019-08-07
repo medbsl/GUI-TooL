@@ -4,12 +4,12 @@
 #include <QDebug>
 #include "mainwindow.h"
 
-
 unsigned int counterRequirement =0;
 unsigned int counterStatic =0;
 unsigned int counterDynamic =0;
 bool newfile =false;
 int index =0;
+
 
 Read::Read(QWidget *parent, QString filename,bool newFile) : QDialog(parent), ui(new Ui::Read){
 
@@ -202,16 +202,13 @@ void Read::onBrowseButton(QString filename){
     for (unsigned int i = 0; i < member.size(); i++) {
         for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
 
-         if (member[i] !="USART_static_tests" && member[i] !="USART_dynamic_tests" &&
-             member[i] !="SPI_static_tests" && member[i] !="SPI_dynamic_tests" &&
-                 member[i] !="I2C_static_tests" && member[i] !="I2C_dynamic_tests" &&
-                 member[i] !="CAN_static_tests" && member[i] !="CAN_dynamic_tests" &&
-                 member[i] !="FDCAN_static_tests" && member[i] !="FDCAN_dynamic_tests" &&
-                 member[i] !="USB_static_tests" && member[i] !="USB_dynamic_tests"
-
-
-
-                               &&member[i] !="interfaces"){
+         if (    member[i] !="USART_static_tests"  &&  member[i] !="USART_dynamic_tests"  &&
+                 member[i] !="SPI_static_tests"    &&  member[i] !="SPI_dynamic_tests"    &&
+                 member[i] !="I2C_static_tests"    &&  member[i] !="I2C_dynamic_tests"    &&
+                 member[i] !="CAN_static_tests"    &&  member[i] !="CAN_dynamic_tests"    &&
+                 member[i] !="FDCAN_static_tests"  &&  member[i] !="FDCAN_dynamic_tests"  &&
+                 member[i] !="USB_static_tests"    &&  member[i] !="USB_dynamic_tests"    &&
+                 member[i] !="interfaces"){
 
 
 
@@ -317,548 +314,544 @@ void Read::onBrowseButton(QString filename){
         }
 
 
+else if (member[i] == "interfaces"){
 
 
+             if ( JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[3] ].asString() == "I2C"){
 
-         else if (member[i] == "interfaces" && JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[3] ].asString() == "I2C"){
+                 s=0;
+                           QCheckBox *valide = new QCheckBox("I2C",this);
+                                   if (JSON["interfaces"][0]["testcheck" ].asString()== "ON")
+                                       valide->setChecked(1);
+                                   else
+                                       valide->setChecked(0);
 
-                  s=0;
-                            QCheckBox *valide = new QCheckBox("I2C",this);
-                                    if (JSON["interfaces"][0]["testcheck" ].asString()== "ON")
-                                        valide->setChecked(1);
-                                    else
-                                        valide->setChecked(0);
+                                   interfaces.push_back(valide);
+                                   layoutI2C->addWidget(valide,s,0);
+                            for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
 
-                                    interfaces.push_back(valide);
-                                    layoutI2C->addWidget(valide,s,0);
-                             for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
-
-                                 if(JSON["interfaces"][j].getMemberNames()[k]== "testcheck" ) break;
-                                 // Label
-
-                                 Label = newSubLabel(QString::fromStdString( JSON["interfaces"][j].getMemberNames()[k]));
-
-                                    layoutI2C->addWidget(Label, ++s,0);
-
-                                 if (JSON["interfaces"][j].getMemberNames()[k] == "Baudrate"){
-
-                                     QComboBox *combo = new QComboBox( this );
-                                     combo->setEditable( false );
-                                     combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-                                     combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
-                                     combo->addItem(tr("115200"));
-                                     combo->addItem(tr("57600"));
-                                     combo->addItem(tr("38400"));
-                                     combo->addItem(tr("57600"));
-                                     combo->addItem(tr("19200"));
-                                     combo->addItem(tr("9600"));
-                                     layoutI2C->addWidget(combo, s,1);
-
-                                     valueI2CCombo.push_back(combo);
-                                     valueI2C.push_back(NULL);
-
-                                 }
-
-
-
-
-
-                                   else {                                  // Line Edit
-
-                                     lineEdit = new QLineEdit(this);
-                                     lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
-                                     lineEdit->setText(QString::fromStdString((JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]]).asString()));
-                                     layoutI2C->addWidget(lineEdit, s,1);
-
-                                     valueI2CCombo.push_back(NULL);
-                                     valueI2C.push_back(lineEdit);
-   }
-
-
-
-
-
-                             }
-                       if(JSON["I2C_static_tests"] != 0){
-
-
-
-
-                                QLabel *labelBlData = newLabel("Static :");
-                                layoutI2C->addWidget(labelBlData,++s,0);
-
-
-                                QLabel *labelDynamic = newLabel("Dynamic :");
-                                layoutI2C->addWidget(labelDynamic,s,1);
-
-                                QLabel *labelRequirement = newLabel("Requirement :");
-                                layoutI2C->addWidget(labelRequirement,s,2);
-
-
-                                        //Read::Test(layoutUsart, ++s);
-                                        QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStatic()));
-                                        layoutI2C->addWidget(checkAllTestStatic,s,0);
-
-                                        QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamic()));
-                                        layoutI2C->addWidget(checkAllTestDynamic,s,1);
-
-                                        QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReq()));
-                                        layoutI2C->addWidget(checkAllTestReq,s++,2);
-
-                               /* ************************  Static  *********************/
-                            for (unsigned int j = 0; j < JSON["I2C_static_tests"].size()  ; j++){
-
-
-
-                                    QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["I2C_static_tests"][j][JSON["I2C_static_tests"][j].getMemberNames()[1]].asString()) ,this);
-
-                                    if( JSON["I2C_static_tests"][j]["testcheck"].asString() == "ON" )
-                                           box->setChecked(1);
-                                    if(JSON["I2C_static_tests"][j]["testcheck"].asString() == "OFF")
-                                           box->setChecked(0);
-
-                                    layoutI2C->addWidget(box,++s,0);
-                                    staticTestI2C.push_back(box);
-
-
-                       }
-                               /* ************************  Dynamic   *********************/
-                                           s-= staticTestI2C.size();
-                            for (unsigned int j = 0; j < JSON["I2C_dynamic_tests"].size()  ; j++){
-
-
-                                QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["I2C_dynamic_tests"][j][JSON["I2C_dynamic_tests"][j].getMemberNames()[1]].asString()) ,this);
-
-                                if( JSON["I2C_dynamic_tests"][j]["testcheck"].asString() == "ON" )
-                                       box->setChecked(1);
-                                if(JSON["I2C_dynamic_tests"][j]["testcheck"].asString() == "OFF")
-                                       box->setChecked(0);
-
-                                layoutI2C->addWidget(box,++s,1);
-                                DynamicTestI2C.push_back(box);
-
-
-
-                       }
-
-
-
-
-                       }
-
-
-   }
-
-
-         else if (member[i] == "interfaces" && JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[3] ].asString() == "SPI"){
-
-                  s=0;
-                            QCheckBox *valide = new QCheckBox("SPI",this);
-                                    if (JSON["interfaces"][0]["testcheck"  ].asString()== "ON")
-                                        valide->setChecked(1);
-                                    else
-                                        valide->setChecked(0);
-
-                                    interfaces.push_back(valide);
-                                    layoutSpi->addWidget(valide,s,0);
-                             for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
-
-                                 if(JSON["interfaces"][j].getMemberNames()[k]== "testcheck" ) break;
-                                 // Label
-
-                                 Label = newSubLabel(QString::fromStdString( JSON["interfaces"][j].getMemberNames()[k]));
-
-                                    layoutSpi->addWidget(Label, ++s,0);
-
-                                 if (JSON["interfaces"][j].getMemberNames()[k] == "Baudrate"){
-
-                                     QComboBox *combo = new QComboBox( this );
-                                     combo->setEditable( false );
-                                     combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-                                     combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
-                                     combo->addItem(tr("115200"));
-                                     combo->addItem(tr("57600"));
-                                     combo->addItem(tr("38400"));
-                                     combo->addItem(tr("57600"));
-                                     combo->addItem(tr("19200"));
-                                     combo->addItem(tr("9600"));
-                                     layoutSpi->addWidget(combo, s,1);
-
-                                     valueSpiCombo.push_back(combo);
-                                     valueSpi.push_back(NULL);
-
-                                 }
-
-
-
-
-
-                                   else {                                  // Line Edit
-
-                                     lineEdit = new QLineEdit(this);
-                                     lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
-                                     lineEdit->setText(QString::fromStdString((JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]]).asString()));
-                                     layoutSpi->addWidget(lineEdit, s,1);
-
-                                     valueSpiCombo.push_back(NULL);
-                                     valueSpi.push_back(lineEdit);
-   }
-
-
-
-
-
-                             }
-                       if(JSON["SPI_static_tests"] != 0){
-
-
-
-
-                                QLabel *labelBlData = newLabel("Static :");
-                                layoutSpi->addWidget(labelBlData,++s,0);
-
-
-                                QLabel *labelDynamic = newLabel("Dynamic :");
-                                layoutSpi->addWidget(labelDynamic,s,1);
-
-                                QLabel *labelRequirement = newLabel("Requirement :");
-                                layoutSpi->addWidget(labelRequirement,s,2);
-
-
-                                        //Read::Test(layoutUsart, ++s);
-                                        QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStatic()));
-                                        layoutSpi->addWidget(checkAllTestStatic,s,0);
-
-                                        QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamic()));
-                                        layoutSpi->addWidget(checkAllTestDynamic,s,1);
-
-                                        QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReq()));
-                                        layoutSpi->addWidget(checkAllTestReq,s++,2);
-
-                               /* ************************  Static  **********************/
-                            for (unsigned int j = 0; j < JSON["SPI_static_tests"].size()  ; j++){
-
-
-
-                                    QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["SPI_static_tests"][j][JSON["SPI_static_tests"][j].getMemberNames()[1]].asString()) ,this);
-
-                                    if( JSON["SPI_static_tests"][j]["testcheck"].asString() == "ON" )
-                                           box->setChecked(1);
-                                    if(JSON["SPI_static_tests"][j]["testcheck"].asString() == "OFF")
-                                           box->setChecked(0);
-
-                                    layoutSpi->addWidget(box,++s,0);
-                                    staticTestSpi.push_back(box);
-
-
-                       }
-                               /* ************************  Dynamic   **********************/
-                                           s-= staticTestSpi.size();
-                            for (unsigned int j = 0; j < JSON["SPI_dynamic_tests"].size()  ; j++){
-
-
-                                QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["SPI_dynamic_tests"][j][JSON["SPI_dynamic_tests"][j].getMemberNames()[1]].asString()) ,this);
-
-                                if( JSON["SPI_dynamic_tests"][j]["testcheck"].asString() == "ON" )
-                                       box->setChecked(1);
-                                if(JSON["SPI_dynamic_tests"][j]["testcheck"].asString() == "OFF")
-                                       box->setChecked(0);
-
-                                layoutSpi->addWidget(box,++s,1);
-                                DynamicTestSpi.push_back(box);
-
-
-
-                       }
-
-
-
-
-                       }
-
-
-   }
-
-
-
-
-         else if (member[i] == "interfaces" && JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[4] ].asString() == "USART"){
- s=0;
-                     QCheckBox *valide = new QCheckBox("USART",this);
-                             if (JSON["interfaces"][j]["testcheck"  ].asString()== "ON")
-                                 valide->setChecked(1);
-                             else
-                                 valide->setChecked(0);
-
-                             interfaces.push_back(valide);
-                             layoutUsart->addWidget(valide,s,0);
-                             for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
-
-                                 // Label
                                 if(JSON["interfaces"][j].getMemberNames()[k]== "testcheck" ) break;
-                                 Label = newSubLabel(QString::fromStdString( JSON["interfaces"][j].getMemberNames()[k]));
+                                // Label
 
-                                    layoutUsart->addWidget(Label, ++s,0);
+                                Label = newSubLabel(QString::fromStdString( JSON["interfaces"][j].getMemberNames()[k]));
 
-                                 if (JSON["interfaces"][j].getMemberNames()[k] == "Baudrate"){
+                                   layoutI2C->addWidget(Label, ++s,0);
 
-                                     QComboBox *combo = new QComboBox( this );
-                                     combo->setEditable( false );
-                                     combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-                                     combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
-                                     combo->addItem(tr("115200"));
-                                     combo->addItem(tr("57600"));
-                                     combo->addItem(tr("38400"));
-                                     combo->addItem(tr("57600"));
-                                     combo->addItem(tr("19200"));
-                                     combo->addItem(tr("9600"));
-                                     layoutUsart->addWidget(combo, s,1);
+                                if (JSON["interfaces"][j].getMemberNames()[k] == "Baudrate"){
 
-                                     valueUsartCombo.push_back(combo);
-                                     valueUsart.push_back(NULL);
+                                    QComboBox *combo = new QComboBox( this );
+                                    combo->setEditable( false );
+                                    combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+                                    combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
+                                    combo->addItem(tr("115200"));
+                                    combo->addItem(tr("57600"));
+                                    combo->addItem(tr("38400"));
+                                    combo->addItem(tr("57600"));
+                                    combo->addItem(tr("19200"));
+                                    combo->addItem(tr("9600"));
+                                    layoutI2C->addWidget(combo, s,1);
+
+                                    valueI2CCombo.push_back(combo);
+                                    valueI2C.push_back(NULL);
+
+                                }
+
+
+
+
+
+                                  else {                                  // Line Edit
+
+                                    lineEdit = new QLineEdit(this);
+                                    lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
+                                    lineEdit->setText(QString::fromStdString((JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]]).asString()));
+                                    layoutI2C->addWidget(lineEdit, s,1);
+
+                                    valueI2CCombo.push_back(NULL);
+                                    valueI2C.push_back(lineEdit);
+       }
+
+
+
+
+
+                            }
+                      if(JSON["I2C_static_tests"] != 0){
+
+
+
+
+                               QLabel *labelBlData = newLabel("Static :");
+                               layoutI2C->addWidget(labelBlData,++s,0);
+
+
+                               QLabel *labelDynamic = newLabel("Dynamic :");
+                               layoutI2C->addWidget(labelDynamic,s,1);
+
+                               QLabel *labelRequirement = newLabel("Requirement :");
+                               layoutI2C->addWidget(labelRequirement,s,2);
+
+
+                                       //Read::Test(layoutUsart, ++s);
+                                       QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                                       connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStatic()));
+                                       layoutI2C->addWidget(checkAllTestStatic,s,0);
+
+                                       QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                                       connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamic()));
+                                       layoutI2C->addWidget(checkAllTestDynamic,s,1);
+
+                                       QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
+                                       connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReq()));
+                                       layoutI2C->addWidget(checkAllTestReq,s++,2);
+
+                              /* ************************  Static  *********************/
+                           for (unsigned int j = 0; j < JSON["I2C_static_tests"].size()  ; j++){
+
+
+
+                                   QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["I2C_static_tests"][j][JSON["I2C_static_tests"][j].getMemberNames()[1]].asString()) ,this);
+
+                                   if( JSON["I2C_static_tests"][j]["testcheck"].asString() == "ON" )
+                                          box->setChecked(1);
+                                   if(JSON["I2C_static_tests"][j]["testcheck"].asString() == "OFF")
+                                          box->setChecked(0);
+
+                                   layoutI2C->addWidget(box,++s,0);
+                                   staticTestI2C.push_back(box);
+
+
+                      }
+                              /* ************************  Dynamic   *********************/
+                                          s-= staticTestI2C.size();
+                           for (unsigned int j = 0; j < JSON["I2C_dynamic_tests"].size()  ; j++){
+
+
+                               QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["I2C_dynamic_tests"][j][JSON["I2C_dynamic_tests"][j].getMemberNames()[1]].asString()) ,this);
+
+                               if( JSON["I2C_dynamic_tests"][j]["testcheck"].asString() == "ON" )
+                                      box->setChecked(1);
+                               if(JSON["I2C_dynamic_tests"][j]["testcheck"].asString() == "OFF")
+                                      box->setChecked(0);
+
+                               layoutI2C->addWidget(box,++s,1);
+                               DynamicTestI2C.push_back(box);
+
+
+
+                      }
+
+
+
+
+                      }
+
+
+       }
+
+
+
+             else if ( JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[3] ].asString() == "SPI"){
+
+                 s=0;
+                           QCheckBox *valide = new QCheckBox("SPI",this);
+                                   if (JSON["interfaces"][j]["testcheck"  ].asString()== "ON")
+                                       valide->setChecked(1);
+                                   else
+                                       valide->setChecked(0);
+
+                                   interfaces.push_back(valide);
+                                   layoutSpi->addWidget(valide,s,0);
+                            for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
+
+                                if(JSON["interfaces"][j].getMemberNames()[k]== "testcheck" ) break;
+                                // Label
+
+                                Label = newSubLabel(QString::fromStdString( JSON["interfaces"][j].getMemberNames()[k]));
+
+                                   layoutSpi->addWidget(Label, ++s,0);
+
+                                if (JSON["interfaces"][j].getMemberNames()[k] == "Baudrate"){
+
+                                    QComboBox *combo = new QComboBox( this );
+                                    combo->setEditable( false );
+                                    combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+                                    combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
+                                    combo->addItem(tr("115200"));
+                                    combo->addItem(tr("57600"));
+                                    combo->addItem(tr("38400"));
+                                    combo->addItem(tr("57600"));
+                                    combo->addItem(tr("19200"));
+                                    combo->addItem(tr("9600"));
+                                    layoutSpi->addWidget(combo, s,1);
+
+                                    valueSpiCombo.push_back(combo);
+                                    valueSpi.push_back(NULL);
+
+                                }
+
+
+
+
+
+                                  else {                                  // Line Edit
+
+                                    lineEdit = new QLineEdit(this);
+                                    lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
+                                    lineEdit->setText(QString::fromStdString((JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]]).asString()));
+                                    layoutSpi->addWidget(lineEdit, s,1);
+
+                                    valueSpiCombo.push_back(NULL);
+                                    valueSpi.push_back(lineEdit);
+       }
+
+
+
+
+
+                            }
+                      if(JSON["SPI_static_tests"] != 0){
+
+
+
+
+                               QLabel *labelBlData = newLabel("Static :");
+                               layoutSpi->addWidget(labelBlData,++s,0);
+
+
+                               QLabel *labelDynamic = newLabel("Dynamic :");
+                               layoutSpi->addWidget(labelDynamic,s,1);
+
+                               QLabel *labelRequirement = newLabel("Requirement :");
+                               layoutSpi->addWidget(labelRequirement,s,2);
+
+
+                                       //Read::Test(layoutUsart, ++s);
+                                       QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                                       connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStatic()));
+                                       layoutSpi->addWidget(checkAllTestStatic,s,0);
+
+                                       QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                                       connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamic()));
+                                       layoutSpi->addWidget(checkAllTestDynamic,s,1);
+
+                                       QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
+                                       connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReq()));
+                                       layoutSpi->addWidget(checkAllTestReq,s++,2);
+
+                              /* ************************  Static  **********************/
+                           for (unsigned int j = 0; j < JSON["SPI_static_tests"].size()  ; j++){
+
+
+
+                                   QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["SPI_static_tests"][j][JSON["SPI_static_tests"][j].getMemberNames()[1]].asString()) ,this);
+
+                                   if( JSON["SPI_static_tests"][j]["testcheck"].asString() == "ON" )
+                                          box->setChecked(1);
+                                   if(JSON["SPI_static_tests"][j]["testcheck"].asString() == "OFF")
+                                          box->setChecked(0);
+
+                                   layoutSpi->addWidget(box,++s,0);
+                                   staticTestSpi.push_back(box);
+
+
+                      }
+                              /* ************************  Dynamic   **********************/
+                                          s-= staticTestSpi.size();
+                           for (unsigned int j = 0; j < JSON["SPI_dynamic_tests"].size()  ; j++){
+
+
+                               QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["SPI_dynamic_tests"][j][JSON["SPI_dynamic_tests"][j].getMemberNames()[1]].asString()) ,this);
+
+                               if( JSON["SPI_dynamic_tests"][j]["testcheck"].asString() == "ON" )
+                                      box->setChecked(1);
+                               if(JSON["SPI_dynamic_tests"][j]["testcheck"].asString() == "OFF")
+                                      box->setChecked(0);
+
+                               layoutSpi->addWidget(box,++s,1);
+                               DynamicTestSpi.push_back(box);
+
+
+
+                      }
+
+
+
+
+                      }
+
+
+       }
+
+
+
+             else if (JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[1] ].asString() == "USB" ){
+
+                      s=0;
+                                QCheckBox *valide = new QCheckBox("USB",this);
+                                        if (JSON["interfaces"][j]["testcheck"  ].asString()== "ON")
+                                            valide->setChecked(1);
+                                        else
+                                            valide->setChecked(0);
+
+                                        interfaces.push_back(valide);
+                                        layoutUSB->addWidget(valide,s,0);
+                                 for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
+
+                                     if(JSON["interfaces"][j].getMemberNames()[k]== "testcheck" ) break;
+                                     // Label
+
+                                     Label = newSubLabel(QString::fromStdString( JSON["interfaces"][j].getMemberNames()[k]));
+
+                                        layoutUSB->addWidget(Label, ++s,0);
+
+                                     if (JSON["interfaces"][j].getMemberNames()[k] == "Baudrate"){
+
+                                         QComboBox *combo = new QComboBox( this );
+                                         combo->setEditable( false );
+                                         combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+                                         combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
+                                         combo->addItem(tr("115200"));
+                                         combo->addItem(tr("57600"));
+                                         combo->addItem(tr("38400"));
+                                         combo->addItem(tr("57600"));
+                                         combo->addItem(tr("19200"));
+                                         combo->addItem(tr("9600"));
+                                         layoutUSB->addWidget(combo, s,1);
+
+                                         valueUSBCombo.push_back(combo);
+                                         valueUSB.push_back(NULL);
+
+                                     }
+
+
+
+
+
+                                       else {                                  // Line Edit
+
+                                         lineEdit = new QLineEdit(this);
+                                         lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
+                                         lineEdit->setText(QString::fromStdString((JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]]).asString()));
+                                         layoutUSB->addWidget(lineEdit, s,1);
+
+                                         valueUSBCombo.push_back(NULL);
+                                         valueUSB.push_back(lineEdit);
+       }
+
+
+
+
 
                                  }
+                           if(JSON["USB_static_tests"] != 0){
 
 
 
 
-
-                                   else {                                  // Line Edit
-
-                                     lineEdit = new QLineEdit(this);
-                                     lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
-                                     lineEdit->setText(QString::fromStdString((JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]]).asString()));
-                                     layoutUsart->addWidget(lineEdit, s,1);
-
-                                     valueUsartCombo.push_back(NULL);
-                                     valueUsart.push_back(lineEdit);
-   }
+                                    QLabel *labelBlData = newLabel("Static :");
+                                    layoutUSB->addWidget(labelBlData,++s,0);
 
 
+                                    QLabel *labelDynamic = newLabel("Dynamic :");
+                                    layoutUSB->addWidget(labelDynamic,s,1);
+
+                                    QLabel *labelRequirement = newLabel("Requirement :");
+                                    layoutUSB->addWidget(labelRequirement,s,2);
+
+
+                                            //Read::Test(layoutUsart, ++s);
+                                            QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                                            connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStatic()));
+                                            layoutUSB->addWidget(checkAllTestStatic,s,0);
+
+                                            QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                                            connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamic()));
+                                            layoutUSB->addWidget(checkAllTestDynamic,s,1);
+
+                                            QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
+                                            connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReq()));
+                                            layoutUSB->addWidget(checkAllTestReq,s++,2);
+
+                                   /* ************************  Static  **********************/
+                                for (unsigned int j = 0; j < JSON["USB_static_tests"].size()  ; j++){
 
 
 
-                             }
-                       if(JSON["USART_static_tests"] != 0){
+                                        QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["USB_static_tests"][j][JSON["USB_static_tests"][j].getMemberNames()[1]].asString()) ,this);
+
+                                        if( JSON["USB_static_tests"][j]["testcheck"].asString() == "ON" )
+                                               box->setChecked(1);
+                                        if(JSON["USB_static_tests"][j]["testcheck"].asString() == "OFF")
+                                               box->setChecked(0);
+
+                                        layoutUSB->addWidget(box,++s,0);
+                                        staticTestUSB.push_back(box);
 
 
+                           }
+                                   /* ************************  Dynamic   **********************/
+                                               s-= staticTestUSB.size();
+                                for (unsigned int j = 0; j < JSON["USB_dynamic_tests"].size()  ; j++){
 
 
-                                QLabel *labelBlData = newLabel("Static :");
-                                layoutUsart->addWidget(labelBlData,++s,0);
+                                    QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["USB_dynamic_tests"][j][JSON["USB_dynamic_tests"][j].getMemberNames()[1]].asString()) ,this);
 
-
-                                QLabel *labelDynamic = newLabel("Dynamic :");
-                                layoutUsart->addWidget(labelDynamic,s,1);
-
-                                QLabel *labelRequirement = newLabel("Requirement :");
-                                layoutUsart->addWidget(labelRequirement,s,2);
-
-
-                                        //Read::Test(layoutUsart, ++s);
-                                        QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStatic()));
-                                        layoutUsart->addWidget(checkAllTestStatic,s,0);
-
-                                        QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamic()));
-                                        layoutUsart->addWidget(checkAllTestDynamic,s,1);
-
-                                        QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReq()));
-                                        layoutUsart->addWidget(checkAllTestReq,s++,2);
-
-                               /* ************************  Static  **********************/
-                            for (unsigned int j = 0; j < JSON["USART_static_tests"].size()  ; j++){
-
-
-                                    QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["USART_static_tests"][j][JSON["USART_static_tests"][j].getMemberNames()[1]].asString()) ,this);
-
-                                    if( JSON["USART_static_tests"][j]["testcheck"].asString() == "ON" )
+                                    if( JSON["USB_dynamic_tests"][j]["testcheck"].asString() == "ON" )
                                            box->setChecked(1);
-                                    if(JSON["USART_static_tests"][j]["testcheck"].asString() == "OFF")
+                                    if(JSON["USB_dynamic_tests"][j]["testcheck"].asString() == "OFF")
                                            box->setChecked(0);
 
-                                    layoutUsart->addWidget(box,++s,0);
-                                    staticTest.push_back(box);
+                                    layoutUSB->addWidget(box,++s,1);
+                                    DynamicTestUSB.push_back(box);
 
 
-                       }
-                               /* ************************  Dynamic   **********************/
-                                           s-= staticTest.size();
-                            for (unsigned int j = 0; j < JSON["USART_dynamic_tests"].size()  ; j++){
 
+                           }
 
-                                QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["USART_dynamic_tests"][j][JSON["USART_dynamic_tests"][j].getMemberNames()[1]].asString()) ,this);
 
-                                if( JSON["USART_dynamic_tests"][j]["testcheck"].asString() == "ON" )
-                                       box->setChecked(1);
-                                if(JSON["USART_dynamic_tests"][j]["testcheck"].asString() == "OFF")
-                                       box->setChecked(0);
 
-                                layoutUsart->addWidget(box,++s,1);
-                                DynamicTest.push_back(box);
 
+                           }
 
 
-                       }
+       }
 
 
 
+             else if ( JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[4] ].asString() == "USART" && j<=1){
+     s=0;
+                    QCheckBox *valide = new QCheckBox("USART",this);
+                            if (JSON["interfaces"][j]["testcheck"  ].asString()== "ON")
+                                valide->setChecked(1);
+                            else
+                                valide->setChecked(0);
 
-                       }
+                            interfaces.push_back(valide);
+                            layoutUsart->addWidget(valide,s,0);
+                            for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
 
+                                // Label
+                               if(JSON["interfaces"][j].getMemberNames()[k]== "testcheck" ) break;
+                                Label = newSubLabel(QString::fromStdString( JSON["interfaces"][j].getMemberNames()[k]));
 
-   }
+                                   layoutUsart->addWidget(Label, ++s,0);
 
+                                if (JSON["interfaces"][j].getMemberNames()[k] == "Baudrate"){
 
+                                    QComboBox *combo = new QComboBox( this );
+                                    combo->setEditable( false );
+                                    combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
+                                    combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
+                                    combo->addItem(tr("115200"));
+                                    combo->addItem(tr("57600"));
+                                    combo->addItem(tr("38400"));
+                                    combo->addItem(tr("57600"));
+                                    combo->addItem(tr("19200"));
+                                    combo->addItem(tr("9600"));
+                                    layoutUsart->addWidget(combo, s,1);
 
+                                    valueUsartCombo.push_back(combo);
+                                    valueUsart.push_back(NULL);
 
+                                }
 
-         else if (member[i] == "interfaces" && JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[1] ].asString() == "USB"){
 
-                  s=0;
-                            QCheckBox *valide = new QCheckBox("USB",this);
-                                    if (JSON["interfaces"][0]["testcheck"  ].asString()== "ON")
-                                        valide->setChecked(1);
-                                    else
-                                        valide->setChecked(0);
 
-                                    interfaces.push_back(valide);
-                                    layoutUSB->addWidget(valide,s,0);
-                             for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
 
-                                 if(JSON["interfaces"][j].getMemberNames()[k]== "testcheck" ) break;
-                                 // Label
 
-                                 Label = newSubLabel(QString::fromStdString( JSON["interfaces"][j].getMemberNames()[k]));
+                                  else {                                  // Line Edit
 
-                                    layoutUSB->addWidget(Label, ++s,0);
+                                    lineEdit = new QLineEdit(this);
+                                    lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
+                                    lineEdit->setText(QString::fromStdString((JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]]).asString()));
+                                    layoutUsart->addWidget(lineEdit, s,1);
 
-                                 if (JSON["interfaces"][j].getMemberNames()[k] == "Baudrate"){
+                                    valueUsartCombo.push_back(NULL);
+                                    valueUsart.push_back(lineEdit);
+       }
 
-                                     QComboBox *combo = new QComboBox( this );
-                                     combo->setEditable( false );
-                                     combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
-                                     combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
-                                     combo->addItem(tr("115200"));
-                                     combo->addItem(tr("57600"));
-                                     combo->addItem(tr("38400"));
-                                     combo->addItem(tr("57600"));
-                                     combo->addItem(tr("19200"));
-                                     combo->addItem(tr("9600"));
-                                     layoutUSB->addWidget(combo, s,1);
 
-                                     valueUSBCombo.push_back(combo);
-                                     valueUSB.push_back(NULL);
 
-                                 }
 
 
+                            }
+                      if(JSON["USART_static_tests"] != 0){
 
 
 
-                                   else {                                  // Line Edit
 
-                                     lineEdit = new QLineEdit(this);
-                                     lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
-                                     lineEdit->setText(QString::fromStdString((JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]]).asString()));
-                                     layoutUSB->addWidget(lineEdit, s,1);
+                               QLabel *labelBlData = newLabel("Static :");
+                               layoutUsart->addWidget(labelBlData,++s,0);
 
-                                     valueUSBCombo.push_back(NULL);
-                                     valueUSB.push_back(lineEdit);
-   }
 
+                               QLabel *labelDynamic = newLabel("Dynamic :");
+                               layoutUsart->addWidget(labelDynamic,s,1);
 
+                               QLabel *labelRequirement = newLabel("Requirement :");
+                               layoutUsart->addWidget(labelRequirement,s,2);
 
 
+                                       //Read::Test(layoutUsart, ++s);
+                                       QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                                       connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStatic()));
+                                       layoutUsart->addWidget(checkAllTestStatic,s,0);
 
-                             }
-                       if(JSON["USB_static_tests"] != 0){
+                                       QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                                       connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamic()));
+                                       layoutUsart->addWidget(checkAllTestDynamic,s,1);
 
+                                       QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
+                                       connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReq()));
+                                       layoutUsart->addWidget(checkAllTestReq,s++,2);
 
+                              /* ************************  Static  **********************/
+                           for (unsigned int j = 0; j < JSON["USART_static_tests"].size()  ; j++){
 
 
-                                QLabel *labelBlData = newLabel("Static :");
-                                layoutUSB->addWidget(labelBlData,++s,0);
+                                   QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["USART_static_tests"][j][JSON["USART_static_tests"][j].getMemberNames()[1]].asString()) ,this);
 
+                                   if( JSON["USART_static_tests"][j]["testcheck"].asString() == "ON" )
+                                          box->setChecked(1);
+                                   if(JSON["USART_static_tests"][j]["testcheck"].asString() == "OFF")
+                                          box->setChecked(0);
 
-                                QLabel *labelDynamic = newLabel("Dynamic :");
-                                layoutUSB->addWidget(labelDynamic,s,1);
+                                   layoutUsart->addWidget(box,++s,0);
+                                   staticTest.push_back(box);
 
-                                QLabel *labelRequirement = newLabel("Requirement :");
-                                layoutUSB->addWidget(labelRequirement,s,2);
 
+                      }
+                              /* ************************  Dynamic   **********************/
+                                          s-= staticTest.size();
+                           for (unsigned int j = 0; j < JSON["USART_dynamic_tests"].size()  ; j++){
 
-                                        //Read::Test(layoutUsart, ++s);
-                                        QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStatic()));
-                                        layoutUSB->addWidget(checkAllTestStatic,s,0);
 
-                                        QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamic()));
-                                        layoutUSB->addWidget(checkAllTestDynamic,s,1);
+                               QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["USART_dynamic_tests"][j][JSON["USART_dynamic_tests"][j].getMemberNames()[1]].asString()) ,this);
 
-                                        QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                                        connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReq()));
-                                        layoutUSB->addWidget(checkAllTestReq,s++,2);
+                               if( JSON["USART_dynamic_tests"][j]["testcheck"].asString() == "ON" )
+                                      box->setChecked(1);
+                               if(JSON["USART_dynamic_tests"][j]["testcheck"].asString() == "OFF")
+                                      box->setChecked(0);
 
-                               /* ************************  Static  **********************/
-                            for (unsigned int j = 0; j < JSON["USB_static_tests"].size()  ; j++){
+                               layoutUsart->addWidget(box,++s,1);
+                               DynamicTest.push_back(box);
 
 
 
-                                    QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["USB_static_tests"][j][JSON["USB_static_tests"][j].getMemberNames()[1]].asString()) ,this);
+                      }
 
-                                    if( JSON["USB_static_tests"][j]["testcheck"].asString() == "ON" )
-                                           box->setChecked(1);
-                                    if(JSON["USB_static_tests"][j]["testcheck"].asString() == "OFF")
-                                           box->setChecked(0);
 
-                                    layoutUSB->addWidget(box,++s,0);
-                                    staticTestUSB.push_back(box);
 
 
-                       }
-                               /* ************************  Dynamic   **********************/
-                                           s-= staticTestUSB.size();
-                            for (unsigned int j = 0; j < JSON["USB_dynamic_tests"].size()  ; j++){
+                      }
 
 
-                                QCheckBox * box = new QCheckBox(QString::fromStdString(JSON["USB_dynamic_tests"][j][JSON["USB_dynamic_tests"][j].getMemberNames()[1]].asString()) ,this);
+       }
 
-                                if( JSON["USB_dynamic_tests"][j]["testcheck"].asString() == "ON" )
-                                       box->setChecked(1);
-                                if(JSON["USB_dynamic_tests"][j]["testcheck"].asString() == "OFF")
-                                       box->setChecked(0);
 
-                                layoutUSB->addWidget(box,++s,1);
-                                DynamicTestUSB.push_back(box);
+             //else break;
 
-
-
-                       }
-
-
-
-
-                       }
-
-
-   }
-
-
-
-
-
-
-
+         }
 
 
 
@@ -867,8 +860,6 @@ void Read::onBrowseButton(QString filename){
 
    Affiche();
    }
-
-
 
 void Read::onSaveChanegeButton(){
 
