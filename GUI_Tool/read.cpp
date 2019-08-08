@@ -1129,11 +1129,15 @@ else if (member[i] == "interfaces"){
 
 void Read::onSaveChanegeButton(){
 
+Plateform();
+Test();
+Interfaces();
+    /*
 
 int f=0;
 int U=0;
-/*int ordreJSON =0;
-int ordreJSON1=0;*/
+//int ordreJSON =0;
+//int ordreJSON1=0;
 
 
 
@@ -1483,8 +1487,7 @@ int ordreJSON1=0;*/
          if (valueUsart[U] != NULL)
              JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueUsart[U++]->text().toLocal8Bit().constData();
 
-         if (valueSpi[U] != NULL)
-             JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueUsart[U++]->text().toLocal8Bit().constData();
+
 
          else if(valueUsartCombo[U] != NULL) {
 
@@ -1525,9 +1528,9 @@ int ordreJSON1=0;*/
 
 
          }
-             }
+             }*/
      if(Mandatory()){
-         //***************Save***************//
+         //  ***************Save**************
          for(unsigned int i=0; i< value.size();i++)
              if(value[i]!= NULL && value[i]->text() != "")
                  value[i]->setStyleSheet("");
@@ -1553,9 +1556,11 @@ int ordreJSON1=0;*/
 
      }
      else {
-         //*************** Return to edit ***************//
+         // *************** Return to edit ***************
          QMessageBox::warning(this,"Warning","some field are empty");
      }
+
+
 
 }
 
@@ -2487,4 +2492,602 @@ bool Read::Mandatory(){
 }
 
 
+void Read::Plateform(){
 
+
+
+
+
+    unsigned int f=0;
+    unsigned int U=0;
+
+
+
+    for (unsigned int i = 0; i < member.size() ; i++){
+
+
+
+
+
+
+
+            if (    member[i] !="USART_static_tests"  &&  member[i] !="USART_dynamic_tests"  &&
+                    member[i] !="SPI_static_tests"    &&  member[i] !="SPI_dynamic_tests"    &&
+                    member[i] !="I2C_static_tests"    &&  member[i] !="I2C_dynamic_tests"    &&
+                    member[i] !="CAN_static_tests"    &&  member[i] !="CAN_dynamic_tests"    &&
+                    member[i] !="FDCAN_static_tests"  &&  member[i] !="FDCAN_dynamic_tests"  &&
+                    member[i] !="USB_static_tests"    &&  member[i] !="USB_dynamic_tests"    &&
+                    member[i] !="interfaces" ){
+
+
+                    for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
+                         for (unsigned int k = 0; k < JSON[member[i]][j].getMemberNames().size(); k++){
+
+
+
+                    if (value[f] != NULL)
+                    JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] =value[f++]->text().toLocal8Bit().constData();
+
+                    else{
+                        if(valueCombo[f]->currentText() == "true")
+                        {
+                            JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] ="true";
+                            f++;
+                            break;
+                        }
+
+                        if(valueCombo[f]->currentText() == "false")
+                        {
+                           JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] ="false";
+                           f++;
+                           break;
+                        }
+
+                        if(valueCombo[f]->currentText() == "Cli")
+                        {
+                            JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] ="Cli";
+                            f++;
+                            break;
+                        }
+
+                        if(valueCombo[f]->currentText() == "Automated")
+                        {
+                           JSON[member[i]][j][ JSON[member[i]][j].getMemberNames()[k]] ="Automated";
+                           f++;
+                           break;
+                        }
+                    }
+
+
+}}}
+    }
+
+
+
+
+
+
+
+
+
+}
+
+
+void Read::Test(){
+
+
+    for (unsigned int i = 0; i < member.size(); i++) {
+
+       if (member[i] == "USART_dynamic_tests" ){
+           for (unsigned int j=0 ; j < DynamicTest.size();j++){
+
+             if (DynamicTest[j]->checkState() == Qt::Checked)
+                   JSON["USART_dynamic_tests"][j]["testcheck"]= "ON";
+
+             else if(DynamicTest[j]->checkState() == Qt::Unchecked)
+                 JSON["USART_dynamic_tests"][j]["testcheck"]= "OFF";
+
+           }}
+
+
+
+
+
+       if (member[i] == "USART_static_tests" ){
+           for (unsigned int j=0; j < staticTest.size() ;j++){
+
+             if ( staticTest[j]->checkState() == Qt::Checked )
+                 JSON["USART_static_tests"][j]["testcheck"]= "ON";
+
+             else if(staticTest[j]->checkState() == Qt::Unchecked)
+                 JSON["USART_static_tests"][j]["testcheck"]= "OFF";
+
+
+             }}
+
+
+
+       if (member[i] == "SPI_dynamic_tests" ){
+           for (unsigned int j=0 ; j < DynamicTestSpi.size();j++){
+
+             if (DynamicTestSpi[j]->checkState() == Qt::Checked)
+                   JSON["SPI_dynamic_tests"][j]["testcheck"]= "ON";
+
+             else if(DynamicTestSpi[j]->checkState() == Qt::Unchecked)
+                 JSON["SPI_dynamic_tests"][j]["testcheck"]= "OFF";
+
+           }}
+
+
+
+
+
+       if (member[i] == "SPI_static_tests" ){
+           for (unsigned int j=0; j < staticTestSpi.size() ;j++){
+
+             if ( staticTestSpi[j]->checkState() == Qt::Checked )
+                 JSON["SPI_static_tests"][j]["testcheck"]= "ON";
+
+             else if(staticTestSpi[j]->checkState() == Qt::Unchecked)
+                 JSON["SPI_static_tests"][j]["testcheck"]= "OFF";
+
+
+             }}
+
+       if (member[i] == "I2C_dynamic_tests" ){
+           for (unsigned int j=0 ; j < DynamicTestI2C.size();j++){
+
+             if (DynamicTestI2C[j]->checkState() == Qt::Checked)
+                   JSON["I2C_dynamic_tests"][j]["testcheck"]= "ON";
+
+             else if(DynamicTestI2C[j]->checkState() == Qt::Unchecked)
+                 JSON["I2C_dynamic_tests"][j]["testcheck"]= "OFF";
+
+           }}
+
+
+
+
+
+       if (member[i] == "I2C_static_tests" ){
+           for (unsigned int j=0; j < staticTestI2C.size() ;j++){
+
+             if ( staticTestI2C[j]->checkState() == Qt::Checked )
+                 JSON["I2C_static_tests"][j]["testcheck"]= "ON";
+
+             else if(staticTestI2C[j]->checkState() == Qt::Unchecked)
+                 JSON["I2C_static_tests"][j]["testcheck"]= "OFF";
+
+
+             }}
+
+       if (member[i] == "CAN_dynamic_tests" ){
+           for (unsigned int j=0 ; j < DynamicTestCAN.size();j++){
+
+             if (DynamicTestCAN[j]->checkState() == Qt::Checked)
+                   JSON["CAN_dynamic_tests"][j]["testcheck"]= "ON";
+
+             else if(DynamicTestCAN[j]->checkState() == Qt::Unchecked)
+                 JSON["CAN_dynamic_tests"][j]["testcheck"]= "OFF";
+
+           }}
+
+
+       if (member[i] == "CAN_static_tests" ){
+           for (unsigned int j=0; j < staticTestCAN.size() ;j++){
+
+             if ( staticTestCAN[j]->checkState() == Qt::Checked )
+                 JSON["CAN_static_tests"][j]["testcheck"]= "ON";
+
+             else if(staticTestCAN[j]->checkState() == Qt::Unchecked)
+                 JSON["CAN_static_tests"][j]["testcheck"]= "OFF";
+
+
+             }}
+
+
+       if (member[i] == "FDCAN_dynamic_tests" ){
+           for (unsigned int j=0 ; j < DynamicTestFDCAN.size();j++){
+
+             if (DynamicTestFDCAN[j]->checkState() == Qt::Checked)
+                   JSON["FDCAN_dynamic_tests"][j]["testcheck"]= "ON";
+
+             else if(DynamicTestFDCAN[j]->checkState() == Qt::Unchecked)
+                 JSON["FDCAN_dynamic_tests"][j]["testcheck"]= "OFF";
+
+           }}
+
+
+
+
+
+       if (member[i] == "FDCAN_static_tests" ){
+           for (unsigned int j=0; j < staticTestFDCAN.size() ;j++){
+
+             if ( staticTestFDCAN[j]->checkState() == Qt::Checked )
+                 JSON["FDCAN_static_tests"][j]["testcheck"]= "ON";
+
+             else if(staticTestFDCAN[j]->checkState() == Qt::Unchecked)
+                 JSON["FDCAN_static_tests"][j]["testcheck"]= "OFF";
+
+
+             }}
+
+
+
+
+
+       if (member[i] == "USB_dynamic_tests" ){
+           for (unsigned int j=0 ; j < DynamicTestUSB.size();j++){
+
+             if (DynamicTestUSB[j]->checkState() == Qt::Checked)
+                   JSON["USB_dynamic_tests"][j]["testcheck"]= "ON";
+
+             else if(DynamicTestUSB[j]->checkState() == Qt::Unchecked)
+                 JSON["USB_dynamic_tests"][j]["testcheck"]= "OFF";
+
+           }}
+
+
+
+
+
+       if (member[i] == "USB_static_tests" ){
+           for (unsigned int j=0; j < staticTestUSB.size() ;j++){
+
+             if ( staticTestUSB[j]->checkState() == Qt::Checked )
+                 JSON["USB_static_tests"][j]["testcheck"]= "ON";
+
+             else if(staticTestUSB[j]->checkState() == Qt::Unchecked)
+                 JSON["USB_static_tests"][j]["testcheck"]= "OFF";
+
+
+             }}
+
+
+
+
+
+
+
+}
+}
+
+
+void Read::Interfaces(){
+    unsigned int U=0;
+    unsigned int UI2C=0;
+    unsigned int USPI=0;
+    unsigned int UCAN=0;
+    unsigned int UFDCAN=0;
+    unsigned int UUSB=0;
+
+
+
+
+
+
+
+
+    for (unsigned int i=0; i< member.size();i++){
+        if(member[i]=="interfaces"){
+        for (unsigned int j = 0; j < JSON["interfaces"].size() ; j++){
+                for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
+
+    if ( JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[3] ].asString() == "USART"){
+
+
+         if (valueUsart[U] != NULL)
+             JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueUsart[U++]->text().toLocal8Bit().constData();
+
+
+
+         else if(valueUsartCombo[U] != NULL) {
+
+             switch (valueUsartCombo[U]->currentText().toInt()) {
+             case 9600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                 U++;
+                 break;
+
+
+             case 19200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                 U++;
+                 break;
+
+
+             case 38400:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="38400";
+                 U++;
+                 break;
+
+
+             case 57600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="57600";
+                 U++;
+                 break;
+
+
+             case 115200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="115200";
+                 U++;
+                 break;
+             default:
+                 break;
+             }
+
+         }
+
+
+         }
+
+
+    if ( JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[3] ].asString() == "I2C"){
+
+
+         if (valueI2C[UI2C] != NULL)
+             JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueI2C[UI2C++]->text().toLocal8Bit().constData();
+
+
+
+         else if(valueI2CCombo[UI2C] != NULL) {
+
+             switch (valueI2CCombo[U]->currentText().toInt()) {
+             case 9600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                 UI2C++;
+                 break;
+
+
+             case 19200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                  UI2C++;
+                 break;
+
+
+             case 38400:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="38400";
+                 UI2C++;
+                 break;
+
+
+             case 57600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="57600";
+                UI2C++;
+                 break;
+
+
+             case 115200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="115200";
+                  UI2C++;
+                 break;
+             default:
+                 break;
+             }
+
+         }
+         }
+
+
+
+
+    if ( JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[3] ].asString() == "SPI"){
+
+
+         if (valueSpi[USPI] != NULL)
+             JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueSpi[USPI++]->text().toLocal8Bit().constData();
+
+
+
+         else if(valueSpiCombo[USPI] != NULL) {
+
+             switch (valueSpiCombo[USPI]->currentText().toInt()) {
+             case 9600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                 USPI++;
+                 break;
+
+
+             case 19200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                  USPI++;
+                 break;
+
+
+             case 38400:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="38400";
+                 USPI++;
+                 break;
+
+
+             case 57600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="57600";
+                USPI++;
+                 break;
+
+
+             case 115200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="115200";
+                  USPI++;
+                 break;
+             default:
+                 break;
+             }
+
+         }
+
+
+         }
+
+
+
+    if ( JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[3] ].asString() == "CAN"){
+
+
+         if (valueCAN[UCAN] != NULL)
+             JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueCAN[UCAN++]->text().toLocal8Bit().constData();
+
+
+
+         else if(valueCANCombo[UCAN] != NULL) {
+
+             switch (valueCANCombo[UCAN]->currentText().toInt()) {
+             case 9600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                 UCAN++;
+                 break;
+
+
+             case 19200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                  UCAN++;
+                 break;
+
+
+             case 38400:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="38400";
+                 UCAN++;
+                 break;
+
+
+             case 57600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="57600";
+                UCAN++;
+                 break;
+
+
+             case 115200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="115200";
+                  UCAN++;
+                 break;
+             default:
+                 break;
+             }
+
+         }
+
+
+         }
+
+
+
+    if ( JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[3] ].asString() == "FDCAN"){
+
+
+         if (valueFDCAN[UFDCAN] != NULL)
+             JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueFDCAN[UFDCAN++]->text().toLocal8Bit().constData();
+
+
+
+         else if(valueFDCANCombo[UFDCAN] != NULL) {
+
+             switch (valueFDCANCombo[UFDCAN]->currentText().toInt()) {
+             case 9600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                 UFDCAN++;
+                 break;
+
+
+             case 19200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                  UFDCAN++;
+                 break;
+
+
+             case 38400:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="38400";
+                 UCAN++;
+                 break;
+
+
+             case 57600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="57600";
+                UFDCAN++;
+                 break;
+
+
+             case 115200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="115200";
+                  UFDCAN++;
+                 break;
+             default:
+                 break;
+             }
+
+         }
+
+
+         }
+
+
+
+
+
+    if ( JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[3] ].asString() == "USB"){
+
+
+         if (valueUSB[UUSB] != NULL)
+             JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueUSB[UUSB++]->text().toLocal8Bit().constData();
+
+
+
+         else if(valueUSBCombo[UUSB] != NULL) {
+
+             switch (valueUSBCombo[UUSB]->currentText().toInt()) {
+             case 9600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                 UUSB++;
+                 break;
+
+
+             case 19200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="9600";
+                  UUSB++;
+                 break;
+
+
+             case 38400:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="38400";
+                 UUSB++;
+                 break;
+
+
+             case 57600:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="57600";
+                UUSB++;
+                 break;
+
+
+             case 115200:
+                 JSON["interfaces"][0][ JSON["interfaces"][0].getMemberNames()[k]] ="115200";
+                  UUSB++;
+                 break;
+             default:
+                 break;
+             }
+
+         }
+
+
+         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                }
+    }}}
+
+
+}

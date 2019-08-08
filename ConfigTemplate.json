@@ -1,589 +1,2674 @@
-{"platform" : [{"Mode" : "Cli"}] ,
-// Cli or Automated
-
-"bl_data": [ 
-//do not modify order, or remove interfaces
-	 {"device_id" : "0x480"},
-	 {"i2c_bl_version" : "0x12"},
-	 {"spi_bl_version" : "0x11"},
-	 {"usart_bl_version" : "0x31"},
-	 {"fd_can_bl_version" : "0x10"},
-	 {"usb_bl_version" : "0x22"},
-	 {"fw_bl_version" : "0xb"},
-	 {"bl_ram_size" : "0x3000"},
-	 {"can_bl_version" : "0x20"}
-],
-
-"bl_specific": [
-	 {"connect" : "true"},    
-//Connect after OB modification
-	 {"supprot_ME" : "true"}, 
-//support Mass Erase
-	 {"supprot_BE" : "true"}, 
-//support Bank Erase
-	 {"WRP" : "byArea"}, 
-//writeprotection type : byArea or bySectors
-     {"UseReset" : "false"} 
-//Perform SW Reset via ST-Link
-
-],
-
-"interfaces": [
-  {"Name" : "USART" ,"testcheck" : "ON" , "Baudrate" : "115200", "COM" : 7, "Driver" : "FTDI", "Static" : "Usart_Static_Tests.txt" , "Dynamic" : "Usart_Dynamic_Tests.txt"},
-  {"Name" : "SPI"   ,"testcheck" : "ON" , "Bitrate" : "8", "Driver" : "aardvark", "Static" : "SPI_Static_Tests.txt" , "Dynamic" : "SPI_Dynamic_Tests.txt"},
-  {"Name" : "I2C"   ,"testcheck" : "ON" , "address" : "0x57", "Bitrate" : "400", "Driver" : "aardvark" , "Static" : "I2C_Static_Tests.txt" , "Dynamic" : "I2C_Dynamic_Tests.txt"}
-  
-  //{"Name" : "USB"   ,"testcheck" : "ON" , "Static" : "USB_Static_Tests.txt" , "Dynamic" : "USB_Dynamic_Tests.txt"}
-  //{"Name" : "NONE"  ,"testcheck" : "ON" , "Static" : "Usart_Static_Tests.txt" }
-],
-
-"target": [
-  {"STLink_SN" : "52FF6E065266545420121687" }
-],
-
-"memory": [ 
-//Add or remove memories as needed
-  {"Name": "FLASH", "Start" : "0x08000000", "End" : "0x08200000"},
-  {"Name": "RAM", "Start" : "0x20000000", "End" : "0x24080000" },
-  {"Name": "BIF", "Start" : "0x1FF00000", "End" : "0x1FF08000" },
-  {"Name": "SIF", "Start" : "0x1FFF0000", "End" : "0x4FFF0030" },
-  {"Name": "OTP", "Start" : "0x1FF07800", "End" : "0x1FF07A0F" }
-],
-
-"USART_static_tests": [
-  {"test_id" : "USART_S_001", "testcheck" : "ON", "req_id" : ["USART_Req001"]},
-  {"test_id" : "USART_S_002", "testcheck" : "ON", "req_id" : ["USART_Req001"]},
-  {"test_id" : "USART_S_003", "testcheck" : "ON", "req_id" : ["USART_Req001"]},
-  {"test_id" : "USART_S_004", "testcheck" : "ON", "req_id" : ["USART_Req000"]},
-  {"test_id" : "USART_S_005", "testcheck" : "ON", "req_id" : ["USART_Req000"]},
-  {"test_id" : "USART_S_006", "testcheck" : "ON", "req_id" : ["USART_Req003"]},
-  {"test_id" : "USART_S_007", "testcheck" : "ON", "req_id" : ["USART_Req003"]},
-  {"test_id" : "USART_S_008", "testcheck" : "ON", "req_id" : ["USART_Req010", "USART_Req011", "USART_Req012", "USART_Req013", "USART_Req014", "USART_Req015"]},
-  {"test_id" : "USART_S_009", "testcheck" : "ON", "req_id" : ["USART_Req010", "USART_Req011", "USART_Req012", "USART_Req013", "USART_Req014", "USART_Req015"]},
-  {"test_id" : "USART_S_010", "testcheck" : "ON", "req_id" : ["USART_Req010", "USART_Req011", "USART_Req012", "USART_Req013", "USART_Req014", "USART_Req015"]},
-  {"test_id" : "USART_S_011", "testcheck" : "ON", "req_id" : ["USART_Req010", "USART_Req011", "USART_Req012", "USART_Req013", "USART_Req014", "USART_Req015"]},
-  {"test_id" : "USART_S_012", "testcheck" : "ON", "req_id" : ["USART_Req010", "USART_Req011", "USART_Req012", "USART_Req013", "USART_Req014", "USART_Req015"]},
-  {"test_id" : "USART_S_013", "testcheck" : "ON", "req_id" : ["USART_Req010", "USART_Req011", "USART_Req012", "USART_Req013", "USART_Req014", "USART_Req015"]},
-  {"test_id" : "USART_S_014", "testcheck" : "ON", "req_id" : ["USART_Req010", "USART_Req011", "USART_Req012", "USART_Req013", "USART_Req014", "USART_Req015"]},
-  {"test_id" : "USART_S_015", "testcheck" : "ON", "req_id" : ["USART_Req010", "USART_Req011", "USART_Req012", "USART_Req013", "USART_Req014", "USART_Req015"]},
-  {"test_id" : "USART_S_016", "testcheck" : "ON", "req_id" : ["USART_Req018", "USART_Req019"]},
-  {"test_id" : "USART_S_017", "testcheck" : "ON", "req_id" : ["USART_Req018", "USART_Req019"]},
-  {"test_id" : "USART_S_018", "testcheck" : "ON", "req_id" : ["USART_Req018", "USART_Req019"]},
-  {"test_id" : "USART_S_019", "testcheck" : "ON", "req_id" : ["USART_Req018", "USART_Req019"]},
-  {"test_id" : "USART_S_020", "testcheck" : "ON", "req_id" : ["USART_Req018", "USART_Req019"]},
-  {"test_id" : "USART_S_021", "testcheck" : "ON", "req_id" : ["USART_Req004", "USART_Req005", "USART_Req006", "USART_Req007", "USART_Req008", "USART_Req009"]},
-  {"test_id" : "USART_S_022", "testcheck" : "ON", "req_id" : ["USART_Req004", "USART_Req005", "USART_Req006", "USART_Req007", "USART_Req008", "USART_Req009"]},
-  {"test_id" : "USART_S_023", "testcheck" : "ON", "req_id" : ["USART_Req004", "USART_Req005", "USART_Req006", "USART_Req007", "USART_Req008", "USART_Req009"]},
-  {"test_id" : "USART_S_024", "testcheck" : "ON", "req_id" : ["USART_Req004", "USART_Req005", "USART_Req006", "USART_Req007", "USART_Req008", "USART_Req009"]},
-  {"test_id" : "USART_S_025", "testcheck" : "ON", "req_id" : ["USART_Req004", "USART_Req005", "USART_Req006", "USART_Req007", "USART_Req008", "USART_Req009"]},
-  {"test_id" : "USART_S_026", "testcheck" : "ON", "req_id" : ["USART_Req004", "USART_Req005", "USART_Req006", "USART_Req007", "USART_Req008", "USART_Req009"]},
-  {"test_id" : "USART_S_027", "testcheck" : "ON", "req_id" : ["USART_Req004", "USART_Req005", "USART_Req006", "USART_Req007", "USART_Req008", "USART_Req009"]},
-  {"test_id" : "USART_S_028", "testcheck" : "ON", "req_id" : ["USART_Req004", "USART_Req005", "USART_Req006", "USART_Req007", "USART_Req008", "USART_Req009"]},
-  {"test_id" : "USART_S_029", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_030", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_031", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_032", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_033", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_034", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_035", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_036", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_037", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_038", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_039", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_040", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_041", "testcheck" : "ON", "req_id" : ["USART_Req016", "USART_Req017"]},
-  {"test_id" : "USART_S_042", "testcheck" : "ON", "req_id" : ["USART_Req020"]},
-  {"test_id" : "USART_S_043", "testcheck" : "ON", "req_id" : ["USART_Req020"]},
-  {"test_id" : "USART_S_044", "testcheck" : "ON", "req_id" : ["USART_Req020"]},
-  {"test_id" : "USART_S_045", "testcheck" : "ON", "req_id" : ["USART_Req020"]},
-  {"test_id" : "USART_S_046", "testcheck" : "ON", "req_id" : ["USART_Req020"]},
-  {"test_id" : "USART_S_047", "testcheck" : "ON", "req_id" : ["USART_Req021"]},
-  {"test_id" : "USART_S_048", "testcheck" : "ON", "req_id" : ["USART_Req021"]},
-  {"test_id" : "USART_S_049", "testcheck" : "ON", "req_id" : ["USART_Req021"]},
-  {"test_id" : "USART_S_050", "testcheck" : "ON", "req_id" : ["USART_Req023"]},
-  {"test_id" : "USART_S_051", "testcheck" : "ON", "req_id" : ["USART_Req023"]},
-  {"test_id" : "USART_S_052", "testcheck" : "ON", "req_id" : ["USART_Req023"]},
-  {"test_id" : "USART_S_053", "testcheck" : "ON", "req_id" : ["USART_Req024"]},
-  {"test_id" : "USART_S_054", "testcheck" : "ON", "req_id" : ["USART_Req024"]},
-  {"test_id" : "USART_S_055", "testcheck" : "ON", "req_id" : ["USART_Req024"]},
-  {"test_id" : "USART_S_056", "testcheck" : "ON", "req_id" : ["USART_Req024"]},
-  {"test_id" : "USART_S_057", "testcheck" : "ON", "req_id" : ["USART_Req024"]},
-  {"test_id" : "USART_S_058", "testcheck" : "ON", "req_id" : ["USART_Req024"]},
-  {"test_id" : "USART_S_059", "testcheck" : "ON", "req_id" : ["USART_Req024"]},
-  {"test_id" : "USART_S_060", "testcheck" : "ON", "req_id" : ["USART_Req024"]},
-  {"test_id" : "USART_S_061", "testcheck" : "ON", "req_id" : ["USART_Req024"]},
-  {"test_id" : "USART_S_062", "testcheck" : "ON", "req_id" : ["USART_Req024"]}
-],
-
-
-"USART_dynamic_tests": [
- {"test_id" : "USART_D_001", "testcheck" : "ON", "req_id" : ["USART_Req000"]},
- {"test_id" : "USART_D_002", "testcheck" : "ON", "req_id" : ["USART_Req002"]},
- {"test_id" : "USART_D_003", "testcheck" : "ON", "req_id" : ["USART_Req003"]},
- {"test_id" : "USART_D_004", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_005", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_006", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_007", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_008", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_009", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_010", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_011", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_012", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_013", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_014", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_015", "testcheck" : "ON", "req_id" : ["USART_Req025"]},
- {"test_id" : "USART_D_016", "testcheck" : "ON", "req_id" : ["USART_Req004" , "USART_Req010"]},
- {"test_id" : "USART_D_017", "testcheck" : "ON", "req_id" : ["USART_Req004" , "USART_Req010"]},
- {"test_id" : "USART_D_018", "testcheck" : "ON", "req_id" : ["USART_Req005" , "USART_Req011"]},
- {"test_id" : "USART_D_019", "testcheck" : "ON", "req_id" : ["USART_Req016"]},
- {"test_id" : "USART_D_020", "testcheck" : "ON", "req_id" : ["USART_Req016"]},
- {"test_id" : "USART_D_021", "testcheck" : "ON", "req_id" : ["USART_Req020"]},
- {"test_id" : "USART_D_022", "testcheck" : "ON", "req_id" : ["USART_Req022" , "USART_Req023"]},
- {"test_id" : "USART_D_023", "testcheck" : "ON", "req_id" : ["USART_Req023" , "USART_Req024"]},
- {"test_id" : "USART_D_024", "testcheck" : "ON", "req_id" : ["USART_Req018"]},
- {"test_id" : "USART_D_025", "testcheck" : "ON", "req_id" : ["USART_Req019"]},
- {"test_id" : "USART_D_026", "testcheck" : "ON", "req_id" : ["  none      "]},
- {"test_id" : "USART_D_027", "testcheck" : "ON", "req_id" : ["USART_Req013"]},
- {"test_id" : "USART_D_028", "testcheck" : "ON", "req_id" : ["USART_Req009"]},
- {"test_id" : "USART_D_029", "testcheck" : "ON", "req_id" : ["  none      "]},
- {"test_id" : "USART_D_030", "testcheck" : "ON", "req_id" : ["  none      "]},
- {"test_id" : "USART_D_031", "testcheck" : "ON", "req_id" : ["  none      "]},
- {"test_id" : "USART_D_032", "testcheck" : "ON", "req_id" : ["  none      "]},
- {"test_id" : "USART_D_033", "testcheck" : "ON", "req_id" : ["  none      "]},
- {"test_id" : "USART_D_034", "testcheck" : "ON", "req_id" : ["  none      "]}
-],
-
-
-"SPI_static_tests": [
-  {"test_id" : "SPI_S_001", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_002", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_003", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_004", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_005", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_006", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_007", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_008", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_009", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_010", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_011", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_012", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_013", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_014", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_015", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_016", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_017", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_018", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_019", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_020", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_021", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_022", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_023", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_024", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_025", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_026", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_027", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_028", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_029", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_030", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_031", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_032", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_033", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_034", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_035", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_036", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_037", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_038", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_039", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_040", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_041", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_042", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_043", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_044", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_045", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_046", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_047", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_048", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_049", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_050", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_051", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_052", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_053", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_054", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_055", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_056", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_057", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_058", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_059", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_060", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_061", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_062", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_S_063", "testcheck" : "ON", "req_id" : ["TBD "]}
-],
-
-"SPI_dynamic_tests": [
-  {"test_id" : "SPI_D_001", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_002", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_003", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_004", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_005", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_006", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_007", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_008", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_009", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_010", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_011", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_012", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_013", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_014", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_015", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_016", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_017", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_018", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_019", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_020", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_021", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_022", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_023", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_024", "testcheck" : "ON", "req_id" : ["TBD "]},
-  {"test_id" : "SPI_D_025", "testcheck" : "ON", "req_id" : ["TBD "]}  
-],
-
-"I2C_static_tests": [
-  {"test_id" : "I2C_S_001", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_002", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_003", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_004", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_005", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_006", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_007", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_008", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_009", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_010", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_011", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_012", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_013", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_014", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_015", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_016", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_017", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_018", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_019", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_020", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_021", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_022", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_023", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_024", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_025", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_026", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_027", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_028", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_029", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_030", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_031", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_032", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_033", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_034", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_035", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_036", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_037", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_038", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_039", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_040", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_041", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_042", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_043", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_044", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_045", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_046", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_047", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_048", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_049", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_050", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_051", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_052", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_053", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_054", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_055", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_056", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_057", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_058", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_059", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_060", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_061", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_062", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_063", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_064", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_065", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_066", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_067", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_068", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_069", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_070", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_071", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_072", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_073", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_074", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_075", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_076", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_077", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_078", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_079", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_080", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_081", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_082", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_083", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_084", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_085", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_086", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_087", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_088", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_089", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_090", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_091", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_092", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_093", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_094", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_095", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_096", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_097", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_098", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_099", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_100", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_101", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_102", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_103", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_104", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_105", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_106", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_107", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_108", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_109", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_110", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_111", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_112", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_113", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_114", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_115", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_116", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_117", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_S_118", "testcheck" : "ON", "req_id" : ["TBD"]}
-],
-
-"I2C_dynamic_tests": [
-  {"test_id" : "I2C_D_001", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_002", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_003", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_004", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_005", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_006", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_007", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_008", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_009", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_010", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_011", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_012", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_013", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_014", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_015", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_016", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_017", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_018", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_019", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_020", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_021", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "I2C_D_022", "testcheck" : "ON", "req_id" : ["TBD"]}
-]/*,
-
-"USB_static_tests": [
-  {"test_id" : "USB_DFU_S_001", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_002", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_003", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_004", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_005", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_006", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_007", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_008", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_009", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_010", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_011", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_012", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_013", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_014", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_015", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_016", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_017", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_S_018", "testcheck" : "ON", "req_id" : ["TBD"]}  
-],
-
-"USB_dynamic_tests": [
-  {"test_id" : "USB_DFU_D_001", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_002", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_003", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_004", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_005", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_006", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_007", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_008", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_009", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_010", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_011", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_012", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_013", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "USB_DFU_D_014", "testcheck" : "ON", "req_id" : ["TBD"]}
-],
-
-"CAN_static_tests": [
-  {"test_id" : "CAN_S_001", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_002", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_003", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_004", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_005", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_006", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_007", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_008", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_009", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_010", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_011", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_012", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_013", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_014", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_015", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_016", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_017", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_018", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_019", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_020", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_021", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_022", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_023", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_024", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_025", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_026", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_027", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_028", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_029", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_030", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_031", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_S_032", "testcheck" : "ON", "req_id" : ["TBD"]}
-
-//when commenting the last element/testcase remove the comma form the previous element/testcase
-
-//the last element should not be followed by a comma
-],
-
-"CAN_dynamic_tests": [
-  {"test_id" : "CAN_D_001", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_002", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_003", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_004", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_005", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_006", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_007", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_008", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_009", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_010", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_011", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_012", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_013", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_014", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_015", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_016", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_017", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_018", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_019", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_020", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_021", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_022", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_023", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_024", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_025", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_026", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_027", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_028", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_029", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_030", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "CAN_D_031", "testcheck" : "ON", "req_id" : ["TBD"]}
-
-//when commenting the last element/testcase remove the comma form the previous element/testcase
-
-//the last element should not be followed by a comma
-],
-
-"FDCAN_static_tests": [
-  {"test_id" : "FDCAN_S_001","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_002","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_003","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_004","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_005","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_006","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_007","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_008","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_009","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_010","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_011","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_012","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_013","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_014","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_015","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_016","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_017","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_018","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_019","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_020","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_021","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_022","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_023","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_024","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_025","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_026","testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_S_027","testcheck" : "ON", "req_id" : ["TBD"]}
-
-
-//when commenting the last element/testcase remove the comma form the previous element/testcase
-
-//the last element should not be followed by a comma
-],
-
-"FDCAN_dynamic_tests": [
-  {"test_id" : "FDCAN_D_001", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_002", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_003", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_004", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_005", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_006", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_007", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_008", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_009", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_010", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_011", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_012", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_013", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_014", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_015", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_016", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_017", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_018", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_019", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_020", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_021", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_022", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_023", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_024", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_025", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_026", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_027", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_028", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_029", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_030", "testcheck" : "ON", "req_id" : ["TBD"]},
-  {"test_id" : "FDCAN_D_031", "testcheck" : "ON", "req_id" : ["TBD"]}
-
-//when commenting the last element/testcase remove the comma form the previous element/testcase
-
-//the last element should not be followed by a comma
-]
-*/
-
-
-
+{
+   //when commenting the last element/testcase remove the comma form the previous element/testcase
+   //the last element should not be followed by a comma
+   "CAN_dynamic_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_018",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_019",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_020",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_021",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_022",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_023",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_024",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_025",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_026",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_027",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_028",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_029",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_030",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_D_031",
+         "testcheck" : "ON"
+      }
+   ],
+   "CAN_static_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_018",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_019",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_020",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_021",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_022",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_023",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_024",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_025",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_026",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_027",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_028",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_029",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_030",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_031",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "CAN_S_032",
+         "testcheck" : "ON"
+      }
+   ],
+   //when commenting the last element/testcase remove the comma form the previous element/testcase
+   //the last element should not be followed by a comma
+   "FDCAN_dynamic_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_018",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_019",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_020",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_021",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_022",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_023",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_024",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_025",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_026",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_027",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_028",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_029",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_030",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_D_031",
+         "testcheck" : "ON"
+      }
+   ],
+   //when commenting the last element/testcase remove the comma form the previous element/testcase
+   //the last element should not be followed by a comma
+   "FDCAN_static_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_018",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_019",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_020",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_021",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_022",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_023",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_024",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_025",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_026",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "FDCAN_S_027",
+         "testcheck" : "ON"
+      }
+   ],
+   "I2C_dynamic_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_018",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_019",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_020",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_021",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_D_022",
+         "testcheck" : "ON"
+      }
+   ],
+   "I2C_static_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_018",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_019",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_020",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_021",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_022",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_023",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_024",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_025",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_026",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_027",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_028",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_029",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_030",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_031",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_032",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_033",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_034",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_035",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_036",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_037",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_038",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_039",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_040",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_041",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_042",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_043",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_044",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_045",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_046",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_047",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_048",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_049",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_050",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_051",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_052",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_053",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_054",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_055",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_056",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_057",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_058",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_059",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_060",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_061",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_062",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_063",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_064",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_065",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_066",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_067",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_068",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_069",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_070",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_071",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_072",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_073",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_074",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_075",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_076",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_077",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_078",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_079",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_080",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_081",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_082",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_083",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_084",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_085",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_086",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_087",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_088",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_089",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_090",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_091",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_092",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_093",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_094",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_095",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_096",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_097",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_098",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_099",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_100",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_101",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_102",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_103",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_104",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_105",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_106",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_107",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_108",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_109",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_110",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_111",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_112",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_113",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_114",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_115",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_116",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_117",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "I2C_S_118",
+         "testcheck" : "ON"
+      }
+   ],
+   "SPI_dynamic_tests" : [
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_018",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_019",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_020",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_021",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_022",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_023",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_024",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_D_025",
+         "testcheck" : "ON"
+      }
+   ],
+   "SPI_static_tests" : [
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_018",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_019",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_020",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_021",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_022",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_023",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_024",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_025",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_026",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_027",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_028",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_029",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_030",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_031",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_032",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_033",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_034",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_035",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_036",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_037",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_038",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_039",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_040",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_041",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_042",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_043",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_044",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_045",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_046",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_047",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_048",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_049",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_050",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_051",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_052",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_053",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_054",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_055",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_056",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_057",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_058",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_059",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_060",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_061",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_062",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "test_id" : "SPI_S_063",
+         "testcheck" : "ON"
+      }
+   ],
+   "USART_dynamic_tests" : [
+      {
+         "req_id" : [ "USART_Req000" ],
+         "test_id" : "USART_D_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req002" ],
+         "test_id" : "USART_D_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req003" ],
+         "test_id" : "USART_D_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "test_id" : "USART_D_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req004", "USART_Req010" ],
+         "test_id" : "USART_D_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req004", "USART_Req010" ],
+         "test_id" : "USART_D_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req005", "USART_Req011" ],
+         "test_id" : "USART_D_018",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016" ],
+         "test_id" : "USART_D_019",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016" ],
+         "test_id" : "USART_D_020",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "test_id" : "USART_D_021",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req022", "USART_Req023" ],
+         "test_id" : "USART_D_022",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req023", "USART_Req024" ],
+         "test_id" : "USART_D_023",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req018" ],
+         "test_id" : "USART_D_024",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req019" ],
+         "test_id" : "USART_D_025",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "test_id" : "USART_D_026",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req013" ],
+         "test_id" : "USART_D_027",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req009" ],
+         "test_id" : "USART_D_028",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "test_id" : "USART_D_029",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "test_id" : "USART_D_030",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "test_id" : "USART_D_031",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "test_id" : "USART_D_032",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "test_id" : "USART_D_033",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "test_id" : "USART_D_034",
+         "testcheck" : "ON"
+      }
+   ],
+   "USART_static_tests" : [
+      {
+         "req_id" : [ "USART_Req001" ],
+         "test_id" : "USART_S_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req001" ],
+         "test_id" : "USART_S_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req001" ],
+         "test_id" : "USART_S_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req000" ],
+         "test_id" : "USART_S_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req000" ],
+         "test_id" : "USART_S_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req003" ],
+         "test_id" : "USART_S_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req003" ],
+         "test_id" : "USART_S_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "test_id" : "USART_S_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "test_id" : "USART_S_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "test_id" : "USART_S_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "test_id" : "USART_S_018",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "test_id" : "USART_S_019",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "test_id" : "USART_S_020",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_021",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_022",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_023",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_024",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_025",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_026",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_027",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "test_id" : "USART_S_028",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_029",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_030",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_031",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_032",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_033",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_034",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_035",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_036",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_037",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_038",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_039",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_040",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "test_id" : "USART_S_041",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "test_id" : "USART_S_042",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "test_id" : "USART_S_043",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "test_id" : "USART_S_044",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "test_id" : "USART_S_045",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "test_id" : "USART_S_046",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req021" ],
+         "test_id" : "USART_S_047",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req021" ],
+         "test_id" : "USART_S_048",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req021" ],
+         "test_id" : "USART_S_049",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req023" ],
+         "test_id" : "USART_S_050",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req023" ],
+         "test_id" : "USART_S_051",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req023" ],
+         "test_id" : "USART_S_052",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "test_id" : "USART_S_053",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "test_id" : "USART_S_054",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "test_id" : "USART_S_055",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "test_id" : "USART_S_056",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "test_id" : "USART_S_057",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "test_id" : "USART_S_058",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "test_id" : "USART_S_059",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "test_id" : "USART_S_060",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "test_id" : "USART_S_061",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "test_id" : "USART_S_062",
+         "testcheck" : "ON"
+      }
+   ],
+   "USB_dynamic_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_D_014",
+         "testcheck" : "ON"
+      }
+   ],
+   "USB_static_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_001",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_002",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_003",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_004",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_005",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_006",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_007",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_008",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_009",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_010",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_011",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_012",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_013",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_014",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_015",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_016",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_017",
+         "testcheck" : "ON"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "test_id" : "USB_DFU_S_018",
+         "testcheck" : "ON"
+      }
+   ],
+   // Cli or Automated
+   "bl_data" : [
+      //do not modify order, or remove interfaces
+      {
+         "device_id" : "0x480"
+      },
+      {
+         "i2c_bl_version" : "0x12"
+      },
+      {
+         "spi_bl_version" : "0x11"
+      },
+      {
+         "usart_bl_version" : "0x31"
+      },
+      {
+         "fd_can_bl_version" : "0x10"
+      },
+      {
+         "usb_bl_version" : "0x22"
+      },
+      {
+         "fw_bl_version" : "0xb"
+      },
+      {
+         "bl_ram_size" : "0x3000"
+      },
+      {
+         "can_bl_version" : "0x20"
+      }
+   ],
+   "bl_specific" : [
+      {
+         "connect" : "true"
+      },
+      //Connect after OB modification
+      {
+         "supprot_ME" : "true"
+      },
+      //support Mass Erase
+      {
+         "supprot_BE" : "true"
+      },
+      //support Bank Erase
+      {
+         "WRP" : "byArea"
+      },
+      //writeprotection type : byArea or bySectors
+      {
+         "UseReset" : "false"
+      }
+   ],
+   //Perform SW Reset via ST-Link
+   "interfaces" : [
+      {
+         "Baudrate" : "115200",
+         "COM" : 7,
+         "Driver" : "FTDI",
+         "Dynamic" : "Usart_Dynamic_Tests.txt",
+         "Name" : "USART",
+         "Static" : "Usart_Static_Tests.txt",
+         "testcheck" : "ON"
+      },
+      {
+         "Bitrate" : "8",
+         "Driver" : "aardvark",
+         "Dynamic" : "SPI_Dynamic_Tests.txt",
+         "Name" : "SPI_Static_Tests.txt",
+         "Static" : "SPI_Static_Tests.txt",
+         "testcheck" : "ON"
+      },
+      {
+         "Bitrate" : "400",
+         "Driver" : "aardvark",
+         "Dynamic" : "I2C_Dynamic_Tests.txt",
+         "Name" : "I2C_Static_Tests.txt",
+         "Static" : "I2C_Static_Tests.txt",
+         "address" : "0x57",
+         "testcheck" : "ON"
+      },
+      {
+         "Baudrate" : "125",
+         "Driver" : "stlinkv3",
+         "Dynamic" : "Can_Dynamic_Tests.txt",
+         "Name" : "Can_Static_Tests.txt",
+         "Static" : "Can_Static_Tests.txt",
+         "testcheck" : "ON"
+      },
+      {
+         "COM" : "25",
+         "Driver" : "0032001B3037510B35333131",
+         "Dynamic" : "Fdcan_Dynamic_Tests.txt",
+         "Name" : "Fdcan_Static_Tests.txt",
+         "Static" : "Fdcan_Static_Tests.txt",
+         "testcheck" : "ON"
+      },
+      {
+         "Dynamic" : "USB_Dynamic_Tests.txt",
+         "Name" : "USB",
+         "Static" : "USB_Static_Tests.txt",
+         "testcheck" : "ON"
+      }
+   ],
+   "memory" : [
+      //Add or remove memories as needed
+      {
+         "End" : "0x08200000",
+         "Name" : "FLASH",
+         "Start" : "0x08000000"
+      },
+      {
+         "End" : "0x24080000",
+         "Name" : "RAM",
+         "Start" : "0x20000000"
+      },
+      {
+         "End" : "0x1FF08000",
+         "Name" : "BIF",
+         "Start" : "0x1FF00000"
+      },
+      {
+         "End" : "0x4FFF0030",
+         "Name" : "SIF",
+         "Start" : "0x1FFF0000"
+      },
+      {
+         "End" : "0x1FF07A0F",
+         "Name" : "OTP",
+         "Start" : "0x1FF07800"
+      }
+   ],
+   "platform" : [
+      {
+         "Mode" : "Cli"
+      }
+   ],
+   //{"Name" : "NONE"  ,"testcheck" : "ON" , "Static" : "Usart_Static_Tests.txt" }
+   "target" : [
+      {
+         "STLink_SN" : "52FF6E065266545420121687"
+      }
+   ]
 }
-	 
+//when commenting the last element/testcase remove the comma form the previous element/testcase
+//the last element should not be followed by a comma
+

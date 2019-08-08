@@ -49,26 +49,26 @@ public:
      QGridLayout *layoutFDCAN    = new QGridLayout(this);
      std::vector <QCheckBox *> interfaces;
 
-     QVector <QLineEdit *> value;
-     QVector <QComboBox *> valueCombo;
+     std::vector <QLineEdit *> value;
+     std::vector <QComboBox *> valueCombo;
 
-     QVector <QLineEdit *> valueUsart;
-     QVector <QComboBox *> valueUsartCombo;
+     std::vector <QLineEdit *> valueUsart;
+     std::vector <QComboBox *> valueUsartCombo;
 
-     QVector <QLineEdit *> valueSpi;
-     QVector <QComboBox *> valueSpiCombo;
+     std::vector <QLineEdit *> valueSpi;
+     std::vector <QComboBox *> valueSpiCombo;
 
-     QVector <QLineEdit *> valueI2C;
-     QVector <QComboBox *> valueI2CCombo;
+     std::vector <QLineEdit *> valueI2C;
+     std::vector <QComboBox *> valueI2CCombo;
 
-     QVector <QLineEdit *> valueCAN;
-     QVector <QComboBox *> valueCANCombo;
+     std::vector <QLineEdit *> valueCAN;
+     std::vector <QComboBox *> valueCANCombo;
 
-     QVector <QLineEdit *> valueFDCAN;
-     QVector <QComboBox *> valueFDCANCombo;
+     std::vector <QLineEdit *> valueFDCAN;
+     std::vector <QComboBox *> valueFDCANCombo;
 
-     QVector <QLineEdit *> valueUSB;
-     QVector <QComboBox *> valueUSBCombo;
+     std::vector <QLineEdit *> valueUSB;
+     std::vector <QComboBox *> valueUSBCombo;
 
 
         bool newFile ,newfile;
@@ -80,6 +80,7 @@ public:
 
 
      void setPath(QString);
+     void Plateform();
      bool getNewFile();
      Json::Value JSON;
      Json::Value::Members member;
@@ -87,9 +88,13 @@ public:
 
      QLabel *label,*Label;
      void onBrowseButton(QString );
+     void Test();
+
+
      QLabel* newLabel(QString);
      QLabel* newSubLabel(QString);
      void Affiche();
+     void Interfaces();
      bool Mandatory();
 
      std::vector<unsigned int> getIndex( QString );
