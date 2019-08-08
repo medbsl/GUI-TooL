@@ -48,7 +48,7 @@ public:
      QGridLayout *layoutCAN   = new QGridLayout(this);
      QGridLayout *layoutFDCAN    = new QGridLayout(this);
      std::vector <QCheckBox *> interfaces;
-     bool USARTTEST, SPITEST ,I2CTEST,CANTEST,FDCANTEST,USBTEST;
+     
 
      std::vector <QLineEdit *> value;
      std::vector <QComboBox *> valueCombo;
@@ -74,7 +74,7 @@ public:
 
         bool newFile ,newfile;
         std::vector <int> index;
-     std::vector <QCheckBox*> staticTest ,  staticTestSpi ,staticTestCAN , staticTestFDCAN , staticTestI2C , staticTestUSB;
+     std::vector <QCheckBox*> staticTest , staticTestSpi ,staticTestCAN , staticTestFDCAN , staticTestI2C , staticTestUSB;
      std::vector <QCheckBox*> DynamicTest, DynamicTestSpi, DynamicTestCAN , DynamicTestFDCAN , DynamicTestI2C , DynamicTestUSB;
      std::vector <QCheckBox*> Requirement, RequirementSpi, RequirementTestCAN , RequirementTestFDCAN , RequirementTestI2C , RequirementTestUSB;
 
