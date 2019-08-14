@@ -27,6 +27,8 @@
  extern QString filename;
  extern int index;
 
+
+
 extern bool newfile;
 
 namespace Ui {
@@ -38,6 +40,9 @@ class Read : public QDialog
     Q_OBJECT
 
 public:
+
+
+
      explicit Read(QWidget *parent = 0);
      Read(QWidget *parent,QString filename, bool newFile);
      QGridLayout *layout    = new QGridLayout(this);
@@ -48,7 +53,7 @@ public:
      QGridLayout *layoutCAN   = new QGridLayout(this);
      QGridLayout *layoutFDCAN    = new QGridLayout(this);
      std::vector <QCheckBox *> interfaces;
-     bool USARTTEST, SPITEST ,I2CTEST,CANTEST,FDCANTEST,USBTEST;
+
 
      std::vector <QLineEdit *> value;
      std::vector <QComboBox *> valueCombo;
@@ -74,7 +79,7 @@ public:
 
         bool newFile ,newfile;
         std::vector <int> index;
-     std::vector <QCheckBox*> staticTest ,  staticTestSpi ,staticTestCAN , staticTestFDCAN , staticTestI2C , staticTestUSB;
+     std::vector <QCheckBox*> staticTest , staticTestSpi ,staticTestCAN , staticTestFDCAN , staticTestI2C , staticTestUSB;
      std::vector <QCheckBox*> DynamicTest, DynamicTestSpi, DynamicTestCAN , DynamicTestFDCAN , DynamicTestI2C , DynamicTestUSB;
      std::vector <QCheckBox*> Requirement, RequirementSpi, RequirementTestCAN , RequirementTestFDCAN , RequirementTestI2C , RequirementTestUSB;
 
@@ -89,6 +94,8 @@ public:
 
      QLabel *label,*Label;
      void onBrowseButton(QString );
+     void onBrowseNewFile();
+     void onAddMemory();
      void Test();
 
 
@@ -113,6 +120,30 @@ private slots:
      void onCheckAllTestReq();
      void onCheckAllTestDynamic();
      void onCheckAllTestStatic();
+
+     void onCheckAllTestReqUSB();
+     void onCheckAllTestDynamicUSB();
+     void onCheckAllTestStaticUSB();
+
+     void onCheckAllTestReqCAN();
+     void onCheckAllTestDynamicCAN();
+     void onCheckAllTestStaticCAN();
+
+     void onCheckAllTestReqFDCAN();
+     void onCheckAllTestDynamicFDCAN();
+     void onCheckAllTestStaticFDCAN();
+
+     void onCheckAllTestReqI2C();
+     void onCheckAllTestDynamicI2C();
+     void onCheckAllTestStaticI2C();
+
+     void onCheckAllTestReqSPI();
+     void onCheckAllTestDynamicSPI();
+     void onCheckAllTestStaticSPI();
+
+
+
+
      void requirement();
 
 
