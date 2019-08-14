@@ -7,9 +7,10 @@
 unsigned int counterRequirement =0,counterRequirementI2C=0,counterRequirementSPI =0,counterRequirementUSB =0,counterRequirementCAN =0,counterRequirementFDCAN =0;
 unsigned int counterStatic =0,counterStaticI2C =0,counterStaticSPI =0,counterStaticUSB =0,counterStaticCAN =0,counterStaticFDCAN =0;
 unsigned int counterDynamic =0,counterDynamicI2C =0,counterDynamicSPI =0,counterDynamicUSB =0,counterDynamicCAN =0,counterDynamicFDCAN =0;
-
+unsigned int page =0;
 bool newfile =false;
 int index =0;
+int addmemory3=0;
 
 
 Read::Read(QWidget *parent, QString filename,bool newFile) : QDialog(parent), ui(new Ui::Read){
@@ -2844,8 +2845,6 @@ void Read::onCheckAllTestStaticUSB(){
 void Read::onCheckAllTestReqUSB(){}
 
 
-void Read::onAddMemory(){}
-
 void Read::requirement(){
 //toujour i-1
 
@@ -3590,7 +3589,7 @@ QLabel* Read::newSubLabel(QString ch){
 }
 
 void Read::Affiche(){
-unsigned int page=0;
+
     //platforme
 
 QString ch= QString::fromStdString(member[getIndex("Mode")[0]]);
@@ -3642,51 +3641,53 @@ for (unsigned int i =0; i< member.size();i++){
     }
 
 
-    if(member[i]== "memory"){
-
-        int indexName = getIndex("Name")[3];
-        int indexStart = getIndex("Start")[3];
-        int indexEnd = getIndex("End")[3];
-
-        QString ch2= QString::fromStdString(member[getIndex("End")[0]]);
-        QLabel* f2= newLabel(ch2);
-        layout->addWidget(f2,++page,0);
-
-        /* add memory*/
-        QPushButton *addmemory= new QPushButton("ADD",this);
-        connect(addmemory,SIGNAL (clicked()), this, SLOT(onAddMemory()));
-        layout->addWidget(addmemory,++page,0);
-
-        //Name
-        QString ch4 =QString::fromStdString(JSON[member[getIndex("Name")[0]]][getIndex("Name")[1]].getMemberNames()[getIndex("Name")[2]]);
-        QLabel* f4 =newSubLabel(ch4);
-        layout->addWidget(f4,++page,0);
-        //Start
-        QString ch5 =QString::fromStdString(JSON[member[getIndex("Start")[0]]][getIndex("Start")[1]].getMemberNames()[getIndex("Start")[2]]);
-        QLabel* f5 =newSubLabel(ch5);
-        layout->addWidget(f5,page,1);
-        //End
-        QString ch3 =QString::fromStdString(JSON[member[getIndex("End")[0]]][getIndex("End")[1]].getMemberNames()[getIndex("End")[2]]);
-        QLabel* f3 =newSubLabel(ch3);
-        layout->addWidget(f3,page,2);
+   /* if(member[i]== "memory"){
 
 
-        for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
-
-
-            layout->addWidget(value[indexName],++page,0);
-            layout->addWidget(value[indexStart],page,1);
-            layout->addWidget(value[indexEnd],page,2);
-
-            indexName+=3;
-            indexStart+=3;
-            indexEnd +=3;
-}
+}*/
 }
 
-}
+int indexName = getIndex("Name")[3];
+int indexStart = getIndex("Start")[3];
+int indexEnd = getIndex("End")[3];
+
+QString ch2= QString::fromStdString(member[getIndex("End")[0]]);
+QLabel* f2= newLabel(ch2);
+layout->addWidget(f2,++page,0);
+
+/* add memory*/
+QPushButton *addmemory= new QPushButton("ADD",this);
+layout->addWidget(addmemory,++page,0);
+connect(addmemory,SIGNAL (clicked()  ), this, SLOT( onAddMemory() ));
+
+//Name
+QString ch4 =QString::fromStdString(JSON[member[getIndex("Name")[0]]][getIndex("Name")[1]].getMemberNames()[getIndex("Name")[2]]);
+QLabel* f4 =newSubLabel(ch4);
+layout->addWidget(f4,++page,0);
+//Start
+QString ch5 =QString::fromStdString(JSON[member[getIndex("Start")[0]]][getIndex("Start")[1]].getMemberNames()[getIndex("Start")[2]]);
+QLabel* f5 =newSubLabel(ch5);
+layout->addWidget(f5,page,1);
+//End
+QString ch3 =QString::fromStdString(JSON[member[getIndex("End")[0]]][getIndex("End")[1]].getMemberNames()[getIndex("End")[2]]);
+QLabel* f3 =newSubLabel(ch3);
+layout->addWidget(f3,page,2);
+
+
+
+for (unsigned int j = 0; j < JSON["memory"].size() ; j++){
+
+
+    layout->addWidget(value[indexName],++page,0);
+    layout->addWidget(value[indexStart],page,1);
+    layout->addWidget(value[indexEnd],page,2);
+
+    indexName+=3;
+    indexStart+=3;
+    indexEnd +=3;
 }
 
+}
 std::vector<unsigned int> Read::getIndex( QString ch){
 
 std::vector<unsigned int> result;
@@ -3862,6 +3863,23 @@ void Read::Plateform(){
 
 
 }}}
+}
+
+
+if(additionalMemory.size()> 0){
+            int j1=JSON["memory"].size();
+
+
+            for (unsigned int i1=0;i1 <( additionalMemory.size() /3);i1++){
+            int k1=0;
+
+
+            JSON["memory"][j1][ "Name"] =additionalMemory[k1++]->text().toLocal8Bit().constData();
+            JSON["memory"][j1]["Start"] =additionalMemory[k1++]->text().toLocal8Bit().constData();
+            JSON["memory"][j1++][ "End"] =additionalMemory[k1++]->text().toLocal8Bit().constData();
+
+    }}
+
     }
 
 
@@ -3871,8 +3889,6 @@ void Read::Plateform(){
 
 
 
-
-}
 
 void Read::Test(){
 
@@ -4450,4 +4466,25 @@ JSON[member[i]][j]["testcheck"]= "OFF";
     }}}
 
 
+}
+
+
+
+void Read::onAddMemory(){
+    QLineEdit *Name= new QLineEdit("Name",this);
+    QLineEdit *Start= new QLineEdit("Start",this);
+    QLineEdit *End= new QLineEdit("End",this);
+
+
+    additionalMemory.push_back(Name);
+    additionalMemory.push_back(Start);
+    additionalMemory.push_back(End);
+
+
+
+
+
+    layout->addWidget(additionalMemory[addmemory3++] ,++page,0);
+    layout->addWidget(additionalMemory[addmemory3++],page,1);
+    layout->addWidget(additionalMemory[addmemory3++],page,2);
 }

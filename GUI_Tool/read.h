@@ -26,6 +26,8 @@
  extern std::vector <QCheckBox*> Requirement ;
  extern QString filename;
  extern int index;
+ extern unsigned int page;
+ extern int addmemory3;
 
 
 
@@ -77,6 +79,10 @@ public:
      std::vector <QComboBox *> valueUSBCombo;
 
 
+
+     std::vector <QLineEdit *> additionalMemory;
+
+
         bool newFile ,newfile;
         std::vector <int> index;
      std::vector <QCheckBox*> staticTest , staticTestSpi ,staticTestCAN , staticTestFDCAN , staticTestI2C , staticTestUSB;
@@ -95,7 +101,7 @@ public:
      QLabel *label,*Label;
      void onBrowseButton(QString );
      void onBrowseNewFile();
-     void onAddMemory();
+
      void Test();
 
 
@@ -116,7 +122,7 @@ public slots:
 
 private slots:
 
-
+     void onAddMemory();
      void onCheckAllTestReq();
      void onCheckAllTestDynamic();
      void onCheckAllTestStatic();
@@ -153,7 +159,7 @@ private slots:
 
 private:
     Ui::Read *ui;
-    QPushButton *browseButton,*m_button;
+    QPushButton *browseButton,*m_button, *addmemory;
 };
 
 #endif // READ_H
