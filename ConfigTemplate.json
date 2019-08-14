@@ -2530,22 +2530,22 @@
    "bl_data" : [
       //do not modify order, or remove interfaces
       {
-         "device_id" : "0x480"
+         "device_id" : "0x"
       },
       {
-         "i2c_bl_version" : "0x12"
+         "i2c_bl_version" : "0x"
       },
       {
-         "spi_bl_version" : "0x11"
+         "spi_bl_version" : "0x"
       },
       {
-         "usart_bl_version" : "0x31"
+         "usart_bl_version" : "0x31T"
       },
       {
-         "fd_can_bl_version" : "0x10"
+         "fd_can_bl_version" : "0x10T"
       },
       {
-         "usb_bl_version" : "0x22"
+         "usb_bl_version" : "0x22T"
       },
       {
          "fw_bl_version" : "0xb"
@@ -2571,75 +2571,75 @@
       },
       //support Bank Erase
       {
-         "WRP" : "byArea"
+         "WRP" : "byAreaT"
       },
       //writeprotection type : byArea or bySectors
       {
-         "UseReset" : "false"
+         "UseReset" : "falseT1"
       }
    ],
    //Perform SW Reset via ST-Link
    "interfaces" : [
       {
          "Baudrate" : "115200",
-         "COM" : 7,
+         "COM" : "7",
          "Driver" : "FTDI",
-         "Dynamic" : "Usart_Dynamic_Tests.txt",
+         "Dynamic" : "Usart_Dynamic_Tests.txtA",
          "Name" : "USART",
-         "Static" : "Usart_Static_Tests.txt",
+         "Static" : "Usart_Static_Tests.txtA",
          "testcheck" : "ON"
       },
       {
          "Bitrate" : "8",
          "Driver" : "aardvark",
          "Dynamic" : "SPI_Dynamic_Tests.txt",
-         "Name" : "SPI_Static_Tests.txt",
-         "Static" : "SPI_Static_Tests.txt",
-         "testcheck" : "ON"
+         "Name" : "SPI",
+         "Static" : "SPI_Static_Tests.txtA",
+         "testcheck" : "OFF"
       },
       {
          "Bitrate" : "400",
          "Driver" : "aardvark",
          "Dynamic" : "I2C_Dynamic_Tests.txt",
-         "Name" : "I2C_Static_Tests.txt",
+         "Name" : "I2C",
          "Static" : "I2C_Static_Tests.txt",
          "address" : "0x57",
-         "testcheck" : "ON"
-      },
-      {
-         "Baudrate" : "125",
-         "Driver" : "stlinkv3",
-         "Dynamic" : "Can_Dynamic_Tests.txt",
-         "Name" : "Can_Static_Tests.txt",
-         "Static" : "Can_Static_Tests.txt",
-         "testcheck" : "ON"
-      },
-      {
-         "COM" : "25",
-         "Driver" : "0032001B3037510B35333131",
-         "Dynamic" : "Fdcan_Dynamic_Tests.txt",
-         "Name" : "Fdcan_Static_Tests.txt",
-         "Static" : "Fdcan_Static_Tests.txt",
          "testcheck" : "ON"
       },
       {
          "Dynamic" : "USB_Dynamic_Tests.txt",
          "Name" : "USB",
          "Static" : "USB_Static_Tests.txt",
+         "testcheck" : "OFF"
+      },
+      {
+         "COM" : "25",
+         "Driver" : "0032001B3037510B35333131",
+         "Dynamic" : "Fdcan_Dynamic_Tests.txt",
+         "Name" : "FDCAN",
+         "Static" : "Fdcan_Static_Tests.txt",
+         "testcheck" : "ON"
+      },
+      {
+         "Baudrate" : "115200",
+         "Driver" : "stlinkv3",
+         "Dynamic" : "Can_Dynamic_Tests.txt",
+         "Name" : "CAN",
+         "Static" : "Can_Static_Tests.txt",
          "testcheck" : "ON"
       }
    ],
    "memory" : [
       //Add or remove memories as needed
       {
-         "End" : "0x08200000",
-         "Name" : "FLASH",
-         "Start" : "0x08000000"
+         "End" : "0x082000003",
+         "Name" : "FLASH1",
+         "Start" : "0x080000002"
       },
       {
-         "End" : "0x24080000",
-         "Name" : "RAM",
-         "Start" : "0x20000000"
+         "End" : "0x240800003",
+         "Name" : "RAM1",
+         "Start" : "0x200000002"
       },
       {
          "End" : "0x1FF08000",
@@ -2652,9 +2652,9 @@
          "Start" : "0x1FFF0000"
       },
       {
-         "End" : "0x1FF07A0F",
-         "Name" : "OTP",
-         "Start" : "0x1FF07800"
+         "End" : "0x1FF07A0F3",
+         "Name" : "OTP1",
+         "Start" : "0x1FF078002"
       }
    ],
    "platform" : [
@@ -2662,10 +2662,9 @@
          "Mode" : "Cli"
       }
    ],
-   //{"Name" : "NONE"  ,"testcheck" : "ON" , "Static" : "Usart_Static_Tests.txt" }
    "target" : [
       {
-         "STLink_SN" : "52FF6E065266545420121687"
+         "STLink_SN" : "52FF6E0652665454201216872"
       }
    ]
 }
