@@ -2596,6 +2596,12 @@ int U=0;
          }
              }*/
          if(!Mandatory()){
+             for(unsigned int i=0; i< additionalMemory.size();i++)
+             if(additionalMemory[i]!= NULL && (additionalMemory[i]->text()== ""|| additionalMemory[i]->text()== "0x" ))
+                 additionalMemory[i]->setStyleSheet("");
+
+
+
                 for(unsigned int i=0; i< value.size();i++)
                     if(value[i]!= NULL && (value[i]->text() != "" ||value[i]->text() != "0x") )
                         value[i]->setStyleSheet("");
@@ -2620,6 +2626,11 @@ int U=0;
         }
      if(Mandatory()){
          //  ***************Save**************
+         for(unsigned int i=0; i< additionalMemory.size();i++)
+         if(additionalMemory[i]!= NULL && (additionalMemory[i]->text()== ""|| additionalMemory[i]->text()== "0x" ))
+             additionalMemory[i]->setStyleSheet("");
+
+
          for(unsigned int i=0; i< value.size();i++)
              if(value[i]!= NULL && (value[i]->text() != "" ||value[i]->text() != "0x") )
                  value[i]->setStyleSheet("");
@@ -3775,6 +3786,13 @@ if(valueUSB[i]!= NULL && (valueUSB[i]->text()== ""|| valueUSB[i]->text()== "0x" 
 
 }}
 
+for(unsigned int i=0; i< additionalMemory.size();i++){
+if(additionalMemory[i]!= NULL && (additionalMemory[i]->text()== ""|| additionalMemory[i]->text()== "0x" )){
+    additionalMemory[i]->setStyleSheet("border: 1.5px solid red");
+     if(t == true) t=false;
+
+}}
+
 
 
     return t;
@@ -4471,9 +4489,9 @@ JSON[member[i]][j]["testcheck"]= "OFF";
 
 
 void Read::onAddMemory(){
-    QLineEdit *Name= new QLineEdit("Name",this);
-    QLineEdit *Start= new QLineEdit("Start",this);
-    QLineEdit *End= new QLineEdit("End",this);
+    QLineEdit *Name= new QLineEdit(this);
+    QLineEdit *Start= new QLineEdit("0x",this);
+    QLineEdit *End= new QLineEdit("0x",this);
 
 
     additionalMemory.push_back(Name);
