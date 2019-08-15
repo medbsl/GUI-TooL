@@ -2264,6 +2264,7 @@ void Read::onSaveChanegeButton(){
              JSONFILE << styledWriter.write(JSON);
              JSONFILE.close();
              additionalMemory.clear();
+             addmemory3=0;
              QMessageBox::information(this,"Done","New File successful created");
          }
          else if(!newfile){
@@ -2273,6 +2274,7 @@ void Read::onSaveChanegeButton(){
              JSONFILE << styledWriter.write(JSON);
              JSONFILE.close();
              additionalMemory.clear();
+             addmemory3=0;
              QMessageBox::information(this,"done","File successful edited");
          }
 
@@ -3429,7 +3431,7 @@ void Read::Plateform(){
                     member[i] !="CAN_static_tests"    &&  member[i] !="CAN_dynamic_tests"    &&
                     member[i] !="FDCAN_static_tests"  &&  member[i] !="FDCAN_dynamic_tests"  &&
                     member[i] !="USB_static_tests"    &&  member[i] !="USB_dynamic_tests"    &&
-                    member[i] !="interfaces" ){
+                    member[i] !="interfaces" && member[i] !="memory" ){
 
 
                     for (unsigned int j = 0; j < JSON[member[i]].size() ; j++){
@@ -3492,9 +3494,9 @@ void Read::Plateform(){
             if(additionalMemory.size()> 0){
             int j1=JSON["memory"].size();
 
-
+             int k1=0;
             for (unsigned int i1=0;i1 <( additionalMemory.size() /3);i1++){
-            int k1=0;
+
 
 
             JSON["memory"][j1][ "Name"] =additionalMemory[k1++]->text().toLocal8Bit().constData();
