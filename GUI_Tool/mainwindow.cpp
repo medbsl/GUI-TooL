@@ -24,6 +24,12 @@ void MainWindow::on_Next1_clicked()
 {
 	
     newFile =false;
+    USARTSTATE=false;
+    I2CSTATE=false;
+    SPISTATE=false;
+    CANSTATE=false;
+    FDCANSTATE=false;
+    USBSTATE=false;
 	
 	/*Get the file name path to the variable "filename"*/
     filename = QFileDialog::getOpenFileName(this,tr("browse"), "./", "json File(*.json)");
@@ -35,12 +41,44 @@ void MainWindow::on_Next1_clicked()
 		/*else it will be false*/		
         if (ui->checkBox->checkState() == Qt::Checked)
             newFile = true;
-        else if (ui->checkBox->checkState() == Qt::Unchecked)
+        else
             newFile = false;
+        if (ui->checkBox_2->checkState() == Qt::Checked)
+            USARTSTATE= true ;
+        else
+            USARTSTATE = false;
+        if (ui->checkBox_3->checkState() == Qt::Checked)
+            I2CSTATE= true ;
+        else
+            I2CSTATE = false;
+
+        if (ui->checkBox_4->checkState() == Qt::Checked)
+            SPISTATE= true ;
+        else
+            SPISTATE = false;
+
+        if (ui->checkBox_5->checkState() == Qt::Checked)
+            CANSTATE= true ;
+        else
+            CANSTATE = false;
+
+
+        if (ui->checkBox_6->checkState() == Qt::Checked)
+            FDCANSTATE= true ;
+        else
+            FDCANSTATE = false;
+
+
+        if (ui->checkBox_7->checkState() == Qt::Checked)
+            USBSTATE= true ;
+        else
+            USBSTATE = false;
+
+
 				
         hide();
 		/*create the "Read" class */
-        uiread = new Read(this,filename,newFile);
+        uiread = new Read(this,filename,newFile,USARTSTATE,I2CSTATE,SPISTATE,CANSTATE,FDCANSTATE,USBSTATE);
 		/*show the "Read" class */
         uiread->show();
     }
@@ -53,3 +91,8 @@ QString MainWindow::getFilepath(){
 
 void MainWindow::on_checkBox_clicked(){}
 
+
+void MainWindow::on_checkBox_2_clicked()
+{
+
+}

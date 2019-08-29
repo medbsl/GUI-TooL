@@ -31,7 +31,7 @@
 
 
 
-extern bool newfile;
+extern bool newfile, UsartState,I2cState,SpiState,CanState,FDCanState,UsbState;
 
 namespace Ui {
 class Read;
@@ -46,7 +46,8 @@ public:
 
 
      explicit Read(QWidget *parent = 0);
-     Read(QWidget *parent,QString filename, bool newFile);
+     Read(QWidget *parent,QString filename, bool newFile, bool UsartState, bool I2cState, bool SpiState,
+          bool CanState, bool FDCanState,bool UsbState);
      QGridLayout *layout    = new QGridLayout(this);
      QGridLayout *layoutUsart    = new QGridLayout(this);
      QGridLayout *layoutSpi    = new QGridLayout(this);
@@ -83,7 +84,7 @@ public:
      std::vector <QLineEdit *> additionalMemory;
 
 
-        bool newFile ,newfile;
+        bool newFile ,newfile,UsartState,I2cState,SpiState,CanState,FDCanState,UsbState;
         std::vector <int> index;
      std::vector <QCheckBox*> staticTest , staticTestSpi ,staticTestCAN , staticTestFDCAN , staticTestI2C , staticTestUSB;
      std::vector <QCheckBox*> DynamicTest, DynamicTestSpi, DynamicTestCAN , DynamicTestFDCAN , DynamicTestI2C , DynamicTestUSB;
@@ -111,7 +112,7 @@ public:
      void Interfaces();
      bool Mandatory();
 
-     std::vector<unsigned int> getIndex( QString );
+     std::vector<unsigned int> getIndex( QString ,bool);
 
 
      int s;

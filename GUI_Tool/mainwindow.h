@@ -8,7 +8,7 @@
 #include "read.h"
 
 extern QString filename;
-extern bool newFile;
+extern bool newFile,USARTSTATE,I2CSTATE,SPISTATE,CANSTATE,FDCANSTATE,USBSTATE;
 
 
 
@@ -25,7 +25,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     //QString filename;
     QString getFilepath();
-    bool newFile;
+    bool newFile,USARTSTATE,I2CSTATE,SPISTATE,CANSTATE,FDCANSTATE,USBSTATE;
     Read *uiread;
     ~MainWindow();
 
@@ -33,6 +33,8 @@ private slots:
     void on_Next1_clicked();
     void on_checkBox_clicked();
 
+
+    void on_checkBox_2_clicked();
 
 private:
     Ui::MainWindow *ui;
