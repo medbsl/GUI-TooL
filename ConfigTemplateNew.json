@@ -1,0 +1,2673 @@
+{
+   //when commenting the last element/testcase remove the comma form the previous element/testcase
+   //the last element should not be followed by a comma
+   "CAN_dynamic_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_001"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_002"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_003"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_004"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_005"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_006"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_007"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_008"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_009"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_010"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_011"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_012"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_013"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_014"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_015"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_016"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_017"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_018"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_019"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_020"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_021"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_022"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_023"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_024"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_025"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_026"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_027"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_028"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_029"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_030"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_D_031"
+      }
+   ],
+   "CAN_static_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_001"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_002"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_003"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_004"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_005"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_006"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_007"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_008"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_009"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_010"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_011"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_012"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_013"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_014"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_015"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_016"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_017"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_018"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_019"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_020"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_021"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_022"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_023"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_024"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_025"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_026"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_027"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_028"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_029"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_030"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_031"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "CAN_S_032"
+      }
+   ],
+   //when commenting the last element/testcase remove the comma form the previous element/testcase
+   //the last element should not be followed by a comma
+   "FDCAN_dynamic_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_001"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_002"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_003"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_004"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_005"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_006"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_007"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_008"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_009"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_010"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_011"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_012"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_013"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_014"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_015"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_016"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_017"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_018"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_019"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_020"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_021"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_022"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_023"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_024"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_025"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_026"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_027"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_028"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_029"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_030"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_D_031"
+      }
+   ],
+   //when commenting the last element/testcase remove the comma form the previous element/testcase
+   //the last element should not be followed by a comma
+   "FDCAN_static_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_001"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_002"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_003"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_004"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_005"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_006"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_007"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_008"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_009"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_010"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_011"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_012"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_013"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_014"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_015"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_016"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_017"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_018"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_019"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_020"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_021"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_022"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_023"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_024"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_025"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_026"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "FDCAN_S_027"
+      }
+   ],
+   "I2C_dynamic_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_001"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_002"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_003"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_004"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_005"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_006"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_007"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_008"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_009"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_010"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_011"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_012"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_013"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_014"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_015"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_016"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_017"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_018"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_019"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_020"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_021"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_D_022"
+      }
+   ],
+   "I2C_static_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_001"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_002"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_003"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_004"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_005"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_006"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_007"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_008"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_009"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_010"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_011"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_012"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_013"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_014"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_015"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_016"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_017"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_018"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_019"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_020"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_021"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_022"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_023"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_024"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_025"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_026"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_027"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_028"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_029"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_030"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_031"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_032"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_033"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_034"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_035"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_036"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_037"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_038"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_039"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_040"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_041"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_042"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_043"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_044"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_045"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_046"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_047"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_048"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_049"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_050"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_051"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_052"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_053"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_054"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_055"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_056"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_057"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_058"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_059"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_060"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_061"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_062"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_063"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_064"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_065"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_066"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_067"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_068"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_069"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_070"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_071"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_072"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_073"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_074"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_075"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_076"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_077"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_078"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_079"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_080"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_081"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_082"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_083"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_084"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_085"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_086"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_087"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_088"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_089"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_090"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_091"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_092"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_093"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_094"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_095"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_096"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_097"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_098"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_099"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_100"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_101"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_102"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_103"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_104"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_105"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_106"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_107"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_108"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_109"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_110"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_111"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_112"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_113"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_114"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_115"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_116"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_117"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "I2C_S_118"
+      }
+   ],
+   "SPI_dynamic_tests" : [
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_001"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_002"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_003"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_004"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_005"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_006"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_007"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_008"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_009"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_010"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_011"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_012"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_013"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_014"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_015"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_016"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_017"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_018"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_019"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_020"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_021"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_022"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_023"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_024"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_D_025"
+      }
+   ],
+   "SPI_static_tests" : [
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_001"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_002"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_003"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_004"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_005"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_006"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_007"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_008"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_009"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_010"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_011"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_012"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_013"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_014"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_015"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_016"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_017"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_018"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_019"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_020"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_021"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_022"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_023"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_024"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_025"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_026"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_027"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_028"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_029"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_030"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_031"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_032"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_033"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_034"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_035"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_036"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_037"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_038"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_039"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_040"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_041"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_042"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_043"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_044"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_045"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_046"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_047"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_048"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_049"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_050"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_051"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_052"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_053"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_054"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_055"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_056"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_057"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_058"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_059"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_060"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_061"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_062"
+      },
+      {
+         "req_id" : [ "TBD " ],
+         "state" : "ON",
+         "test_id" : "SPI_S_063"
+      }
+   ],
+   "USART_dynamic_tests" : [
+      {
+         "req_id" : [ "USART_Req000" ],
+         "state" : "ON",
+         "test_id" : "USART_D_001"
+      },
+      {
+         "req_id" : [ "USART_Req002" ],
+         "state" : "ON",
+         "test_id" : "USART_D_002"
+      },
+      {
+         "req_id" : [ "USART_Req003" ],
+         "state" : "ON",
+         "test_id" : "USART_D_003"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_004"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_005"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_006"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_007"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_008"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_009"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_010"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_011"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_012"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_013"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_014"
+      },
+      {
+         "req_id" : [ "USART_Req025" ],
+         "state" : "ON",
+         "test_id" : "USART_D_015"
+      },
+      {
+         "req_id" : [ "USART_Req004", "USART_Req010" ],
+         "state" : "ON",
+         "test_id" : "USART_D_016"
+      },
+      {
+         "req_id" : [ "USART_Req004", "USART_Req010" ],
+         "state" : "ON",
+         "test_id" : "USART_D_017"
+      },
+      {
+         "req_id" : [ "USART_Req005", "USART_Req011" ],
+         "state" : "ON",
+         "test_id" : "USART_D_018"
+      },
+      {
+         "req_id" : [ "USART_Req016" ],
+         "state" : "ON",
+         "test_id" : "USART_D_019"
+      },
+      {
+         "req_id" : [ "USART_Req016" ],
+         "state" : "ON",
+         "test_id" : "USART_D_020"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "state" : "ON",
+         "test_id" : "USART_D_021"
+      },
+      {
+         "req_id" : [ "USART_Req022", "USART_Req023" ],
+         "state" : "ON",
+         "test_id" : "USART_D_022"
+      },
+      {
+         "req_id" : [ "USART_Req023", "USART_Req024" ],
+         "state" : "ON",
+         "test_id" : "USART_D_023"
+      },
+      {
+         "req_id" : [ "USART_Req018" ],
+         "state" : "ON",
+         "test_id" : "USART_D_024"
+      },
+      {
+         "req_id" : [ "USART_Req019" ],
+         "state" : "ON",
+         "test_id" : "USART_D_025"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "state" : "ON",
+         "test_id" : "USART_D_026"
+      },
+      {
+         "req_id" : [ "USART_Req013" ],
+         "state" : "ON",
+         "test_id" : "USART_D_027"
+      },
+      {
+         "req_id" : [ "USART_Req009" ],
+         "state" : "ON",
+         "test_id" : "USART_D_028"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "state" : "ON",
+         "test_id" : "USART_D_029"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "state" : "ON",
+         "test_id" : "USART_D_030"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "state" : "ON",
+         "test_id" : "USART_D_031"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "state" : "ON",
+         "test_id" : "USART_D_032"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "state" : "ON",
+         "test_id" : "USART_D_033"
+      },
+      {
+         "req_id" : [ "  none      " ],
+         "state" : "ON",
+         "test_id" : "USART_D_034"
+      }
+   ],
+   "USART_static_tests" : [
+      {
+         "req_id" : [ "USART_Req001" ],
+         "state" : "ON",
+         "test_id" : "USART_S_001"
+      },
+      {
+         "req_id" : [ "USART_Req001" ],
+         "state" : "ON",
+         "test_id" : "USART_S_002"
+      },
+      {
+         "req_id" : [ "USART_Req001" ],
+         "state" : "ON",
+         "test_id" : "USART_S_003"
+      },
+      {
+         "req_id" : [ "USART_Req000" ],
+         "state" : "ON",
+         "test_id" : "USART_S_004"
+      },
+      {
+         "req_id" : [ "USART_Req000" ],
+         "state" : "ON",
+         "test_id" : "USART_S_005"
+      },
+      {
+         "req_id" : [ "USART_Req003" ],
+         "state" : "ON",
+         "test_id" : "USART_S_006"
+      },
+      {
+         "req_id" : [ "USART_Req003" ],
+         "state" : "ON",
+         "test_id" : "USART_S_007"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_008"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_009"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_010"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_011"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_012"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_013"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_014"
+      },
+      {
+         "req_id" : [
+            "USART_Req010",
+            "USART_Req011",
+            "USART_Req012",
+            "USART_Req013",
+            "USART_Req014",
+            "USART_Req015"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_015"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "state" : "ON",
+         "test_id" : "USART_S_016"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "state" : "ON",
+         "test_id" : "USART_S_017"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "state" : "ON",
+         "test_id" : "USART_S_018"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "state" : "ON",
+         "test_id" : "USART_S_019"
+      },
+      {
+         "req_id" : [ "USART_Req018", "USART_Req019" ],
+         "state" : "ON",
+         "test_id" : "USART_S_020"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_021"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_022"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_023"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_024"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_025"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_026"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_027"
+      },
+      {
+         "req_id" : [
+            "USART_Req004",
+            "USART_Req005",
+            "USART_Req006",
+            "USART_Req007",
+            "USART_Req008",
+            "USART_Req009"
+         ],
+         "state" : "ON",
+         "test_id" : "USART_S_028"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_029"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_030"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_031"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_032"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_033"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_034"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_035"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_036"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_037"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_038"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_039"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_040"
+      },
+      {
+         "req_id" : [ "USART_Req016", "USART_Req017" ],
+         "state" : "ON",
+         "test_id" : "USART_S_041"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "state" : "ON",
+         "test_id" : "USART_S_042"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "state" : "ON",
+         "test_id" : "USART_S_043"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "state" : "ON",
+         "test_id" : "USART_S_044"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "state" : "ON",
+         "test_id" : "USART_S_045"
+      },
+      {
+         "req_id" : [ "USART_Req020" ],
+         "state" : "ON",
+         "test_id" : "USART_S_046"
+      },
+      {
+         "req_id" : [ "USART_Req021" ],
+         "state" : "ON",
+         "test_id" : "USART_S_047"
+      },
+      {
+         "req_id" : [ "USART_Req021" ],
+         "state" : "ON",
+         "test_id" : "USART_S_048"
+      },
+      {
+         "req_id" : [ "USART_Req021" ],
+         "state" : "ON",
+         "test_id" : "USART_S_049"
+      },
+      {
+         "req_id" : [ "USART_Req023" ],
+         "state" : "ON",
+         "test_id" : "USART_S_050"
+      },
+      {
+         "req_id" : [ "USART_Req023" ],
+         "state" : "ON",
+         "test_id" : "USART_S_051"
+      },
+      {
+         "req_id" : [ "USART_Req023" ],
+         "state" : "ON",
+         "test_id" : "USART_S_052"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "state" : "ON",
+         "test_id" : "USART_S_053"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "state" : "ON",
+         "test_id" : "USART_S_054"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "state" : "ON",
+         "test_id" : "USART_S_055"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "state" : "ON",
+         "test_id" : "USART_S_056"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "state" : "ON",
+         "test_id" : "USART_S_057"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "state" : "ON",
+         "test_id" : "USART_S_058"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "state" : "ON",
+         "test_id" : "USART_S_059"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "state" : "ON",
+         "test_id" : "USART_S_060"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "state" : "ON",
+         "test_id" : "USART_S_061"
+      },
+      {
+         "req_id" : [ "USART_Req024" ],
+         "state" : "ON",
+         "test_id" : "USART_S_062"
+      }
+   ],
+   "USB_dynamic_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_001"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_002"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_003"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_004"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_005"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_006"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_007"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_008"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_009"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_010"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_011"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_012"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_013"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_D_014"
+      }
+   ],
+   "USB_static_tests" : [
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_001"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_002"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_003"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_004"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_005"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_006"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_007"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_008"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_009"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_010"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_011"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_012"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_013"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_014"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_015"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_016"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_017"
+      },
+      {
+         "req_id" : [ "TBD" ],
+         "state" : "ON",
+         "test_id" : "USB_DFU_S_018"
+      }
+   ],
+   // Cli or Automated
+   "bl_data" : [
+      //do not modify order, or remove interfaces
+      {
+         "device_id" : "0x480T"
+      },
+      {
+         "i2c_bl_version" : "0x12T"
+      },
+      {
+         "spi_bl_version" : "0x11"
+      },
+      {
+         "usart_bl_version" : "0x31T"
+      },
+      {
+         "fd_can_bl_version" : "0x10T"
+      },
+      {
+         "usb_bl_version" : "0x22T"
+      },
+      {
+         "fw_bl_version" : "0xb"
+      },
+      {
+         "bl_ram_size" : "0x3000"
+      },
+      {
+         "can_bl_version" : "0x20"
+      }
+   ],
+   "bl_specific" : [
+      {
+         "connect" : "true"
+      },
+      //Connect after OB modification
+      {
+         "supprot_ME" : "true"
+      },
+      //support Mass Erase
+      {
+         "supprot_BE" : "true"
+      },
+      //support Bank Erase
+      {
+         "WRP" : "byArea"
+      },
+      //writeprotection type : byArea or bySectors
+      {
+         "UseReset" : "true"
+      }
+   ],
+   //Perform SW Reset via ST-Link
+   "interfaces" : [
+      {
+         "Baudrate" : "115200",
+         "COM" : "7",
+         "Driver" : "FTDI",
+         "Dynamic" : "Usart_Dynamic_Tests.txtA",
+         "Name" : "USART",
+         "Static" : "Usart_Static_Tests.txtA",
+         "state" : "ON"
+      },
+      {
+         "Bitrate" : "125", 
+         "Driver" : "driver",
+         "Dynamic" : "dynamis",
+         "Name" : "SPI",
+         "Static" : "static",
+         "state" : "OFF"
+      },
+      {
+         "Bitrate" : "400",
+         "Driver" : "driver",
+         "Dynamic" : "40dynamic0",
+         "Name" : "I2C",
+         "Static" : "static",
+         "address" : "adress",
+         "state" : "ON"
+      },
+      {
+         "Dynamic" : "USB_Dynamic_Tests.txt",
+         "Name" : "USB",
+         "Static" : "USB_Static_Tests.txt",
+         "state" : "OFF"
+      },
+      {
+         "COM" : "25",
+         "Driver" : "0032001B3037510B35333131",
+         "Dynamic" : "Fdcan_Dynamic_Tests.txt",
+         "Name" : "FDCAN",
+         "Static" : "Fdcan_Static_Tests.txt",
+         "state" : "ON"
+      },
+      {
+         "Baudrate" : "115200",
+         "Driver" : "stlinkv3",
+         "Dynamic" : "Can_Dynamic_Tests.txt",
+         "Name" : "CAN",
+         "Static" : "Can_Static_Tests.txt",
+         "state" : "ON"
+      }
+   ],
+   "memory" : [
+      //Add or remove memories as needed
+      {
+         "End" : "0x082000003",
+         "Name" : "FLASH1",
+         "Start" : "0x080000002"
+      },
+      {
+         "End" : "0x240800003",
+         "Name" : "RAM1",
+         "Start" : "0x200000002"
+      },
+      {
+         "End" : "0x1FF08000",
+         "Name" : "BIF",
+         "Start" : "0x1FF00000"
+      },
+      {
+         "End" : "0x4FFF0030",
+         "Name" : "SIF",
+         "Start" : "0x1FFF0000"
+      },
+      {
+         "End" : "0x1FF07A0F3",
+         "Name" : "OTP1",
+         "Start" : "0x1FF078002"
+      }
+   ],
+   "platform" : [
+      {
+         "Mode" : "Cli"
+      }
+   ],
+   "target" : [
+      {
+         "STLink_SN" : "FLASH1"
+      }
+   ]
+}
+//when commenting the last element/testcase remove the comma form the previous element/testcase
+//the last element should not be followed by a comma
+
