@@ -755,6 +755,7 @@ void Read::onBrowseNewFile(){
                     /*If the state is ON then it will check the checkBox*/
                     /*else it will not check the checkBox*/
                     QCheckBox *valide = new QCheckBox("CAN",this);
+
                     if (CanState)
                         valide->setChecked(1);
                     else
@@ -3462,8 +3463,18 @@ void Read::Interfaces(){
                             if (interfaces[j]->checkState() == Qt::Unchecked)
                                 JSON[member[i]][j]["state"]= "OFF";
 
-                            if (valueFDCAN[UFDCAN] != NULL&&  JSON["interfaces"][j].getMemberNames()[k]  != "Name")
-                                JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueFDCAN[UFDCAN++]->text().toLocal8Bit().constData();
+
+
+
+
+                            else if (valueFDCAN[UFDCAN] != NULL&&  JSON["interfaces"][j].getMemberNames()[k]  != "Name"){
+                                if(UFDCAN ==0)
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueFDCAN[UFDCAN++]->text().toInt();
+                                else
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueFDCAN[UFDCAN++]->text().toLocal8Bit().constData();
+
+                            }
+
 
                             else if(valueFDCANCombo[UFDCAN] != NULL) {
 
@@ -3506,11 +3517,18 @@ void Read::Interfaces(){
                             JSON["interfaces"][j][ "Name"] = "USART";
                             if (interfaces[j]->checkState() == Qt::Checked)
                                 JSON[member[i]][j]["state"]= "ON";
-                            if (interfaces[j]->checkState() == Qt::Unchecked)
+                             if (interfaces[j]->checkState() == Qt::Unchecked)
                                 JSON[member[i]][j]["state"]= "OFF";
 
-                        else if (valueUsart[U] != NULL&&  JSON["interfaces"][j].getMemberNames()[k]  != "Name")
-                            JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueUsart[U++]->text().toLocal8Bit().constData();
+
+                        else if (valueUsart[U] != NULL&&  JSON["interfaces"][j].getMemberNames()[k]  != "Name"){
+                             if(U == 1  ){
+                                  JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueUsart[U++]->text().toInt();
+                             }
+                             else
+                                JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k] ] =valueUsart[U++]->text().toLocal8Bit().constData();
+                             }
+
 
 
                         else if(valueUsartCombo[U] != NULL) {
