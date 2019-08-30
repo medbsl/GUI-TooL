@@ -24,6 +24,7 @@ Read::Read(QWidget *parent, QString filename,bool newFile,bool USARTSTATE,bool I
     CanState=  CANSTATE;
     FDCanState= FDCANSTATE;
     UsbState=  USBSTATE;
+
     ui->setupUi(this);
 
     /* if new file is checked then we will parse the json and add set all the adresses with 0x*/
@@ -63,16 +64,17 @@ Read::Read(QWidget *parent, QString filename,bool newFile,bool USARTSTATE,bool I
 
 /* Set up the scroll area for the USART interface */
 
-            QScrollArea *scrollAreaUsart =new QScrollArea ;
-            scrollAreaUsart->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
-            scrollAreaUsart->setWidgetResizable( true );
-            scrollAreaUsart->setGeometry( 5, 5, 695, 895 );
+                QScrollArea *scrollAreaUsart =new QScrollArea ;
+                scrollAreaUsart->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
+                scrollAreaUsart->setWidgetResizable( true );
+                scrollAreaUsart->setGeometry( 5, 5, 695, 895 );
 
 
-            QWidget *widgetUsart = new QWidget;
+                QWidget *widgetUsart = new QWidget;
 
-            scrollAreaUsart->setWidget( widgetUsart );
-            widgetUsart->setLayout( layoutUsart );
+                scrollAreaUsart->setWidget( widgetUsart );
+                widgetUsart->setLayout( layoutUsart );
+
 
 //*****************************************************************************//
 //****************************  scroll area SPI     ***************************//
@@ -175,12 +177,18 @@ Read::Read(QWidget *parent, QString filename,bool newFile,bool USARTSTATE,bool I
               QTabWidget *Tab= new QTabWidget(this);
               Tab->setGeometry(5,5,995, 835);
               Tab->addTab(scrollArea, "PLateform");
-              Tab->addTab(scrollAreaUsart, "Usart");
-              Tab->addTab(scrollAreaSPI, "SPI");
-              Tab->addTab(scrollAreaI2C, "I2C");
-              Tab->addTab(scrollAreaUSB, "USB");
-              Tab->addTab(scrollAreaCan, "CAN");
-              Tab->addTab(scrollAreaFdCan, "FD_CAN");
+              if(!newfile || UsartState)
+                Tab->addTab(scrollAreaUsart, "Usart");
+              if(!newfile || SpiState)
+                Tab->addTab(scrollAreaSPI, "SPI");
+              if(!newfile || I2cState)
+                Tab->addTab(scrollAreaI2C, "I2C");
+              if(!newfile || UsbState)
+                Tab->addTab(scrollAreaUSB, "USB");
+              if(!newfile || CanState)
+                Tab->addTab(scrollAreaCan, "CAN");
+              if(!newfile || FDCanState)
+                Tab->addTab(scrollAreaFdCan, "FD_CAN");
 
 
 //*****************************************************************************//
@@ -396,12 +404,12 @@ void Read::onBrowseNewFile(){
                         s=0;
                         /*Create a checkBox that to activate of deactivate the I2C*/
                         QCheckBox *valide = new QCheckBox("I2C",this);
-                        if (JSON["interfaces"][0]["state" ].asString()== "ON")
+                        if (I2cState)
                             valide->setChecked(1);
                         else
                             valide->setChecked(0);
                         interfaces.push_back(valide);
-                        layoutI2C->addWidget(valide,s,0);
+                        //layoutI2C->addWidget(valide,s,0);
 
                         for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
                             if (JSON["interfaces"][j].getMemberNames()[k] != "Name" && JSON["interfaces"][j].getMemberNames()[k] != "state" ){
@@ -458,20 +466,18 @@ void Read::onBrowseNewFile(){
                             layoutI2C->addWidget(labelBlData,++s,0);
                             QLabel *labelDynamic = newLabel("Dynamic :");
                             layoutI2C->addWidget(labelDynamic,s,1);
-                            QLabel *labelRequirement = newLabel("Requirement :");
-                            layoutI2C->addWidget(labelRequirement,s,2);
 
-                            QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+
+                            QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                             connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStaticI2C()));
-                            layoutI2C->addWidget(checkAllTestStatic,s,0);
+                            layoutI2C->addWidget(checkAllTestStatic,++s,0);
 
-                            QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                            QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                             connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamicI2C()));
                             layoutI2C->addWidget(checkAllTestDynamic,s,1);
 
-                            QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                            connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReqI2C()));
-                            layoutI2C->addWidget(checkAllTestReq,s++,2);
+                            QLabel *req = newLabel("");
+                            layoutI2C->addWidget(req,s,2);
 
                             /* ************************  Static  *********************/
                             for (unsigned int j = 0; j < JSON["I2C_static_tests"].size()  ; j++){
@@ -506,13 +512,13 @@ void Read::onBrowseNewFile(){
                     /*The s counter is for counting the lines of scroll area */
                     s=0;
                     QCheckBox *valide = new QCheckBox("SPI",this);
-                    if (JSON["interfaces"][j]["state"  ].asString()== "ON")
+                    if (SpiState)
                         valide->setChecked(1);
                     else
                         valide->setChecked(0);
                         interfaces.push_back(valide);
                         /*Add the checkBox validate to the scroll area*/
-                        layoutSpi->addWidget(valide,s,0);
+                        //layoutSpi->addWidget(valide,s,0);
                         /*Parsing the Interfaces Values */
                             for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
                                 /*If the values of interfaces wasn't Name or state then it creat the label and add to the widget*/
@@ -561,20 +567,19 @@ void Read::onBrowseNewFile(){
                                 QLabel *labelDynamic = newLabel("Dynamic :");
                                 layoutSpi->addWidget(labelDynamic,s,1);
 
-                                QLabel *labelRequirement = newLabel("Requirement :");
-                                layoutSpi->addWidget(labelRequirement,s,2);
+                                QLabel *req = newLabel("");
+                                layoutSpi->addWidget(labelDynamic,s,2);
 
-                                QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+
+                                QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                                 connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStaticSPI()));
-                                layoutSpi->addWidget(checkAllTestStatic,s,0);
+                                layoutSpi->addWidget(checkAllTestStatic,++s,0);
 
-                                QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                                QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                                 connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamicSPI()));
                                 layoutSpi->addWidget(checkAllTestDynamic,s,1);
 
-                                QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                                connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReqSPI()));
-                                layoutSpi->addWidget(checkAllTestReq,s++,2);
+
 
                                 /* ************************  Static  **********************/
                                 for (unsigned int j = 0; j < JSON["SPI_static_tests"].size()  ; j++){
@@ -617,14 +622,14 @@ void Read::onBrowseNewFile(){
                         /*else it will not check the checkbox*/
                         QCheckBox *valide = new QCheckBox("USB",this);
 
-                        if (JSON["interfaces"][j]["state"  ].asString()== "ON")
+                        if (UsbState)
                             valide->setChecked(1);
 
                         else
                             valide->setChecked(0);
 
                         interfaces.push_back(valide);
-                        layoutUSB->addWidget(valide,s,0);
+                        //layoutUSB->addWidget(valide,s,0);
                             for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
                                 /*Creating the label*/
                                 if (JSON["interfaces"][j].getMemberNames()[k] != "Name" && JSON["interfaces"][j].getMemberNames()[k] != "state" ){
@@ -682,20 +687,18 @@ void Read::onBrowseNewFile(){
                                 QLabel *labelDynamic = newLabel("Dynamic :");
                                 layoutUSB->addWidget(labelDynamic,s,1);
 
-                                QLabel *labelRequirement = newLabel("Requirement :");
+                                QLabel *labelRequirement = newLabel("");
                                 layoutUSB->addWidget(labelRequirement,s,2);
 
-                                QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                                QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                                 connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStaticUSB()));
-                                layoutUSB->addWidget(checkAllTestStatic,s,0);
+                                layoutUSB->addWidget(checkAllTestStatic,++s,0);
 
-                                QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                                QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                                 connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamicUSB()));
                                 layoutUSB->addWidget(checkAllTestDynamic,s,1);
 
-                                QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                                connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReqUSB()));
-                                layoutUSB->addWidget(checkAllTestReq,s++,2);
+
 
                                 /* ************************  Static  **********************/
                                 for (unsigned int j = 0; j < JSON["USB_static_tests"].size()  ; j++){
@@ -731,6 +734,12 @@ void Read::onBrowseNewFile(){
 
 
                                 }
+                                for(int i=0;i<10;i++){
+                                    QLabel *label= newLabel("");
+                                    layoutUSB->addWidget(label,++s,0);
+
+                                }
+
 
                             }
 
@@ -744,13 +753,13 @@ void Read::onBrowseNewFile(){
                     /*If the state is ON then it will check the checkBox*/
                     /*else it will not check the checkBox*/
                     QCheckBox *valide = new QCheckBox("CAN",this);
-                    if (JSON["interfaces"][j]["state"  ].asString()== "ON")
+                    if (CanState)
                         valide->setChecked(1);
                     else
                         valide->setChecked(0);
                     /*Adding the checkbox to the vector "interfaces"*/
                     interfaces.push_back(valide);
-                    layoutCAN->addWidget(valide,s,0);
+                    //layoutCAN->addWidget(valide,s,0);
                     for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
                         /*Creating the label*/
                         if (JSON["interfaces"][j].getMemberNames()[k] != "Name" && JSON["interfaces"][j].getMemberNames()[k] != "state" ){
@@ -802,21 +811,19 @@ void Read::onBrowseNewFile(){
                         QLabel *labelDynamic = newLabel("Dynamic :");
                         layoutCAN->addWidget(labelDynamic,s,1);
 
-                        QLabel *labelRequirement = newLabel("Requirement :");
+                        QLabel *labelRequirement = newLabel("");
                         layoutCAN->addWidget(labelRequirement,s,2);
 
 
-                        QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                        QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                         connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStaticCAN()));
-                        layoutCAN->addWidget(checkAllTestStatic,s,0);
+                        layoutCAN->addWidget(checkAllTestStatic,++s,0);
 
-                        QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                        QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                         connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamicCAN()));
                         layoutCAN->addWidget(checkAllTestDynamic,s,1);
 
-                        QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                        connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReqCAN()));
-                        layoutCAN->addWidget(checkAllTestReq,s++,2);
+
 
                             /* ************************  Static  **********************/
                         for (unsigned int j = 0; j < JSON["CAN_static_tests"].size()  ; j++){
@@ -858,13 +865,13 @@ void Read::onBrowseNewFile(){
                     s=0;
                     /*The "valid" checkbox is to activate or not the FDCAN testing*/
                     QCheckBox *valide = new QCheckBox("FDCAN",this);
-                    if (JSON["interfaces"][j]["state"  ].asString()== "ON")
+                    if (FDCanState)
                         valide->setChecked(1);
                     else
                         valide->setChecked(0);
 
                     interfaces.push_back(valide);
-                    layoutFDCAN->addWidget(valide,s,0);
+                    //layoutFDCAN->addWidget(valide,s,0);
                     for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
                         /*Creating the labels*/
                         if (JSON["interfaces"][j].getMemberNames()[k] != "Name" && JSON["interfaces"][j].getMemberNames()[k] != "state" ){
@@ -919,20 +926,18 @@ void Read::onBrowseNewFile(){
                         QLabel *labelDynamic = newLabel("Dynamic :");
                         layoutFDCAN->addWidget(labelDynamic,s,1);
 
-                        QLabel *labelRequirement = newLabel("Requirement :");
+                        QLabel *labelRequirement = newLabel("");
                         layoutFDCAN->addWidget(labelRequirement,s,2);
 
-                        QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                        QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                         connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStaticFDCAN()));
-                        layoutFDCAN->addWidget(checkAllTestStatic,s,0);
+                        layoutFDCAN->addWidget(checkAllTestStatic,++s,0);
 
-                        QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                        QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                         connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamicFDCAN()));
                         layoutFDCAN->addWidget(checkAllTestDynamic,s,1);
 
-                        QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                        connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReqFDCAN()));
-                        layoutFDCAN->addWidget(checkAllTestReq,s++,2);
+
 
                         /* ************************  Static  **********************/
                         for (unsigned int j = 0; j < JSON["FDCAN_static_tests"].size()  ; j++){
@@ -972,13 +977,13 @@ void Read::onBrowseNewFile(){
                         s=0;
                         /*The Check Box is for activate or not the USART test*/
                         QCheckBox *valide = new QCheckBox("USART",this);
-                        if (JSON["interfaces"][j]["state"  ].asString()== "ON")
+                        if (UsartState)
                             valide->setChecked(1);
                         else
                             valide->setChecked(0);
                         /*Add the checkBox to the interfaces vector */
                         interfaces.push_back(valide);
-                        layoutUsart->addWidget(valide,s,0);
+                        //layoutUsart->addWidget(valide,s,0);
                         for (unsigned int k = 0; k < JSON["interfaces"][j].getMemberNames().size(); k++){
                             /*creating the Labels*/
                             if (JSON["interfaces"][j].getMemberNames()[k] != "Name" && JSON["interfaces"][j].getMemberNames()[k] != "state" ){
@@ -1036,20 +1041,18 @@ void Read::onBrowseNewFile(){
                             QLabel *labelDynamic = newLabel("Dynamic :");
                             layoutUsart->addWidget(labelDynamic,s,1);
 
-                            QLabel *labelRequirement = newLabel("Requirement :");
+                            QLabel *labelRequirement = newLabel("");
                             layoutUsart->addWidget(labelRequirement,s,2);
 
-                            QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                            QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                             connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStatic()));
-                            layoutUsart->addWidget(checkAllTestStatic,s,0);
+                            layoutUsart->addWidget(checkAllTestStatic,++s,0);
 
-                            QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                            QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                             connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamic()));
                             layoutUsart->addWidget(checkAllTestDynamic,s,1);
 
-                            QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                            connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReq()));
-                            layoutUsart->addWidget(checkAllTestReq,s++,2);
+
 
                             /* ************************  Static  **********************/
                             for (unsigned int j = 0; j < JSON["USART_static_tests"].size()  ; j++){
@@ -1269,20 +1272,18 @@ void Read::onBrowseButton(QString filename){
                         QLabel *labelDynamic = newLabel("Dynamic :");
                         layoutI2C->addWidget(labelDynamic,s,1);
 
-                        QLabel *labelRequirement = newLabel("Requirement :");
+                        QLabel *labelRequirement = newLabel("");
                         layoutI2C->addWidget(labelRequirement,s,2);
 
-                        QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                        QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                         connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStaticI2C()));
-                        layoutI2C->addWidget(checkAllTestStatic,s,0);
+                        layoutI2C->addWidget(checkAllTestStatic,++s,0);
 
-                        QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                        QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                         connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamicI2C()));
                         layoutI2C->addWidget(checkAllTestDynamic,s,1);
 
-                        QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                        connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReqI2C()));
-                        layoutI2C->addWidget(checkAllTestReq,s++,2);
+
 
                         /* ************************  Static  *********************/
                         for (unsigned int j = 0; j < JSON["I2C_static_tests"].size()  ; j++){
@@ -1375,20 +1376,17 @@ void Read::onBrowseButton(QString filename){
                     QLabel *labelDynamic = newLabel("Dynamic :");
                     layoutSpi->addWidget(labelDynamic,s,1);
 
-                    QLabel *labelRequirement = newLabel("Requirement :");
+                    QLabel *labelRequirement = newLabel("");
                     layoutSpi->addWidget(labelRequirement,s,2);
 
-                    QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                    QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                     connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStaticSPI()));
-                    layoutSpi->addWidget(checkAllTestStatic,s,0);
+                    layoutSpi->addWidget(checkAllTestStatic,++s,0);
 
-                    QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                    QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                     connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamicSPI()));
                     layoutSpi->addWidget(checkAllTestDynamic,s,1);
 
-                    QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                    connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReqSPI()));
-                    layoutSpi->addWidget(checkAllTestReq,s++,2);
 
                     /* ************************  Static  **********************/
                     for (unsigned int j = 0; j < JSON["SPI_static_tests"].size()  ; j++){
@@ -1486,20 +1484,18 @@ void Read::onBrowseButton(QString filename){
                             QLabel *labelDynamic = newLabel("Dynamic :");
                             layoutUSB->addWidget(labelDynamic,s,1);
 
-                            QLabel *labelRequirement = newLabel("Requirement :");
+                            QLabel *labelRequirement = newLabel("");
                             layoutUSB->addWidget(labelRequirement,s,2);
 
-                            QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                            QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                             connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStaticUSB()));
-                            layoutUSB->addWidget(checkAllTestStatic,s,0);
+                            layoutUSB->addWidget(checkAllTestStatic,++s,0);
 
-                            QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                            QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                             connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamicUSB()));
                             layoutUSB->addWidget(checkAllTestDynamic,s,1);
 
-                            QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                            connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReqUSB()));
-                            layoutUSB->addWidget(checkAllTestReq,s++,2);
+
 
                             /* ************************  Static  **********************/
                             for (unsigned int j = 0; j < JSON["USB_static_tests"].size()  ; j++){
@@ -1526,6 +1522,10 @@ void Read::onBrowseButton(QString filename){
 
                                 layoutUSB->addWidget(box,++s,1);
                                 DynamicTestUSB.push_back(box);
+                            }
+                            for(int i=0;i<10; i++){
+                                QLabel * label= newLabel("");
+                                layoutUSB->addWidget(label,++s,0);
                             }
                         }
                 }
@@ -1594,21 +1594,19 @@ void Read::onBrowseButton(QString filename){
                             QLabel *labelDynamic = newLabel("Dynamic :");
                             layoutCAN->addWidget(labelDynamic,s,1);
 
-                            QLabel *labelRequirement = newLabel("Requirement :");
+                            QLabel *labelRequirement = newLabel("");
                             layoutCAN->addWidget(labelRequirement,s,2);
 
 
-                            QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                            QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                             connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStaticCAN()));
-                            layoutCAN->addWidget(checkAllTestStatic,s,0);
+                            layoutCAN->addWidget(checkAllTestStatic,++s,0);
 
-                            QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                            QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                             connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamicCAN()));
                             layoutCAN->addWidget(checkAllTestDynamic,s,1);
 
-                            QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                            connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReqCAN()));
-                            layoutCAN->addWidget(checkAllTestReq,s++,2);
+
 
                             /* ************************  Static  **********************/
                             for (unsigned int j = 0; j < JSON["CAN_static_tests"].size()  ; j++){
@@ -1704,20 +1702,17 @@ void Read::onBrowseButton(QString filename){
                         QLabel *labelDynamic = newLabel("Dynamic :");
                         layoutFDCAN->addWidget(labelDynamic,s,1);
 
-                        QLabel *labelRequirement = newLabel("Requirement :");
+                        QLabel *labelRequirement = newLabel("");
                         layoutFDCAN->addWidget(labelRequirement,s,2);
 
-                        QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                        QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                         connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStaticFDCAN()));
-                        layoutFDCAN->addWidget(checkAllTestStatic,s,0);
+                        layoutFDCAN->addWidget(checkAllTestStatic,++s,0);
 
-                        QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                        QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                         connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamicFDCAN()));
                         layoutFDCAN->addWidget(checkAllTestDynamic,s,1);
 
-                        QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                        connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReqFDCAN()));
-                        layoutFDCAN->addWidget(checkAllTestReq,s++,2);
 
                         /* ************************  Static  **********************/
                         for (unsigned int j = 0; j < JSON["FDCAN_static_tests"].size()  ; j++){
@@ -1810,20 +1805,18 @@ void Read::onBrowseButton(QString filename){
                         QLabel *labelDynamic = newLabel("Dynamic :");
                         layoutUsart->addWidget(labelDynamic,s,1);
 
-                        QLabel *labelRequirement = newLabel("Requirement :");
+                        QLabel *labelRequirement = newLabel("");
                         layoutUsart->addWidget(labelRequirement,s,2);
 
-                        QPushButton *checkAllTestStatic =new QPushButton("Select ALL",this);
+                        QPushButton *checkAllTestStatic =new QPushButton("Select/Unselect",this);
                         connect(checkAllTestStatic,SIGNAL (clicked()), this, SLOT(onCheckAllTestStatic()));
-                        layoutUsart->addWidget(checkAllTestStatic,s,0);
+                        layoutUsart->addWidget(checkAllTestStatic,++s,0);
 
-                        QPushButton *checkAllTestDynamic =new QPushButton("Select ALL",this);
+                        QPushButton *checkAllTestDynamic =new QPushButton("Select/Unselect",this);
                         connect(checkAllTestDynamic,SIGNAL (clicked()), this, SLOT(onCheckAllTestDynamic()));
                         layoutUsart->addWidget(checkAllTestDynamic,s,1);
 
-                        QPushButton *checkAllTestReq =new QPushButton("Select ALL",this);
-                        connect(checkAllTestReq,SIGNAL (clicked()), this, SLOT(onCheckAllTestReq()));
-                        layoutUsart->addWidget(checkAllTestReq,s++,2);
+
 
                         /* ************************  Static  **********************/
                         for (unsigned int j = 0; j < JSON["USART_static_tests"].size()  ; j++){
@@ -2908,7 +2901,7 @@ std::vector<unsigned int> Read::getIndex( QString ch, bool NEW){
 /*If not empty or not "0x" it will return true */
 /*else it will return false*/
 bool Read::Mandatory(){
-
+    int indexMemory=getIndex("End",newfile)[3];
     int indexUsart= getIndex("usart_bl_version",newfile)[3];
     int indexI2C= getIndex("i2c_bl_version",newfile)[3];
     int indexSpi= getIndex("spi_bl_version",newfile)[3];
@@ -2921,13 +2914,20 @@ bool Read::Mandatory(){
         for(unsigned int i=0; i< value.size();i++){
             if(value[i]!= NULL && (value[i]->text()== ""|| value[i]->text()== "0x" )){
 
-                if ((i == indexUsart && !UsartState)   ||(i == indexI2C && !I2cState)
-                    ||(i == indexSpi && !SpiState)     ||(i == indexCan && !CanState)
-                    ||(i == indexFDCan && !FDCanState )||(i == indexUsb && !UsbState)) i++;
-                else if(value[i]!= NULL)
+                if ((i == indexUsart && !UsartState)||(i == indexI2C && !I2cState)||
+                        (i == indexSpi && !SpiState) ||(i == indexCan && !CanState) ||
+                        (i == indexFDCan && !FDCanState )||(i == indexUsb && !UsbState))
+                    ;
+                else if (i == indexMemory) break;
+                else {
                     value[i]->setStyleSheet("border: 1.5px solid red");
                     if(t== true) t=false;
+                }
             }
+        }
+        if(value[value.size()-1]->text()== ""|| value[value.size()-1]->text()== "0x" ){
+            value[value.size()-1]->setStyleSheet("border: 1.5px solid red");
+            if(t== true) t=false;
         }
     }
 
@@ -2941,47 +2941,60 @@ bool Read::Mandatory(){
 
     }
 
-    for(unsigned int i=0; i< valueUsart.size();i++){
-        if(valueUsart[i]!= NULL && (valueUsart[i]->text()== ""|| valueUsart[i]->text()== "0x" )){
-            valueUsart[i]->setStyleSheet("border: 1.5px solid red");
-        if(t== true) t=false;
+    if(!newfile || UsartState){
+        for(unsigned int i=0; i< valueUsart.size();i++){
+            if(valueUsart[i]!= NULL && (valueUsart[i]->text()== ""|| valueUsart[i]->text()== "0x" )){
+                valueUsart[i]->setStyleSheet("border: 1.5px solid red");
+            if(t== true) t=false;
+            }
         }
     }
 
-    for(unsigned int i=0; i< valueI2C.size();i++){
-    if(valueI2C[i]!= NULL && (valueI2C[i]->text()== ""|| valueI2C[i]->text()== "0x" )){
-        valueI2C[i]->setStyleSheet("border: 1.5px solid red");
-        if(t== true) t=false;
+    if(!newfile || I2cState){
+        for(unsigned int i=0; i< valueI2C.size();i++){
+        if(valueI2C[i]!= NULL && (valueI2C[i]->text()== ""|| valueI2C[i]->text()== "0x" )){
+            valueI2C[i]->setStyleSheet("border: 1.5px solid red");
+            if(t== true) t=false;
+            }
         }
     }
 
-    for(unsigned int i=0; i< valueSpi.size();i++){
-    if(valueSpi[i]!= NULL && (valueSpi[i]->text()== ""|| valueSpi[i]->text()== "0x" )){
-        valueSpi[i]->setStyleSheet("border: 1.5px solid red");
-        if(t== true) t=false;
+    if(!newfile || SpiState){
+        for(unsigned int i=0; i< valueSpi.size();i++){
+        if(valueSpi[i]!= NULL && (valueSpi[i]->text()== ""|| valueSpi[i]->text()== "0x" )){
+            valueSpi[i]->setStyleSheet("border: 1.5px solid red");
+            if(t== true) t=false;
+            }
         }
     }
 
-    for(unsigned int i=0; i< valueCAN.size();i++){
-    if(valueCAN[i]!= NULL && (valueCAN[i]->text()== ""|| valueCAN[i]->text()== "0x" )){
-        valueCAN[i]->setStyleSheet("border: 1.5px solid red");
-        if(t== true) t=false;
+    if(!newfile|| CanState){
+        for(unsigned int i=0; i< valueCAN.size();i++){
+        if(valueCAN[i]!= NULL && (valueCAN[i]->text()== ""|| valueCAN[i]->text()== "0x" )){
+            valueCAN[i]->setStyleSheet("border: 1.5px solid red");
+            if(t== true) t=false;
+            }
         }
     }
 
-    for(unsigned int i=0; i< valueFDCAN.size();i++){
-    if(valueFDCAN[i]!= NULL && (valueFDCAN[i]->text()== ""|| valueFDCAN[i]->text()== "0x" )){
-        valueFDCAN[i]->setStyleSheet("border: 1.5px solid red");
-        if(t== true) t=false;
+    if(!newfile|| FDCanState){
+        for(unsigned int i=0; i< valueFDCAN.size();i++){
+        if(valueFDCAN[i]!= NULL && (valueFDCAN[i]->text()== ""|| valueFDCAN[i]->text()== "0x" )){
+            valueFDCAN[i]->setStyleSheet("border: 1.5px solid red");
+            if(t== true) t=false;
+            }
         }
     }
 
-    for(unsigned int i=0; i< valueUSB.size();i++){
-    if(valueUSB[i]!= NULL && (valueUSB[i]->text()== ""|| valueUSB[i]->text()== "0x" )){
-        valueUSB[i]->setStyleSheet("border: 1.5px solid red");
-        if(t == true) t=false;
+    if(!newfile|| UsbState){
+        for(unsigned int i=0; i< valueUSB.size();i++){
+        if(valueUSB[i]!= NULL && (valueUSB[i]->text()== ""|| valueUSB[i]->text()== "0x" )){
+            valueUSB[i]->setStyleSheet("border: 1.5px solid red");
+            if(t == true) t=false;
+            }
         }
     }
+
 
     for(unsigned int i=0; i< additionalMemory.size();i++){
         if(additionalMemory[i]!= NULL && (additionalMemory[i]->text()== "" || additionalMemory[i]->text()== "0x" )){

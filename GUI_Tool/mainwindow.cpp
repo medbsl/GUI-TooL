@@ -75,8 +75,8 @@ void MainWindow::on_Next1_clicked()
             USBSTATE = false;
 
 
-				
-        hide();
+        this->setWindowState(Qt::WindowActive);
+        //hide();
 		/*create the "Read" class */
         uiread = new Read(this,filename,newFile,USARTSTATE,I2CSTATE,SPISTATE,CANSTATE,FDCANSTATE,USBSTATE);
 		/*show the "Read" class */
