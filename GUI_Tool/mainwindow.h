@@ -36,6 +36,16 @@ private slots:
 
     void on_checkBox_2_clicked();
 
+    void on_checkBox_3_clicked();
+
+    void on_checkBox_4_clicked();
+
+    void on_checkBox_5_clicked();
+
+    void on_checkBox_6_clicked();
+
+    void on_checkBox_7_clicked();
+
 private:
     Ui::MainWindow *ui;
 

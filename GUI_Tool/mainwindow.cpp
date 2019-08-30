@@ -11,6 +11,7 @@ bool newFile =false;
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowIcon(QIcon(":/img/img/ST.JPEG"));
 }
 
 /*Destructor of the MainWindow*/
@@ -32,7 +33,7 @@ void MainWindow::on_Next1_clicked()
     USBSTATE=false;
 	
 	/*Get the file name path to the variable "filename"*/
-    filename = QFileDialog::getOpenFileName(this,tr("browse"), "./", "json File(*.json)");
+    filename = QFileDialog::getOpenFileName(this,tr("browse"), QCoreApplication::applicationDirPath()+"//Templates", "json File(*.json)");
 	
 	
     if(!filename.isEmpty()&& !filename.isNull())
@@ -89,10 +90,50 @@ QString MainWindow::getFilepath(){
     return filename;
 }
 
-void MainWindow::on_checkBox_clicked(){}
+void MainWindow::on_checkBox_clicked(){
+    if(ui->checkBox->checkState() == Qt::Unchecked){
+        ui->checkBox_2->setCheckState(Qt::Unchecked);
+        ui->checkBox_3->setCheckState(Qt::Unchecked);
+        ui->checkBox_4->setCheckState(Qt::Unchecked);
+        ui->checkBox_5->setCheckState(Qt::Unchecked);
+        ui->checkBox_6->setCheckState(Qt::Unchecked);
+        ui->checkBox_7->setCheckState(Qt::Unchecked);
+    }
+}
 
 
 void MainWindow::on_checkBox_2_clicked()
 {
+    if(ui->checkBox->checkState() == Qt::Unchecked)
+        ui->checkBox_2->setCheckState(Qt::Unchecked);
+}
 
+void MainWindow::on_checkBox_3_clicked()
+{
+    if(ui->checkBox->checkState() == Qt::Unchecked)
+        ui->checkBox_3->setCheckState(Qt::Unchecked);
+}
+
+void MainWindow::on_checkBox_4_clicked()
+{
+    if(ui->checkBox->checkState() == Qt::Unchecked)
+        ui->checkBox_4->setCheckState(Qt::Unchecked);
+}
+
+void MainWindow::on_checkBox_5_clicked()
+{
+    if(ui->checkBox->checkState() == Qt::Unchecked)
+        ui->checkBox_5->setCheckState(Qt::Unchecked);
+}
+
+void MainWindow::on_checkBox_6_clicked()
+{
+    if(ui->checkBox->checkState() == Qt::Unchecked)
+        ui->checkBox_6->setCheckState(Qt::Unchecked);
+}
+
+void MainWindow::on_checkBox_7_clicked()
+{
+    if(ui->checkBox->checkState() == Qt::Unchecked)
+        ui->checkBox_7->setCheckState(Qt::Unchecked);
 }

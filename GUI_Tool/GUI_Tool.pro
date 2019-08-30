@@ -44,3 +44,6 @@ FORMS += \
         mainwindow.ui \
     read.ui
 
+RESOURCES += \
+    resources.qrc
+
