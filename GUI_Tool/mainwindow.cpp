@@ -2,10 +2,17 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 
+#include <iostream>
+#include <fstream>
+
 
 
 QString filename = "C://" ;
 bool newFile =false;
+bool ok=false;
+
+
+Json::Value root;
 
 /*Constructor that set up the mainWindow */
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWindow)
@@ -23,6 +30,8 @@ MainWindow::~MainWindow()
 /*Browse Button Clicked*/
 void MainWindow::on_Next1_clicked()
 {
+
+
 	
     newFile =false;
     USARTSTATE=false;
@@ -34,9 +43,9 @@ void MainWindow::on_Next1_clicked()
 	
 	/*Get the file name path to the variable "filename"*/
     filename = QFileDialog::getOpenFileName(this,tr("browse"), QCoreApplication::applicationDirPath()+"//Templates", "json File(*.json)");
+    ParseJson(filename);
 	
-	
-    if(!filename.isEmpty()&& !filename.isNull())
+    if(!filename.isEmpty()&& !filename.isNull() && ParseJson(filename))
     {
 		/*"newFile" is a bool variable if the chcekbox is checked then it will be true*/
 		/*else it will be false*/		
@@ -144,4 +153,21 @@ void MainWindow::on_actionabout_triggered()
     /*show the "Read" class */
     uiabout->show();
 
+}
+
+bool MainWindow::ParseJson(QString filepath){
+    while(!ok){
+        try{
+            std::ifstream file(std::string(filepath.toLocal8Bit().constData()), std::ifstream::binary );
+            file >> root;
+            ok= true;
+
+        }catch(std::exception &e){
+            ok= false;
+            filepath.clear();
+            QMessageBox::warning(this,"Warning", QString::fromStdString(e.what()));
+            break;
+        }
+    }
+    return ok;
 }

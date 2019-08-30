@@ -17,8 +17,8 @@
    <widget class="QCheckBox" name="checkBox">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>10</y>
+      <x>80</x>
+      <y>30</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -72,7 +72,7 @@
       <widget class="QCheckBox" name="checkBox_5">
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
+         <pointsize>11</pointsize>
         </font>
        </property>
        <property name="text">
@@ -84,7 +84,7 @@
       <widget class="QCheckBox" name="checkBox_6">
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
+         <pointsize>11</pointsize>
         </font>
        </property>
        <property name="text">
@@ -96,7 +96,7 @@
       <widget class="QCheckBox" name="checkBox_7">
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
+         <pointsize>11</pointsize>
         </font>
        </property>
        <property name="text">
@@ -105,24 +105,6 @@
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>50</y>
-      <width>261</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Communication Protocole:</string>
-    </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
@@ -151,7 +133,7 @@
       <widget class="QCheckBox" name="checkBox_2">
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
+         <pointsize>11</pointsize>
         </font>
        </property>
        <property name="text">
@@ -163,7 +145,7 @@
       <widget class="QCheckBox" name="checkBox_3">
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
+         <pointsize>11</pointsize>
         </font>
        </property>
        <property name="text">
@@ -175,7 +157,7 @@
       <widget class="QCheckBox" name="checkBox_4">
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
+         <pointsize>11</pointsize>
         </font>
        </property>
        <property name="text">

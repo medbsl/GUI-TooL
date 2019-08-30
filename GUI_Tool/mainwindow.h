@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QString>
+#include "dist\json\json.h"
 #include "read.h"
 #include "about.h"
 
@@ -29,6 +30,7 @@ public:
     bool newFile,USARTSTATE,I2CSTATE,SPISTATE,CANSTATE,FDCANSTATE,USBSTATE;
     Read *uiread;
     About *uiabout;
+    bool ParseJson(QString);
 
     ~MainWindow();
 
