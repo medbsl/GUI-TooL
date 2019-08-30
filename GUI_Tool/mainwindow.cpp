@@ -137,3 +137,11 @@ void MainWindow::on_checkBox_7_clicked()
     if(ui->checkBox->checkState() == Qt::Unchecked)
         ui->checkBox_7->setCheckState(Qt::Unchecked);
 }
+
+void MainWindow::on_actionabout_triggered()
+{
+    uiabout = new About(this);
+    /*show the "Read" class */
+    uiabout->show();
+
+}

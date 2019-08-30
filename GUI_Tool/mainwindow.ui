@@ -6,48 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>619</width>
-    <height>397</height>
+    <width>631</width>
+    <height>381</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>10</y>
-      <width>261</width>
-      <height>251</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="resources.qrc">:/img/img/ST.JPEG</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Next1">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>240</y>
-      <width>151</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Browse Template</string>
-    </property>
-   </widget>
    <widget class="QCheckBox" name="checkBox">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>30</y>
+      <y>10</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -61,29 +32,11 @@
      <string>new file </string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>70</y>
-      <width>261</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Communication Protocole:</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>270</y>
+      <y>250</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -92,43 +45,24 @@
      <string>The Communication protocole will </string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QPushButton" name="Next1">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>290</y>
-      <width>261</width>
-      <height>31</height>
+      <x>110</x>
+      <y>220</y>
+      <width>151</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>choosed only when we create a new File</string>
+     <string>Browse Template</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>250</y>
-      <width>51</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Note:</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>31</x>
-      <y>181</y>
+      <y>161</y>
       <width>278</width>
       <height>39</height>
      </rect>
@@ -172,11 +106,42 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>130</y>
+      <y>50</y>
+      <width>261</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Communication Protocole:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>270</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>choosed only when we create a new File</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>110</y>
       <width>281</width>
       <height>39</height>
      </rect>
@@ -220,13 +185,48 @@
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>0</y>
+      <width>261</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources.qrc">:/img/img/ST.JPEG</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>230</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Note:</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>619</width>
+     <width>631</width>
      <height>26</height>
     </rect>
    </property>
@@ -239,6 +239,7 @@
     <property name="title">
      <string>About</string>
     </property>
+    <addaction name="actionabout"/>
    </widget>
    <addaction name="menuGUI_tool"/>
    <addaction name="menuAbout"/>
@@ -266,6 +267,11 @@
    </property>
    <property name="shortcutContext">
     <enum>Qt::ApplicationShortcut</enum>
+   </property>
+  </action>
+  <action name="actionabout">
+   <property name="text">
+    <string>about</string>
    </property>
   </action>
  </widget>

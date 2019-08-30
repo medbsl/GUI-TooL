@@ -6,6 +6,7 @@
 #include <QApplication>
 #include <QString>
 #include "read.h"
+#include "about.h"
 
 extern QString filename;
 extern bool newFile,USARTSTATE,I2CSTATE,SPISTATE,CANSTATE,FDCANSTATE,USBSTATE;
@@ -27,6 +28,8 @@ public:
     QString getFilepath();
     bool newFile,USARTSTATE,I2CSTATE,SPISTATE,CANSTATE,FDCANSTATE,USBSTATE;
     Read *uiread;
+    About *uiabout;
+
     ~MainWindow();
 
 private slots:
@@ -45,6 +48,8 @@ private slots:
     void on_checkBox_6_clicked();
 
     void on_checkBox_7_clicked();
+
+    void on_actionabout_triggered();
 
 private:
     Ui::MainWindow *ui;

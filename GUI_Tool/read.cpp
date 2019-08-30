@@ -3270,17 +3270,22 @@ void Read::Interfaces(){
 
                             else if(valueI2CCombo[UI2C] != NULL) {
 
-                                switch (valueI2CCombo[U]->currentText().toInt()) {
+                                switch (valueI2CCombo[UI2C]->currentText().toInt()) {
 
-                                    case 9600:
+                                    case 400:
                                         JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="400";
                                         UI2C++;
                                         break;
+                                case 4000:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="4000";
+                                    UI2C++;
+                                    break;
+
 
 
 
                                     default:
-                                        JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] =valueI2CCombo[U]->currentText().toStdString();
+                                        break;
                                 }
                             }
                         }
@@ -3305,6 +3310,11 @@ void Read::Interfaces(){
                                         USPI++;
                                         break;
 
+                                case 125:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="125";
+                                    USPI++;
+                                    break;
+
                                     case 8000:
                                         JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="8000";
                                         USPI++;
@@ -3313,7 +3323,7 @@ void Read::Interfaces(){
 
 
                                     default:
-                                        JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] = valueSpiCombo[USPI]->currentText().toStdString();
+                                    break;
                                 }
                             }
                         }
@@ -3470,6 +3480,7 @@ void Read::Interfaces(){
 
 
                         else if(valueUsartCombo[U] != NULL) {
+
                             switch (valueUsartCombo[U]->currentText().toInt()) {
                                 case 9600:
                                     JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="9600";
@@ -3493,6 +3504,15 @@ void Read::Interfaces(){
 
                                 case 115200:
                                     JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="115200";
+                                    U++;
+                                    break;
+
+                                case 921600:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="921600";
+                                    U++;
+                                break;
+                                case 460800:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="460800";
                                     U++;
                                     break;
 

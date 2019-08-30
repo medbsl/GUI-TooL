@@ -24,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    about.cpp \
         main.cpp \
         mainwindow.cpp \
         dist/jsoncpp.cpp \
@@ -31,6 +32,7 @@ SOURCES += \
 
 
 HEADERS += \
+    about.h \
         mainwindow.h \
         dist/json/json.h \
         dist/json/json-forwards.h \
@@ -41,6 +43,7 @@ INCLUDEPATH +=
         dist/
 
 FORMS += \
+    about.ui \
         mainwindow.ui \
     read.ui
 
