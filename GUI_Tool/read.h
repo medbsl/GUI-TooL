@@ -82,6 +82,7 @@ public:
 
 
      std::vector <QLineEdit *> additionalMemory;
+     bool ok;
 
 
         bool newFile ,newfile,UsartState,I2cState,SpiState,CanState,FDCanState,UsbState;

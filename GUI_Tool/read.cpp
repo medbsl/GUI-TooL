@@ -417,25 +417,26 @@ void Read::onBrowseNewFile(){
                             /*Create and QLabel of the interfaces value */
                                 Label = newSubLabel(QString::fromStdString( JSON["interfaces"][j].getMemberNames()[k]));
                                 layoutI2C->addWidget(Label, ++s,0);
-                            }
+
 
                             /*Test if the value will be in CheckBox or in LineEdit*/
                             /*The list of the CheckBox is "Baudrate" "address" */
 
-                            if (JSON["interfaces"][j].getMemberNames()[k] == "Bitrate"){
+                             if (JSON["interfaces"][j].getMemberNames()[k] == "Bitrate"){
 
                                 QComboBox *combo = new QComboBox( this );
-                                combo->setEditable( true  );
+                                combo->setEditable( false  );
                                 combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
                                 combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
                                 combo->addItem(tr("400"));
+                                combo->addItem(tr("100"));
                                 layoutI2C->addWidget(combo, s,1);
                                 valueI2CCombo.push_back(combo);
                                 valueI2C.push_back(NULL);
 
                             }
 
-                            if (JSON["interfaces"][j].getMemberNames()[k] == "address"){
+                          /*  if (JSON["interfaces"][j].getMemberNames()[k] == "address"){
 
                                 lineEdit = new QLineEdit(this);
                                 lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
@@ -444,10 +445,10 @@ void Read::onBrowseNewFile(){
                                 valueI2CCombo.push_back(NULL);
                                 valueI2C.push_back(lineEdit);
 
-                            }
+                            }*/
                             /*Else the value will be in a LineEdit */
 
-                            else if (JSON["interfaces"][j].getMemberNames()[k] != "Name" && JSON["interfaces"][j].getMemberNames()[k] != "state" ) {
+                            else  {
 
                                 lineEdit = new QLineEdit(this);
                                 lineEdit->setGeometry(QRect(QPoint(230, 138),QSize(176, 27)));
@@ -455,6 +456,7 @@ void Read::onBrowseNewFile(){
                                 layoutI2C->addWidget(lineEdit, s,1);
                                 valueI2CCombo.push_back(NULL);
                                 valueI2C.push_back(lineEdit);
+                            }
                             }
                         }
 
@@ -538,7 +540,7 @@ void Read::onBrowseNewFile(){
                                     combo->setEditable( true );
                                     combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
                                     combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
-                                    combo->addItem(tr("400"));
+                                    combo->addItem(tr("125"));
                                     combo->addItem(tr("8000"));
                                     layoutSpi->addWidget(combo, s,1);
                                     valueSpiCombo.push_back(combo);
@@ -1245,6 +1247,7 @@ void Read::onBrowseButton(QString filename){
                             combo->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
                             combo->setGeometry(QRect(QPoint(230,50),QSize(176, 23)));
                             combo->addItem(tr("400"));
+                            combo->addItem(tr("100"));
                             layoutI2C->addWidget(combo, s,1);
 
                             valueI2CCombo.push_back(combo);
@@ -1939,6 +1942,7 @@ void Read::onSaveChanegeButton(){
             additionalMemory.clear();
             addmemory3=0;
             QMessageBox::information(this,"Done","New File successful created");
+            QApplication::quit();
         }
 
 
@@ -3272,12 +3276,12 @@ void Read::Interfaces(){
 
                                 switch (valueI2CCombo[UI2C]->currentText().toInt()) {
 
-                                    case 400:
-                                        JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="400";
+                                    case 100:
+                                        JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="100";
                                         UI2C++;
                                         break;
-                                case 4000:
-                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="4000";
+                                case 400:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="400";
                                     UI2C++;
                                     break;
 
@@ -3305,15 +3309,12 @@ void Read::Interfaces(){
 
                             else if(valueSpiCombo[USPI] != NULL) {
                                 switch (valueSpiCombo[USPI]->currentText().toInt()) {
-                                    case 400:
-                                        JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="400";
+                                    case 125:
+                                        JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="125";
                                         USPI++;
                                         break;
 
-                                case 125:
-                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="125";
-                                    USPI++;
-                                    break;
+
 
                                     case 8000:
                                         JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="8000";
@@ -3393,6 +3394,27 @@ void Read::Interfaces(){
                                         JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="9600";
                                         UCAN++;
                                         break;
+                                case 1200:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="1200";
+                                    UCAN++;
+                                    break;
+                                case 2400:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="2400";
+                                    UCAN++;
+                                    break;
+                                case 4800:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="4800";
+                                    UCAN++;
+                                    break;
+                                case 14400:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="14400";
+                                    UCAN++;
+                                    break;
+                                case 56000:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="56000";
+                                    UCAN++;
+                                    break;
+
 
                                     case 19200:
                                         JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="9600";
@@ -3413,6 +3435,18 @@ void Read::Interfaces(){
                                         JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="115200";
                                         UCAN++;
                                         break;
+                                case 921600:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="921600";
+                                    UCAN++;
+                                    break;
+                                case 460800:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="460800";
+                                    UCAN++;
+                                    break;
+                                case 230400:
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="230400";
+                                    UCAN++;
+                                    break;
 
                                     default:
                                         break;
@@ -3486,9 +3520,31 @@ void Read::Interfaces(){
                                     JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="9600";
                                     U++;
                                     break;
+                            case 1200:
+                                JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="1200";
+                                U++;
+                                break;
+                            case 2400:
+                                JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="2400";
+                                U++;
+                                break;
+                            case 4800:
+                                JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="4800";
+                                U++;
+                                break;
+                            case 14400:
+                                JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="14400";
+                                U++;
+                                break;
+
+                            case (56000):
+                                JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="14400";
+                                U++;
+                                break;
+
 
                                 case 19200:
-                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="9600";
+                                    JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="19200";
                                     U++;
                                     break;
 
@@ -3515,6 +3571,11 @@ void Read::Interfaces(){
                                     JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="460800";
                                     U++;
                                     break;
+                            case 230400:
+                                JSON["interfaces"][j][ JSON["interfaces"][j].getMemberNames()[k]] ="230400";
+                                U++;
+                                break;
+
 
                                 default:
                                     break;
